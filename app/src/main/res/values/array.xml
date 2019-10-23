@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <string-array name="samsung">
+        <item id = "brand">Samsung</item>
+        <item id = "model">Notet 10</item>
+    </string-array>
+
+</resources>
