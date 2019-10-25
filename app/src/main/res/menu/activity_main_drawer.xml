@@ -20,15 +20,19 @@
             android:id="@+id/nav_compare"
             android:icon="@drawable/ic_ic_compare"
             android:title="@string/menu_compare" />
+
     </group>
 
     <item android:title="More">
         <menu>
             <item
+                android:checkable="true"
                 android:id="@+id/nav_settings"
                 android:icon="@drawable/ic_ic_settings"
-                android:title="@string/menu_settings" />
+                android:title="@string/menu_settings"
+                />
             <item
+                android:checkable="true"
                 android:id="@+id/nav_about"
                 android:icon="@drawable/ic_ic_about"
                 android:title="@string/menu_about" />
