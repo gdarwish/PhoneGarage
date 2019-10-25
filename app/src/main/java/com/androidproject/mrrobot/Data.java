@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
@@ -16,11 +17,20 @@ public class Data {
     private ArrayList<Phone> phones;
     private String jsonPhones;
 
-    public Data(Context context) {
+    private static Data data;
+
+    public static Data getInstance(Context context) {
+        if (data != null)
+            return data;
+        return new Data(context);
+    }
+
+    private Data(Context context) {
 
         Gson gson = new Gson();
 
-        jsonPhones = generateJSON(context);
+        if (jsonPhones == null)
+            jsonPhones = generateJSON(context);
 
         if (jsonPhones != null) {
             Type phoneType = new TypeToken<ArrayList<Phone>>() {
@@ -29,14 +39,14 @@ public class Data {
             phones = gson.fromJson(jsonPhones, phoneType);
 
 
-            for (Phone phone: phones) {
-                Log.d("PHONES", phone.getDetailsFormatted());
-            }
+//            for (Phone phone: phones) {
+//                Log.d("PHONES", phone.getDetailsFormatted());
+//            }
         }
 
     }
 
-    public ArrayList<Phone> getPhones() {
+    public ArrayList<Phone> getPhonesList() {
         return phones;
     }
 

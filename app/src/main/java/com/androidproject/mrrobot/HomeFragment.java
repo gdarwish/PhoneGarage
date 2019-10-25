@@ -1,7 +1,6 @@
 package com.androidproject.mrrobot;
 
 
-import android.content.res.Resources;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,7 +8,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.androidproject.mrrobot.R;
+import android.widget.TextView;
+
+import com.google.android.material.snackbar.Snackbar;
+
+import java.util.ArrayList;
 
 
 /**
@@ -28,6 +31,30 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        TextView textView = view.findViewById(R.id.textPhone);
+        String text = "";
+
+
+        // Get Device Name of phone with index 105
+        String iPhone = Data.getInstance(getContext()).getPhonesList().get(105).getDeviceName();
+
+        // Accessing phone with multiple simple steps
+        Data data = Data.getInstance(getContext());
+        ArrayList<Phone>  phonesList = data.getPhonesList();
+        Phone firstPhone = phonesList.get(0);
+
+
+        // Initiate local ArrayList of phones
+        ArrayList<Phone> phones = Data.getInstance(getContext()).getPhonesList();
+
+        // Loop through  all phones and display them (or do whatever)
+        for (Phone phone:phones
+             ) {
+            text += phone.getDetailsFormatted() + "\n";
+        }
+
+        textView.setText(text);
 
         return view;
     }
