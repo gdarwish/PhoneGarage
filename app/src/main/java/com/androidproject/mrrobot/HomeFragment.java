@@ -36,8 +36,8 @@ public class HomeFragment extends Fragment {
         String text = "";
 
 
-        // Get Device Name of phone with index 105
-        String iPhone = Data.getInstance(getContext()).getPhonesList().get(105).getDeviceName();
+        // Get Device Name of phone with index 100
+        String iPhone = Data.getInstance(getContext()).getPhonesList().get(100).getDeviceName();
 
         // Accessing phone with multiple simple steps
         Data data = Data.getInstance(getContext());
