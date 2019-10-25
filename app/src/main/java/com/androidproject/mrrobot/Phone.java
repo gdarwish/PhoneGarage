@@ -1,5 +1,7 @@
 package com.androidproject.mrrobot;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Phone {
     /*
     DeviceName
@@ -27,8 +29,9 @@ public class Phone {
     Charging
      */
 
-
+    @SerializedName("DeviceName")
     private String deviceName;
+    @SerializedName("Brand")
     private String brand;
     private String cpu;
     private String internal;
@@ -42,6 +45,9 @@ public class Phone {
         this.os = os;
     }
 
+    public String getDetailsFormatted() {
+        return String.format("Device: %s\nBrand: %s\nCPU: %s\nInternal: %s\nOS: %s\n", deviceName, brand, cpu, internal, os);
+    }
 
     public String getDeviceName() {
         return deviceName;
