@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/PageBackgroundColorLight"
-    android:orientation="vertical"
-    android:padding="20dp"
     tools:context="com.androidproject.mrrobot.HomeFragment">
 
-    <Button
-        android:id="@+id/button"
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorAccent"
-        android:text="Button"
-        android:textColor="@color/textColorLight" />
-</LinearLayout>
+        tools:listitem="@layout/row_example" />
+</RelativeLayout>
