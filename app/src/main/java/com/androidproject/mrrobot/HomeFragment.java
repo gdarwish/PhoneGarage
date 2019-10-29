@@ -5,6 +5,8 @@ import android.content.res.Resources;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,6 +27,10 @@ public class HomeFragment extends Fragment {
     Adapter mAdapter;
 
 
+    public static FragmentManager getSupportFragmentManager() {
+        return  getSupportFragmentManager();
+    }
+
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -36,15 +42,13 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        //FragmentActivity c = getActivity();
+      //  FragmentActivity context = getActivity();
 
         mRecyclerView = view.findViewById(R.id.recyclerview);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-       // mAdapter = new Adapter(getContext(), getList());
-        mAdapter = new Adapter(getContext(), getList());
+        mAdapter = new Adapter(getContext(), getActivity(), getList());
         mRecyclerView.setAdapter(mAdapter);
-//        mRecyclerView.setHasFixedSize(true);
 
         return view;
     }
@@ -61,19 +65,19 @@ public class HomeFragment extends Fragment {
 
         m = new Model();
         m.setImage(R.drawable.ic_ic_about);
-        m.setTitle("Hello");
+        m.setTitle("Ghaith");
         m.setDescription("World");
         models.add(m);
 
         m = new Model();
         m.setImage(R.drawable.ic_ic_about);
-        m.setTitle("Hello");
+        m.setTitle("Ali");
         m.setDescription("World");
         models.add(m);
 
         m = new Model();
         m.setImage(R.drawable.ic_ic_about);
-        m.setTitle("Hello");
+        m.setTitle("Maher");
         m.setDescription("World");
         models.add(m);
 
