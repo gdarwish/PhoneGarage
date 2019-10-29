@@ -40,12 +40,17 @@ public class DetailsFragment extends Fragment {
         title = view.findViewById(R.id.title);
         description = view.findViewById(R.id.description);
 
+        Phone phone =  (Phone)getArguments().getSerializable("phone");
 
-        String mTitle = getArguments().getString("title");
-        String mDescription = getArguments().getString("desc");
-        int  mImg = getArguments().getInt("img");
+        String mTitle = phone.getBrand();
+        String mDescription = phone.getDeviceName();
+//        int  mImg = getArguments().getInt("img");
 
-        image.setImageResource(mImg);
+//        String mTitle = getArguments().getString("title");
+//        String mDescription = getArguments().getString("desc");
+//        int  mImg = getArguments().getInt("img");
+
+        image.setImageResource(R.drawable.ic_ic_favoriteemp);
         title.setText(mTitle);
         description.setText(mDescription);
 
