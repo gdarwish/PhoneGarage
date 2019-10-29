@@ -46,7 +46,9 @@ public class HomeFragment extends Fragment {
 
         // Initiate local ArrayList of phones
         phones = Data.getInstance(getContext()).getPhonesList();
-        displayPhones(phones);
+
+        // DO NOT DISPLAY PHONES WHEN APP LAUNCHED
+//        displayPhones(phones);
 
 
         searchText.addTextChangedListener(new TextWatcher() {
@@ -57,7 +59,10 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                displayPhones(searchPhones(s.toString()));
+                if (!s.toString().equals(""))
+                    displayPhones(searchPhones(s.toString()));
+                else
+                    textView.setText("");
             }
 
             @Override
@@ -74,9 +79,9 @@ public class HomeFragment extends Fragment {
         searchedPhones = new ArrayList<>();
         searchInput = searchInput.toUpperCase();
 
-        for(Phone phone: phones) {
+        for (Phone phone : phones) {
             String device = phone.getDeviceName().toUpperCase();
-            if(device.contains(searchInput)) {
+            if (device.contains(searchInput)) {
                 searchedPhones.add(phone);
             }
         }
@@ -86,7 +91,7 @@ public class HomeFragment extends Fragment {
     private void displayPhones(ArrayList<Phone> phones) {
         results = "";
         // Loop through  all phones and display them (or do whatever)
-        for (Phone phone:phones
+        for (Phone phone : phones
         ) {
             results += phone.getDetailsFormatted() + "\n";
         }

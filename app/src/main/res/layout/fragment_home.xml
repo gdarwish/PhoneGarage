@@ -7,10 +7,9 @@
     android:padding="10dp"
     tools:context="com.androidproject.mrrobot.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-
     <EditText
         android:id="@+id/searchText"
+        style="@style/Widget.MaterialComponents.TextInputEditText.FilledBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -31,7 +30,6 @@
                 android:id="@+id/textPhone"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@string/hello_blank_fragment"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
         </LinearLayout>
     </ScrollView>
