@@ -1,4 +1,4 @@
-package com.ghaithdarwish.mrrobot;
+package com.androidproject.PhoneGarage;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package com.androidproject.mrrobot;
+package com.androidproject.PhoneGarage;
 
 public class Model {
 

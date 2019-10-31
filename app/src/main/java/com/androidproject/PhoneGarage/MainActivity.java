@@ -1,12 +1,8 @@
-package com.androidproject.mrrobot;
+package com.androidproject.PhoneGarage;
 
 import android.os.Bundle;
 
-import com.androidproject.mrrobot.R;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
-import android.view.View;
+import com.androidproject.PhoneGarage.R;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -21,8 +17,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
-
-import java.io.InputStream;
 
 public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;

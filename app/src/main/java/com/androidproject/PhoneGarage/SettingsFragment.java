@@ -1,4 +1,4 @@
-package com.androidproject.mrrobot;
+package com.androidproject.PhoneGarage;
 
 
 import android.os.Bundle;
@@ -9,16 +9,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.androidproject.mrrobot.R;
+import com.androidproject.PhoneGarage.R;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CompareFragment extends Fragment {
+public class SettingsFragment extends Fragment {
 
 
-    public CompareFragment() {
+    public SettingsFragment() {
         // Required empty public constructor
     }
 
@@ -27,7 +27,7 @@ public class CompareFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_compare, container, false);
+        return inflater.inflate(R.layout.fragment_settings, container, false);
     }
 
 }
