@@ -1,9 +1,11 @@
-package com.androidproject.mrrobot;
+package com.androidproject.PhoneGarage;
 
 
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -20,6 +22,9 @@ import java.util.ArrayList;
  * A simple {@link Fragment} subclass.
  */
 public class HomeFragment extends Fragment {
+
+    RecyclerView mRecyclerView;
+    Adapter mAdapter;
 
 
     ArrayList<Phone> phones;
@@ -40,12 +45,21 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
+        phones = Data.getInstance(getContext()).getPhonesList();
+
+        mRecyclerView = view.findViewById(R.id.recyclerview);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        mAdapter = new Adapter(getContext(), phones);
+//        mAdapter.notifyDataSetChanged();
+
+        mRecyclerView.setAdapter(mAdapter);
+
         searchText = view.findViewById(R.id.searchText);
         textView = view.findViewById(R.id.textPhone);
 
 
         // Initiate local ArrayList of phones
-        phones = Data.getInstance(getContext()).getPhonesList();
 
         // DO NOT DISPLAY PHONES WHEN APP LAUNCHED
 //        displayPhones(phones);
@@ -59,10 +73,14 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (!s.toString().equals(""))
-                    displayPhones(searchPhones(s.toString()));
-                else
+                if (!s.toString().equals("")) {
+//                    displayPhones(searchPhones(s.toString()));
+
+                    mAdapter.setPhones(searchPhones(s.toString()));
+                    mAdapter.notifyDataSetChanged();
+                } else {
                     textView.setText("");
+                }
             }
 
             @Override
@@ -70,7 +88,6 @@ public class HomeFragment extends Fragment {
 
             }
         });
-
 
         return view;
     }

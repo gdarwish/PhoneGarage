@@ -8,4 +8,6 @@
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#212121</color>
     <color name="textColorLight">#FFFFFF</color>
+    <color name="textColorDark">#000000</color>
+
 </resources>

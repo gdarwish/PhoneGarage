@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="10dp"
-    tools:context="com.androidproject.mrrobot.HomeFragment">
+    tools:context="com.androidproject.PhoneGarage.HomeFragment">
+
 
     <EditText
         android:id="@+id/searchText"
@@ -13,6 +13,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:focusable="auto"
+        android:focusableInTouchMode="true"
+        android:focusedByDefault="false"
         android:hint="Enter a device name"
         android:inputType="textPersonName"
         android:padding="10dp" />
@@ -31,6 +34,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/row_item" />
+
         </LinearLayout>
     </ScrollView>
 
