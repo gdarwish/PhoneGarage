@@ -4,6 +4,7 @@ package com.androidproject.PhoneGarage;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,13 +40,14 @@ public class DetailsFragment extends Fragment {
 
         String mTitle = phone.getBrand();
         String mDescription = phone.getDeviceName();
-//        int  mImg = getArguments().getInt("img");
+        int  mImg = phone.getImage();
 
 //        String mTitle = getArguments().getString("title");
 //        String mDescription = getArguments().getString("desc");
 //        int  mImg = getArguments().getInt("img");
-
-        image.setImageResource(R.drawable.ic_ic_favoriteemp);
+        Log.e("IMAGE", mImg + "");
+        Log.e("IMAGE2", R.drawable.img + "");
+        image.setImageResource(mImg);
         title.setText(mTitle);
         description.setText(mDescription);
 

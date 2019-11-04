@@ -50,10 +50,8 @@ public class HomeFragment extends Fragment {
         mRecyclerView = view.findViewById(R.id.recyclerview);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        mAdapter = new Adapter(getContext(), getList());
-
-        // mAdapter = new Adapter(getContext(), getList());
         mAdapter = new Adapter(getContext(), phones);
+//        mAdapter.notifyDataSetChanged();
 
         mRecyclerView.setAdapter(mAdapter);
 
@@ -75,10 +73,14 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (!s.toString().equals(""))
-                    displayPhones(searchPhones(s.toString()));
-                else
+                if (!s.toString().equals("")) {
+//                    displayPhones(searchPhones(s.toString()));
+
+                    mAdapter.setPhones(searchPhones(s.toString()));
+                    mAdapter.notifyDataSetChanged();
+                } else {
                     textView.setText("");
+                }
             }
 
             @Override
@@ -88,46 +90,6 @@ public class HomeFragment extends Fragment {
         });
 
         return view;
-    }
-
-    private ArrayList<Phone> getList() {
-
-        ArrayList<Phone> models = new ArrayList<>();
-//
-//        Model m = new Model();
-//        m.setImage(R.drawable.ic_ic_about);
-//        m.setTitle("Hello");
-//        m.setDescription("World");
-//        phones.add(m);
-//
-//        m = new Model();
-//        m.setImage(R.drawable.ic_ic_about);
-//        m.setTitle("Ghaith");
-//        m.setDescription("World");
-//        phones.add(m);
-//
-//        m = new Model();
-//        m.setImage(R.drawable.ic_ic_about);
-//        m.setTitle("Ali");
-//        m.setDescription("World");
-//        phones.add(m);
-//
-//        m = new Model();
-//        m.setImage(R.drawable.ic_ic_about);
-//        m.setTitle("Maher");
-//        m.setDescription("World");
-//        phones.add(m);
-
-//        for (Phone phone : phones
-//        ) {
-//            Phone m = new Phone();
-//            m.setImage(R.drawable.ic_ic_about);
-//            m.setTitle(phone.getBrand());
-//            m.setDescription(phone.getDeviceName());
-//            models.add(m);
-//        }
-
-        return models;
     }
 
     private ArrayList<Phone> searchPhones(String searchInput) {
@@ -150,9 +112,6 @@ public class HomeFragment extends Fragment {
         ) {
             results += phone.getDetailsFormatted() + "\n";
         }
-
-        mAdapter = new Adapter(getContext(), getList());
-        mRecyclerView.setAdapter(mAdapter);
 
         textView.setText(results);
     }

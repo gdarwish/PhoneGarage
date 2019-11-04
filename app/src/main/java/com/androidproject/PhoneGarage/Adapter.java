@@ -1,7 +1,10 @@
 package com.androidproject.PhoneGarage;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.DrawableWrapper;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +29,7 @@ public class Adapter extends RecyclerView.Adapter<MyHolder> {
     @Override
     public MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(context).inflate(R.layout.row_example, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.row_item, parent, false);
 
         return new MyHolder(view);
     }
@@ -34,7 +37,7 @@ public class Adapter extends RecyclerView.Adapter<MyHolder> {
     @Override
     public void onBindViewHolder(@NonNull final MyHolder holder, int position) {
 
-//        holder.mImageView.setImageResource(phones.get(position).getImage());
+        holder.mImageView.setImageResource(phones.get(position).getImage());
         holder.mTitle.setText(phones.get(position).getBrand());
         holder.mDescription.setText(phones.get(position).getDeviceName());
 
@@ -44,12 +47,14 @@ public class Adapter extends RecyclerView.Adapter<MyHolder> {
 
                 String gtitle = phones.get(position).getBrand();
                 String gDesc = phones.get(position).getDeviceName();
-//                int mImage = phones.get(position).getImage();
+                int mImage = phones.get(position).getImage();
 
                 Bundle args = new Bundle();
-                args.putString("title", gtitle);
-                args.putString("desc", gDesc);
+//                args.putString("title", gtitle);
+//                args.putString("desc", gDesc);
+//                args.putInt("img", R.drawable.img);
 //                args.putInt("img", mImage);
+
                 args.putSerializable("phone", phones.get(position));
 
                 Navigation.findNavController(view).navigate(R.id.action_nav_home_to_detailsFragment6, args);
@@ -60,5 +65,9 @@ public class Adapter extends RecyclerView.Adapter<MyHolder> {
     @Override
     public int getItemCount() {
         return phones.size();
+    }
+
+    public void setPhones(ArrayList<Phone> phones) {
+        this.phones = phones;
     }
 }

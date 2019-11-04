@@ -38,17 +38,19 @@ public class Phone implements Serializable {
     private String cpu;
     private String internal;
     private String os;
+    private int image;
 
-    public Phone(String deviceName, String brand, String cpu, String internal, String os) {
+    public Phone(String deviceName, String brand, String cpu, String internal, String os, int image) {
         this.deviceName = deviceName;
         this.brand = brand;
         this.cpu = cpu;
         this.internal = internal;
         this.os = os;
+        this.image = image;
     }
 
     public String getDetailsFormatted() {
-        return String.format("Device: %s\nBrand: %s\nCPU: %s\nInternal: %s\nOS: %s\n", deviceName, brand, cpu, internal, os);
+        return String.format("Device: %s\nBrand: %s\nCPU: %s\nInternal: %s\nOS: %s\nImage:%d", deviceName, brand, cpu, internal, os, image);
     }
 
     public String getDeviceName() {
@@ -69,5 +71,9 @@ public class Phone implements Serializable {
 
     public String getOs() {
         return os;
+    }
+
+    public int getImage() {
+        return image;
     }
 }
