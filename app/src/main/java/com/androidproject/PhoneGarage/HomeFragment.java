@@ -67,22 +67,33 @@ public class HomeFragment extends Fragment {
             @Override
             public void insantiateMyButton(RecyclerView.ViewHolder viewHolder, List<SwipeHelper.MyButton> buffer) {
 
-                buffer.add(new MyButton(getContext(), "Favorite", 40, R.drawable.ic_ic_favorite, Color.parseColor("#FFBE3233"), new MyButtonClickListener() {
+                buffer.add(new MyButton(getContext(), "Favorites", 40, 0, Color.parseColor("#FFBE3233"), new MyButtonClickListener() {
 
                     @Override
                     public void onClick(int pos) {
-
                         Toast.makeText(getContext(), "Successfully added to favorite!", Toast.LENGTH_SHORT).show();
-                        Log.d("MyApp", "I am here");
 
+//                        if (FavouritesFragment.favouritPhoneList.contains(phones.get(pos))) {
+//                            Toast.makeText(getContext(), "Already added to favorite!", Toast.LENGTH_SHORT).show();
+//                        } else {
+//                            FavouritesFragment.favouritPhoneList.add(phones.get(pos));
+//                            Toast.makeText(getContext(), "Successfully added to favorite!", Toast.LENGTH_SHORT).show();
+//                        }
                     }
                 }));
 
-                buffer.add(new MyButton(getContext(), "Compare", 40, R.drawable.ic_ic_compare, Color.parseColor("#FF4633F7"), new MyButtonClickListener() {
+                buffer.add(new MyButton(getContext(), "Compare", 40, 0, Color.parseColor("#FF4633F7"), new MyButtonClickListener() {
 
                     @Override
                     public void onClick(int pos) {
                         Toast.makeText(getContext(), "successfully added to compare!", Toast.LENGTH_SHORT).show();
+
+//                        if (CompareFragment.comparePhoneList.contains(phones.get(pos))) {
+//                            Toast.makeText(getContext(), "Already added to compare!", Toast.LENGTH_SHORT).show();
+//                        } else {
+//                            CompareFragment.comparePhoneList.add(phones.get(pos));
+//                            Toast.makeText(getContext(), "successfully added to compare!", Toast.LENGTH_SHORT).show();
+//                        }
                     }
                 }));
             }
