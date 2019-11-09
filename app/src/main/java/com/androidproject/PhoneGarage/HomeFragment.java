@@ -1,6 +1,7 @@
 package com.androidproject.PhoneGarage;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,13 +10,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -51,12 +55,38 @@ public class HomeFragment extends Fragment {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         mAdapter = new Adapter(getContext(), phones);
-//        mAdapter.notifyDataSetChanged();
 
         mRecyclerView.setAdapter(mAdapter);
 
         searchText = view.findViewById(R.id.searchText);
         textView = view.findViewById(R.id.textPhone);
+
+
+        // start new code here
+        SwipeHelper swipeHelper = new SwipeHelper(getContext(), mRecyclerView, 200) {
+            @Override
+            public void insantiateMyButton(RecyclerView.ViewHolder viewHolder, List<SwipeHelper.MyButton> buffer) {
+
+                buffer.add(new MyButton(getContext(), "Favorite", 40, R.drawable.ic_ic_favorite, Color.parseColor("#FFBE3233"), new MyButtonClickListener() {
+
+                    @Override
+                    public void onClick(int pos) {
+
+                        Toast.makeText(getContext(), "Successfully added to favorite!", Toast.LENGTH_SHORT).show();
+                        Log.d("MyApp", "I am here");
+
+                    }
+                }));
+
+                buffer.add(new MyButton(getContext(), "Compare", 40, R.drawable.ic_ic_compare, Color.parseColor("#FF4633F7"), new MyButtonClickListener() {
+
+                    @Override
+                    public void onClick(int pos) {
+                        Toast.makeText(getContext(), "successfully added to compare!", Toast.LENGTH_SHORT).show();
+                    }
+                }));
+            }
+        };
 
 
         // Initiate local ArrayList of phones
