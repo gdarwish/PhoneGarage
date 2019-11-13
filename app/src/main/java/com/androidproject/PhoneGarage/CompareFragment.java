@@ -9,9 +9,11 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.androidproject.PhoneGarage.R;
 
@@ -27,6 +29,9 @@ public class CompareFragment extends Fragment {
 
     private CompareAdapter adapter;
     private ViewPager viewPager;
+    private Button remove;
+
+    private static int currentPosition = 0;
 
     public static ArrayList<Phone> phones = new ArrayList<>();
 
@@ -43,6 +48,17 @@ public class CompareFragment extends Fragment {
 
         phones = Data.getInstance(getContext()).getPhonesList();
 
+        remove = view.findViewById(R.id.remove);
+
+        remove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("position", currentPosition + "");
+                phones.remove(currentPosition);
+                adapter.notifyDataSetChanged();
+            }
+        });
+
         adapter = new CompareAdapter(getChildFragmentManager());
         viewPager = view.findViewById(R.id.compareViewPager);
         viewPager.setAdapter(adapter);
@@ -50,7 +66,7 @@ public class CompareFragment extends Fragment {
         return view;
     }
 
-    class CompareAdapter extends FragmentPagerAdapter {
+    class CompareAdapter extends FragmentStatePagerAdapter {
 
         public CompareAdapter(FragmentManager fm) {
             super(fm);
@@ -59,6 +75,17 @@ public class CompareFragment extends Fragment {
         @Override
         public Fragment getItem(int position) {
             return DetailsFragment.newInstance(phones.get(position));
+        }
+
+        @Override
+        public int getItemPosition(Object phone) {
+            if(phones.contains(phone)) {
+                currentPosition = phones.indexOf(phone);
+                return phones.indexOf(phone);
+            } else {
+                return POSITION_NONE;
+            }
+
         }
 
         @Override
