@@ -97,9 +97,12 @@ public class HomeFragment extends Fragment {
         searchInput = searchInput.toUpperCase();
 
         for (Phone phone : phones) {
-            String device = phone.getDeviceName().toUpperCase();
-            if (device.contains(searchInput)) {
-                searchedPhones.add(phone);
+            String deviceName = phone.getDeviceName().toUpperCase();
+            String[] fullName = deviceName.split(" ");
+            for(String name : fullName) {
+                if (name.contains(searchInput)) {
+                    searchedPhones.add(phone);
+                }
             }
         }
         return searchedPhones;
