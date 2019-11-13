@@ -39,15 +39,15 @@ public class DetailsFragment extends Fragment {
         Phone phone =  (Phone)getArguments().getSerializable("phone");
 
         String mTitle = phone.getBrand();
-        String mDescription = phone.getDeviceName();
-        int  mImg = phone.getImage();
+        String mDescription = phone.getDetailsFormatted();
+        String  mImg = phone.getImageUrl();
 
 //        String mTitle = getArguments().getString("title");
 //        String mDescription = getArguments().getString("desc");
 //        int  mImg = getArguments().getInt("img");
         Log.e("IMAGE", mImg + "");
         Log.e("IMAGE2", R.drawable.img + "");
-        image.setImageResource(mImg);
+//        image.setImageResource(mImg);
         title.setText(mTitle);
         description.setText(mDescription);
 
