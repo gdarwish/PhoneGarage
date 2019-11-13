@@ -38,7 +38,7 @@ public class Adapter extends RecyclerView.Adapter<MyHolder> {
     @Override
     public void onBindViewHolder(@NonNull final MyHolder holder, int position) {
 
-//        holder.mImageView.setImageResource(phones.get(position).getImage());
+        holder.mImageView.setImageResource(R.drawable.iphone);
         holder.mTitle.setText(phones.get(position).getBrand());
         holder.mDescription.setText(phones.get(position).getDeviceName());
 

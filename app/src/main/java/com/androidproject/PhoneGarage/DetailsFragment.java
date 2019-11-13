@@ -47,7 +47,7 @@ public class DetailsFragment extends Fragment {
 //        int  mImg = getArguments().getInt("img");
         Log.e("IMAGE", mImg + "");
         Log.e("IMAGE2", R.drawable.img + "");
-//        image.setImageResource(mImg);
+        image.setImageResource(R.drawable.iphone);
         title.setText(mTitle);
         description.setText(mDescription);
 
