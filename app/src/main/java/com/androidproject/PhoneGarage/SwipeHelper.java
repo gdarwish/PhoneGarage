@@ -53,7 +53,7 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
     private View.OnTouchListener onTouchListener = new View.OnTouchListener() {
         @Override
         public boolean onTouch(View view, MotionEvent motionEvent) {
-            if (swipePosition < 9) return false;
+            if (swipePosition < 0) return false;
             Point point = new Point((int) motionEvent.getRawX(), (int) motionEvent.getRawY());
 
             RecyclerView.ViewHolder swipeViewHolder = recyclerView.findViewHolderForAdapterPosition(swipePosition);
@@ -110,6 +110,72 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
     public void attachSwipe() {
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(this);
         itemTouchHelper.attachToRecyclerView(recyclerView);
+    }
+
+    public class MyButton {
+        String text;
+        private int imageResId, textSize, color, pos;
+        private RectF clickRegion;
+        private MyButtonClickListener listener;
+        private Context context;
+        private Resources resources;
+
+        public MyButton(Context context, String text, int textSize, int imageResId, int color, MyButtonClickListener listener) {
+            this.text = text;
+            this.imageResId = imageResId;
+            this.textSize = textSize;
+            this.color = color;
+            this.listener = listener;
+            this.context = context;
+            resources = context.getResources();
+        }
+
+        public boolean onClick(float x, float y) {
+            if (clickRegion != null && clickRegion.contains(x, y)) {
+                listener.onClick(pos);
+                return true;
+            }
+            return false;
+        }
+
+        public void onDraw(Canvas c, RectF rectF, int pos) {
+            Paint p = new Paint();
+            p.setColor(color);
+            c.drawRect(rectF, p);
+
+            p.setColor(Color.WHITE);
+            p.setTextSize(textSize);
+
+            Rect r = new Rect();
+            float cHeight = rectF.height();
+            float cWidth = rectF.width();
+
+            p.setTextAlign(Paint.Align.LEFT);
+            p.getTextBounds(text, 0, text.length(), r);
+            float x = 0, y = 0;
+
+            if (imageResId == 0) {
+                x = cWidth / 2f - r.width() / 2f - r.left;
+                y = cHeight / 2f + r.height() / 2f - r.bottom;
+                c.drawText(text, rectF.left + x, rectF.top + y, p);
+            } else {
+                Drawable d = ContextCompat.getDrawable(context, imageResId);
+                Bitmap bitmap = drawableToBitmap(d);
+                c.drawBitmap(bitmap, (rectF.left + rectF.right) / 2, (rectF.top + rectF.bottom) / 2, p);
+            }
+            clickRegion = rectF;
+            this.pos = pos;
+        }
+    }
+
+    private Bitmap drawableToBitmap(Drawable d) {
+        if (d instanceof BitmapDrawable)
+            return ((BitmapDrawable) d).getBitmap();
+        Bitmap bitmap = Bitmap.createBitmap(d.getIntrinsicWidth(), d.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        d.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+        d.draw(canvas);
+        return bitmap;
     }
 
     @Override
@@ -185,69 +251,5 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
 
     public abstract void insantiateMyButton(RecyclerView.ViewHolder viewHolder, List<MyButton> buffer);
 
-    public class MyButton {
-        String text;
-        private int imageResId, textSize, color, pos;
-        private RectF clickRegion;
-        private MyButtonClickListener listener;
-        private Context context;
-        private Resources resources;
 
-        public MyButton(Context context, String text, int textSize, int imageResId, int color, MyButtonClickListener listener) {
-            this.text = text;
-            this.imageResId = imageResId;
-            this.textSize = textSize;
-            this.color = color;
-            this.listener = listener;
-            this.context = context;
-            resources = context.getResources();
-        }
-
-        public boolean onClick(float x, float y) {
-            if (clickRegion != null && clickRegion.contains(x, y)) {
-                listener.onClick(pos);
-                return true;
-            }
-            return false;
-        }
-
-        public void onDraw(Canvas c, RectF rectF, int pos) {
-            Paint p = new Paint();
-            p.setColor(color);
-            c.drawRect(rectF, p);
-
-            p.setColor(Color.WHITE);
-            p.setTextSize(textSize);
-
-            Rect r = new Rect();
-            float cHeight = rectF.height();
-            float cWidth = rectF.width();
-
-            p.setTextAlign(Paint.Align.LEFT);
-            p.getTextBounds(text, 0, text.length(), r);
-            float x = 0, y = 0;
-
-            if (imageResId == 0) {
-                x = cWidth / 2f - r.width() / 2f - r.left;
-                y = cHeight / 2f + r.height() / 2f - r.bottom;
-                c.drawText(text, rectF.left + x, rectF.top + y, p);
-            } else {
-                Drawable d = ContextCompat.getDrawable(context, imageResId);
-                Bitmap bitmap = drawableToBitmap(d);
-                c.drawBitmap(bitmap, (rectF.left + rectF.right) / 2, (rectF.top + rectF.bottom) / 2, p);
-            }
-            clickRegion = rectF;
-            this.pos = pos;
-        }
-    }
-
-    private Bitmap drawableToBitmap(Drawable d) {
-        if (d instanceof BitmapDrawable)
-            return ((BitmapDrawable) d).getBitmap();
-        Bitmap bitmap = Bitmap.createBitmap(d.getIntrinsicWidth(), d.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(bitmap);
-        d.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
-        d.draw(canvas);
-        return bitmap;
-    }
 }
