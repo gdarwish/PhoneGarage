@@ -1,6 +1,7 @@
 package com.androidproject.PhoneGarage;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,12 +10,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+//<<<<<<< HEAD
+import android.widget.TextView;
+import android.widget.Toast;
+//=======
+//>>>>>>> Staging
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -28,6 +36,7 @@ public class HomeFragment extends Fragment {
 
     ArrayList<Phone> phones;
     ArrayList<Phone> searchedPhones;
+    TextView textView;
 
     EditText searchText;
 
@@ -52,6 +61,57 @@ public class HomeFragment extends Fragment {
         mRecyclerView.setAdapter(mAdapter);
 
         searchText = view.findViewById(R.id.searchText);
+//<<<<<<< HEAD
+//        textView = view.findViewById(R.id.textPhone);
+
+
+        // start new code here
+        SwipeHelper swipeHelper = new SwipeHelper(getContext(), mRecyclerView, 200) {
+            @Override
+            public void insantiateMyButton(RecyclerView.ViewHolder viewHolder, List<SwipeHelper.MyButton> buffer) {
+
+                buffer.add(new MyButton(getContext(), "Favorites", 40, 0, Color.parseColor("#FFBE3233"), new MyButtonClickListener() {
+
+                    @Override
+                    public void onClick(int pos) {
+                        Toast.makeText(getContext(), "Successfully added to favorite!", Toast.LENGTH_SHORT).show();
+
+
+                    }
+                }));
+
+                buffer.add(new MyButton(getContext(), "Compare", 40, 0, Color.parseColor("#FF4633F7"), new MyButtonClickListener() {
+
+                    @Override
+                    public void onClick(int pos) {
+                        int result = CompareFragment.addPhoneToCompare(phones.get(pos));
+                        String message = "";
+                        switch (result) {
+                            case CompareFragment.LIST_FULL:
+                                message = "full";
+                                break;
+                            case CompareFragment.PHONE_EXIST:
+                                message = "exist";
+                                break;
+                            case CompareFragment.PHONE_ADDED:
+                                message = "added";
+                                break;
+                        }
+
+
+                        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+
+                    }
+                }));
+            }
+        };
+
+
+        // Initiate local ArrayList of phones
+
+        // DO NOT DISPLAY PHONES WHEN APP LAUNCHED
+//        displayPhones(phones);
+
 
         searchText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -84,7 +144,7 @@ public class HomeFragment extends Fragment {
         for (Phone phone : phones) {
             String deviceName = phone.getDeviceName().toUpperCase();
             String[] fullName = deviceName.split(" ");
-            for(String name : fullName) {
+            for (String name : fullName) {
                 if (name.contains(searchInput)) {
                     searchedPhones.add(phone);
                 }

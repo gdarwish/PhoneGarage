@@ -27,12 +27,15 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
+import java.util.ArrayList;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class CompareFragment extends Fragment {
 
+    public static ArrayList<Phone> comparePhoneList;
 
     public static final int PHONE_EXIST = -1;
     public static final int LIST_FULL = 0;

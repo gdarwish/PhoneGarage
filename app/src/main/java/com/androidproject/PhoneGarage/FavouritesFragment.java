@@ -15,12 +15,15 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import java.util.ArrayList;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class FavouritesFragment extends Fragment {
 
+    public static ArrayList<Phone> favouritPhoneList;
 
     RecyclerView mRecyclerView;
     Adapter mAdapter;
@@ -52,10 +55,10 @@ public class FavouritesFragment extends Fragment {
 //        CompareFragment.phones.add(Data.getInstance(getContext()).getPhonesList().get(2));
 //        CompareFragment.phones.add(Data.getInstance(getContext()).getPhonesList().get(3));
 
-        CompareFragment.addPhoneToCompare(Data.getInstance(getContext()).getPhonesList().get(0));
-        CompareFragment.addPhoneToCompare(Data.getInstance(getContext()).getPhonesList().get(1));
-        CompareFragment.addPhoneToCompare(Data.getInstance(getContext()).getPhonesList().get(2));
-        CompareFragment.addPhoneToCompare(Data.getInstance(getContext()).getPhonesList().get(3));
+//        CompareFragment.addPhoneToCompare(Data.getInstance(getContext()).getPhonesList().get(0));
+//        CompareFragment.addPhoneToCompare(Data.getInstance(getContext()).getPhonesList().get(1));
+//        CompareFragment.addPhoneToCompare(Data.getInstance(getContext()).getPhonesList().get(2));
+//        CompareFragment.addPhoneToCompare(Data.getInstance(getContext()).getPhonesList().get(3));
 
 
 
@@ -75,6 +78,7 @@ public class FavouritesFragment extends Fragment {
         mAdapter = new Adapter(getContext(), phones);
 
         mRecyclerView.setAdapter(mAdapter);
+//>>>>>>> Staging
 
         return view;
     }
