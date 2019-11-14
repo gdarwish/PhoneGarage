@@ -53,12 +53,17 @@ public class CompareFragment extends Fragment {
         compareText = view.findViewById(R.id.compareText);
         compareText.setVisibility(View.GONE);
 
-//        phones = Data.getInstance(getContext()).getPhonesList();
+        // TEST
+        phones.clear();
 
         phones.add(Data.getInstance(getContext()).getPhonesList().get(0));
         phones.add(Data.getInstance(getContext()).getPhonesList().get(1));
         phones.add(Data.getInstance(getContext()).getPhonesList().get(2));
         phones.add(Data.getInstance(getContext()).getPhonesList().get(3));
+
+
+
+
 
 
         fab = view.findViewById(R.id.fabBtn);

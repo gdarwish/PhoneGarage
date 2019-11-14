@@ -1,16 +1,14 @@
 package com.androidproject.PhoneGarage;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.DrawableWrapper;
 import android.os.Bundle;
-import android.os.Debug;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
+
 import androidx.annotation.NonNull;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,6 +18,7 @@ public class Adapter extends RecyclerView.Adapter<MyHolder> {
     Context context;
     ArrayList<Phone> phones;
 
+    ViewGroup parent;
 
     public Adapter(Context context, ArrayList<Phone> phones) {
         this.context = context;
@@ -31,6 +30,7 @@ public class Adapter extends RecyclerView.Adapter<MyHolder> {
     public MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(context).inflate(R.layout.row_item, parent, false);
+        this.parent = parent;
 
         return new MyHolder(view);
     }
@@ -46,22 +46,22 @@ public class Adapter extends RecyclerView.Adapter<MyHolder> {
             @Override
             public void onItemClickListner(View view, int position) {
 
-//                String gtitle = phones.get(position).getBrand();
-//                String gDesc = phones.get(position).getDeviceName();
-//                int mImage = phones.get(position).getImage();
+                Log.e("FAV", phones.equals(FavouritesFragment.phones) + "");
+
                 Log.e("PHONE", phones.get(position).getDetailsFormatted());
 
                 Bundle args = new Bundle();
-//                args.putString("title", gtitle);
-//                args.putString("desc", gDesc);
-//                args.putInt("img", R.drawable.img);
-//                args.putInt("img", mImage);
 
                 args.putSerializable("phone", phones.get(position));
 
                 Log.e("PHONE", phones.get(position).getDetailsFormatted());
 
-                Navigation.findNavController(view).navigate(R.id.action_nav_home_to_detailsFragment6, args);
+
+                // Check if you are in Home or Favourite Fragment
+                if (phones.equals(FavouritesFragment.phones))
+                    Navigation.findNavController(view).navigate(R.id.action_nav_favourites_to_detailsFragment, args);
+                else
+                    Navigation.findNavController(view).navigate(R.id.action_nav_home_to_detailsFragment, args);
             }
         });
     }

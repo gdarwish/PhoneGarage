@@ -13,9 +13,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.TextView;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
@@ -33,10 +30,6 @@ public class HomeFragment extends Fragment {
     ArrayList<Phone> searchedPhones;
 
     EditText searchText;
-    TextView textView;
-    String results = "";
-
-
 
     public HomeFragment() {
         // Required empty public constructor
@@ -51,23 +44,14 @@ public class HomeFragment extends Fragment {
 
         phones = Data.getInstance(getContext()).getPhonesList();
 
-        mRecyclerView = view.findViewById(R.id.recyclerview);
+        mRecyclerView = view.findViewById(R.id.recyclerview2);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         mAdapter = new Adapter(getContext(), phones);
-//        mAdapter.notifyDataSetChanged();
 
         mRecyclerView.setAdapter(mAdapter);
 
         searchText = view.findViewById(R.id.searchText);
-        textView = view.findViewById(R.id.textPhone);
-
-
-        // Initiate local ArrayList of phones
-
-        // DO NOT DISPLAY PHONES WHEN APP LAUNCHED
-//        displayPhones(phones);
-
 
         searchText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -78,12 +62,9 @@ public class HomeFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (!s.toString().equals("")) {
-//                    displayPhones(searchPhones(s.toString()));
-
+                    // Update recycler view
                     mAdapter.setPhones(searchPhones(s.toString()));
                     mAdapter.notifyDataSetChanged();
-                } else {
-                    textView.setText("");
                 }
             }
 
@@ -110,17 +91,6 @@ public class HomeFragment extends Fragment {
             }
         }
         return searchedPhones;
-    }
-
-    private void displayPhones(ArrayList<Phone> phones) {
-        results = "";
-        // Loop through  all phones and display them (or do whatever)
-        for (Phone phone : phones
-        ) {
-            results += phone.getDetailsFormatted() + "\n";
-        }
-
-        textView.setText(results);
     }
 
 }
