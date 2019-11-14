@@ -1,6 +1,7 @@
 package com.androidproject.PhoneGarage;
 
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -32,7 +33,6 @@ public class FavouritesFragment extends Fragment {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -47,13 +47,24 @@ public class FavouritesFragment extends Fragment {
         phones.add(Data.getInstance(getContext()).getPhonesList().get(2));
         phones.add(Data.getInstance(getContext()).getPhonesList().get(3));
 
+//        CompareFragment.phones.add(Data.getInstance(getContext()).getPhonesList().get(0));
+//        CompareFragment.phones.add(Data.getInstance(getContext()).getPhonesList().get(1));
+//        CompareFragment.phones.add(Data.getInstance(getContext()).getPhonesList().get(2));
+//        CompareFragment.phones.add(Data.getInstance(getContext()).getPhonesList().get(3));
+
+        CompareFragment.addPhoneToCompare(Data.getInstance(getContext()).getPhonesList().get(0));
+        CompareFragment.addPhoneToCompare(Data.getInstance(getContext()).getPhonesList().get(1));
+        CompareFragment.addPhoneToCompare(Data.getInstance(getContext()).getPhonesList().get(2));
+        CompareFragment.addPhoneToCompare(Data.getInstance(getContext()).getPhonesList().get(3));
 
 
 
+
+        
         favouriteText = view.findViewById(R.id.favouriteText);
         favouriteText.setVisibility(View.GONE);
 
-        if(phones.isEmpty()) {
+        if (phones.isEmpty()) {
             favouriteText.setVisibility(View.VISIBLE);
         }
 
