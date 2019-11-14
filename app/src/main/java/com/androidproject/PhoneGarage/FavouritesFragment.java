@@ -47,11 +47,10 @@ public class FavouritesFragment extends Fragment {
         phones.add(Data.getInstance(getContext()).getPhonesList().get(2));
         phones.add(Data.getInstance(getContext()).getPhonesList().get(3));
 
-        CompareFragment.phones.add(Data.getInstance(getContext()).getPhonesList().get(0));
-        CompareFragment.phones.add(Data.getInstance(getContext()).getPhonesList().get(1));
-        CompareFragment.phones.add(Data.getInstance(getContext()).getPhonesList().get(2));
-        CompareFragment.phones.add(Data.getInstance(getContext()).getPhonesList().get(3));
-
+//        CompareFragment.phones.add(Data.getInstance(getContext()).getPhonesList().get(0));
+//        CompareFragment.phones.add(Data.getInstance(getContext()).getPhonesList().get(1));
+//        CompareFragment.phones.add(Data.getInstance(getContext()).getPhonesList().get(2));
+//        CompareFragment.phones.add(Data.getInstance(getContext()).getPhonesList().get(3));
 
 
 

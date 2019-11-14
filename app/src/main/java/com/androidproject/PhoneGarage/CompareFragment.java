@@ -33,22 +33,21 @@ import java.util.ArrayList;
  */
 public class CompareFragment extends Fragment {
 
-    public static final int MAX_PHONES = 4;
+    private static final int MAX_PHONES = 4;
+    private static final String PHONES = "phones";
 
-    private final String PHONES = "phones";
+    private  SharedPreferences sharedPreferences;
+    private static Gson gson;
+
+    private static int currentPosition = 0;
+
+    private static ArrayList<Phone> phones = new ArrayList<>();
+
 
     private CompareAdapter adapter;
     private ViewPager viewPager;
     private FloatingActionButton fab;
     private TextView compareText;
-
-    private static int currentPosition = 0;
-
-
-    private SharedPreferences sharedPreferences;
-    private Gson gson;
-
-    public static ArrayList<Phone> phones = new ArrayList<>();
 
     public CompareFragment() {
         // Required empty public constructor
@@ -143,14 +142,22 @@ public class CompareFragment extends Fragment {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         String jsonArray = null;
 
-//        if (!phones.isEmpty())
-        jsonArray = gson.toJson(phones);
+        if (!phones.isEmpty())
+            jsonArray = gson.toJson(phones);
 
         Log.e("PHONES", jsonArray + "save");
 
         editor.putString(PHONES, jsonArray);
         editor.commit();
 
+    }
+
+    public static boolean addPhoneToCompare(Phone phone) {
+        if (phones.contains(phone)) return false;
+
+        phones.add(phone);
+
+        return true;
     }
 
     class CompareAdapter extends FragmentStatePagerAdapter {
