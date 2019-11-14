@@ -33,10 +33,15 @@ import java.util.ArrayList;
  */
 public class CompareFragment extends Fragment {
 
+
+    public static final int PHONE_EXIST = -1;
+    public static final int LIST_FULL = 0;
+    public static final int PHONE_ADDED = 1;
+
     private static final int MAX_PHONES = 4;
     private static final String PHONES = "phones";
 
-    private  SharedPreferences sharedPreferences;
+    private static SharedPreferences sharedPreferences;
     private static Gson gson;
 
     private static int currentPosition = 0;
@@ -58,6 +63,7 @@ public class CompareFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         gson = new Gson();
+        sharedPreferences = getActivity().getSharedPreferences(PHONES, Context.MODE_PRIVATE);
 
         loadData();
     }
@@ -88,7 +94,7 @@ public class CompareFragment extends Fragment {
                     fab.setVisibility(View.GONE);
                     compareText.setVisibility(View.VISIBLE);
                 }
-                saveData();
+                saveData(getContext());
                 Toast.makeText(getContext(), "Phone is deleted", Toast.LENGTH_SHORT).show();
             }
         });
@@ -126,24 +132,22 @@ public class CompareFragment extends Fragment {
 
     private void loadData() {
         if (sharedPreferences != null) {
-            String jsonArray = sharedPreferences.getString(PHONES, null);
+            String jsonArray = sharedPreferences.getString(PHONES, gson.toJson(new ArrayList<>())); // Default is an empty ArrayList<>()
             Type phoneType = new TypeToken<ArrayList<Phone>>() {
             }.getType();
             phones = gson.fromJson(jsonArray, phoneType);
-            Log.e("PHONES", jsonArray + "load");
 
+            Log.e("PHONES", jsonArray + "load");
             Log.e("PHONES", phones.toString() + "phones array");
         }
     }
 
-    private void saveData() {
-        sharedPreferences = getActivity().getSharedPreferences(PHONES, Context.MODE_PRIVATE);
-
+    private static void saveData(Context context) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        String jsonArray = null;
+//        String jsonArray = null;
 
-        if (!phones.isEmpty())
-            jsonArray = gson.toJson(phones);
+//        if (!phones.isEmpty())
+        String jsonArray = gson.toJson(phones);
 
         Log.e("PHONES", jsonArray + "save");
 
@@ -152,12 +156,14 @@ public class CompareFragment extends Fragment {
 
     }
 
-    public static boolean addPhoneToCompare(Phone phone) {
-        if (phones.contains(phone)) return false;
+    public static int addPhoneToCompare(Context context, Phone phone) {
+        if (phones.contains(phone)) return PHONE_EXIST;
+
+        if (phones.size() >= MAX_PHONES) return LIST_FULL;
 
         phones.add(phone);
-
-        return true;
+        saveData(context);
+        return PHONE_ADDED;
     }
 
     class CompareAdapter extends FragmentStatePagerAdapter {

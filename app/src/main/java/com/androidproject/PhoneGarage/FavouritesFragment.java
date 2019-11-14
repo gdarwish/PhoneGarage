@@ -52,12 +52,20 @@ public class FavouritesFragment extends Fragment {
 //        CompareFragment.phones.add(Data.getInstance(getContext()).getPhonesList().get(2));
 //        CompareFragment.phones.add(Data.getInstance(getContext()).getPhonesList().get(3));
 
+        CompareFragment.addPhoneToCompare(getContext(), Data.getInstance(getContext()).getPhonesList().get(0));
+        CompareFragment.addPhoneToCompare(getContext(), Data.getInstance(getContext()).getPhonesList().get(1));
+        CompareFragment.addPhoneToCompare(getContext(), Data.getInstance(getContext()).getPhonesList().get(2));
+        CompareFragment.addPhoneToCompare(getContext(), Data.getInstance(getContext()).getPhonesList().get(3));
+
+
+
+
 
 
         favouriteText = view.findViewById(R.id.favouriteText);
         favouriteText.setVisibility(View.GONE);
 
-        if(phones.isEmpty()) {
+        if (phones.isEmpty()) {
             favouriteText.setVisibility(View.VISIBLE);
         }
 
