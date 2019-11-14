@@ -15,6 +15,8 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.ArrayList;
 
 
@@ -33,6 +35,8 @@ public class HomeFragment extends Fragment {
     EditText searchText;
     TextView textView;
     String results = "";
+
+
 
     public HomeFragment() {
         // Required empty public constructor

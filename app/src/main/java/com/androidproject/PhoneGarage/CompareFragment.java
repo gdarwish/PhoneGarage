@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.androidproject.PhoneGarage.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
@@ -29,7 +30,7 @@ public class CompareFragment extends Fragment {
 
     private CompareAdapter adapter;
     private ViewPager viewPager;
-    private Button remove;
+    private FloatingActionButton fab;
 
     private static int currentPosition = 0;
 
@@ -46,22 +47,53 @@ public class CompareFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_compare, container, false);
 
-        phones = Data.getInstance(getContext()).getPhonesList();
+//        phones = Data.getInstance(getContext()).getPhonesList();
 
-        remove = view.findViewById(R.id.remove);
+        phones.add(Data.getInstance(getContext()).getPhonesList().get(0));
+        phones.add(Data.getInstance(getContext()).getPhonesList().get(1));
+        phones.add(Data.getInstance(getContext()).getPhonesList().get(2));
+        phones.add(Data.getInstance(getContext()).getPhonesList().get(3));
 
-        remove.setOnClickListener(new View.OnClickListener() {
+
+        fab = view.findViewById(R.id.fabBtn);
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("position", currentPosition + "");
+                Log.d("POSITION", currentPosition + "");
                 phones.remove(currentPosition);
                 adapter.notifyDataSetChanged();
+                if(phones.isEmpty()) {
+                    fab.setVisibility(View.GONE);
+                }
             }
         });
+
+        if(phones.isEmpty()) {
+            fab.setVisibility(View.GONE);
+        }
+
 
         adapter = new CompareAdapter(getChildFragmentManager());
         viewPager = view.findViewById(R.id.compareViewPager);
         viewPager.setAdapter(adapter);
+
+        // Get the current position of the viewpager
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                currentPosition = position;
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
 
         return view;
     }
@@ -80,17 +112,15 @@ public class CompareFragment extends Fragment {
         @Override
         public int getItemPosition(Object phone) {
             if(phones.contains(phone)) {
-                currentPosition = phones.indexOf(phone);
                 return phones.indexOf(phone);
             } else {
                 return POSITION_NONE;
             }
-
         }
 
         @Override
         public int getCount() {
-            return MAX_PHONES;
+            return phones.size();
         }
     }
 }
