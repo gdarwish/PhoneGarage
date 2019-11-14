@@ -14,6 +14,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.androidproject.PhoneGarage.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -31,6 +33,7 @@ public class CompareFragment extends Fragment {
     private CompareAdapter adapter;
     private ViewPager viewPager;
     private FloatingActionButton fab;
+    private TextView compareText;
 
     private static int currentPosition = 0;
 
@@ -46,6 +49,9 @@ public class CompareFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_compare, container, false);
+
+        compareText = view.findViewById(R.id.compareText);
+        compareText.setVisibility(View.GONE);
 
 //        phones = Data.getInstance(getContext()).getPhonesList();
 
@@ -64,12 +70,15 @@ public class CompareFragment extends Fragment {
                 adapter.notifyDataSetChanged();
                 if(phones.isEmpty()) {
                     fab.setVisibility(View.GONE);
+                    compareText.setVisibility(View.VISIBLE);
                 }
+                Toast.makeText(getContext(), "Phone is deleted", Toast.LENGTH_SHORT).show();
             }
         });
 
         if(phones.isEmpty()) {
             fab.setVisibility(View.GONE);
+            compareText.setVisibility(View.VISIBLE);
         }
 
 
