@@ -10,7 +10,7 @@
         android:label="Home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_nav_home_to_detailsFragment6"
+            android:id="@+id/action_nav_home_to_detailsFragment"
             app:destination="@id/detailsFragment6" />
     </fragment>
     <fragment
@@ -22,7 +22,11 @@
         android:id="@+id/nav_favourites"
         android:name="com.androidproject.PhoneGarage.FavouritesFragment"
         android:label="Favourites"
-        tools:layout="@layout/fragment_favourites" />
+        tools:layout="@layout/fragment_favourites" >
+        <action
+            android:id="@+id/action_nav_favourites_to_detailsFragment"
+            app:destination="@id/detailsFragment6" />
+    </fragment>
     <fragment
         android:id="@+id/nav_compare"
         android:name="com.androidproject.PhoneGarage.CompareFragment"

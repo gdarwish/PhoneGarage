@@ -15,8 +15,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+//<<<<<<< HEAD
 import android.widget.TextView;
 import android.widget.Toast;
+//=======
+//>>>>>>> Staging
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,10 +36,9 @@ public class HomeFragment extends Fragment {
 
     ArrayList<Phone> phones;
     ArrayList<Phone> searchedPhones;
+    TextView textView;
 
     EditText searchText;
-    TextView textView;
-    String results = "";
 
     public HomeFragment() {
         // Required empty public constructor
@@ -51,7 +53,7 @@ public class HomeFragment extends Fragment {
 
         phones = Data.getInstance(getContext()).getPhonesList();
 
-        mRecyclerView = view.findViewById(R.id.recyclerview);
+        mRecyclerView = view.findViewById(R.id.recyclerview2);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         mAdapter = new Adapter(getContext(), phones);
@@ -59,7 +61,8 @@ public class HomeFragment extends Fragment {
         mRecyclerView.setAdapter(mAdapter);
 
         searchText = view.findViewById(R.id.searchText);
-        textView = view.findViewById(R.id.textPhone);
+//<<<<<<< HEAD
+//        textView = view.findViewById(R.id.textPhone);
 
 
         // start new code here
@@ -73,12 +76,7 @@ public class HomeFragment extends Fragment {
                     public void onClick(int pos) {
                         Toast.makeText(getContext(), "Successfully added to favorite!", Toast.LENGTH_SHORT).show();
 
-//                        if (FavouritesFragment.favouritPhoneList.contains(phones.get(pos))) {
-//                            Toast.makeText(getContext(), "Already added to favorite!", Toast.LENGTH_SHORT).show();
-//                        } else {
-//                            FavouritesFragment.favouritPhoneList.add(phones.get(pos));
-//                            Toast.makeText(getContext(), "Successfully added to favorite!", Toast.LENGTH_SHORT).show();
-//                        }
+
                     }
                 }));
 
@@ -86,14 +84,23 @@ public class HomeFragment extends Fragment {
 
                     @Override
                     public void onClick(int pos) {
-                        Toast.makeText(getContext(), "successfully added to compare!", Toast.LENGTH_SHORT).show();
+                        int result = CompareFragment.addPhoneToCompare(phones.get(pos));
+                        String message = "";
+                        switch (result) {
+                            case CompareFragment.LIST_FULL:
+                                message = "full";
+                                break;
+                            case CompareFragment.PHONE_EXIST:
+                                message = "exist";
+                                break;
+                            case CompareFragment.PHONE_ADDED:
+                                message = "added";
+                                break;
+                        }
 
-//                        if (CompareFragment.comparePhoneList.contains(phones.get(pos))) {
-//                            Toast.makeText(getContext(), "Already added to compare!", Toast.LENGTH_SHORT).show();
-//                        } else {
-//                            CompareFragment.comparePhoneList.add(phones.get(pos));
-//                            Toast.makeText(getContext(), "successfully added to compare!", Toast.LENGTH_SHORT).show();
-//                        }
+
+                        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+
                     }
                 }));
             }
@@ -115,12 +122,9 @@ public class HomeFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (!s.toString().equals("")) {
-//                    displayPhones(searchPhones(s.toString()));
-
+                    // Update recycler view
                     mAdapter.setPhones(searchPhones(s.toString()));
                     mAdapter.notifyDataSetChanged();
-                } else {
-                    textView.setText("");
                 }
             }
 
@@ -138,23 +142,15 @@ public class HomeFragment extends Fragment {
         searchInput = searchInput.toUpperCase();
 
         for (Phone phone : phones) {
-            String device = phone.getDeviceName().toUpperCase();
-            if (device.contains(searchInput)) {
-                searchedPhones.add(phone);
+            String deviceName = phone.getDeviceName().toUpperCase();
+            String[] fullName = deviceName.split(" ");
+            for (String name : fullName) {
+                if (name.contains(searchInput)) {
+                    searchedPhones.add(phone);
+                }
             }
         }
         return searchedPhones;
-    }
-
-    private void displayPhones(ArrayList<Phone> phones) {
-        results = "";
-        // Loop through  all phones and display them (or do whatever)
-        for (Phone phone : phones
-        ) {
-            results += phone.getDetailsFormatted() + "\n";
-        }
-
-        textView.setText(results);
     }
 
 }
