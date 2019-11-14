@@ -94,7 +94,7 @@ public class CompareFragment extends Fragment {
                     fab.setVisibility(View.GONE);
                     compareText.setVisibility(View.VISIBLE);
                 }
-                saveData(getContext());
+                saveData();
                 Toast.makeText(getContext(), "Phone is deleted", Toast.LENGTH_SHORT).show();
             }
         });
@@ -142,7 +142,7 @@ public class CompareFragment extends Fragment {
         }
     }
 
-    private static void saveData(Context context) {
+    private static void saveData() {
         SharedPreferences.Editor editor = sharedPreferences.edit();
 //        String jsonArray = null;
 
@@ -156,13 +156,13 @@ public class CompareFragment extends Fragment {
 
     }
 
-    public static int addPhoneToCompare(Context context, Phone phone) {
+    public static int addPhoneToCompare(Phone phone) {
         if (phones.contains(phone)) return PHONE_EXIST;
 
         if (phones.size() >= MAX_PHONES) return LIST_FULL;
 
         phones.add(phone);
-        saveData(context);
+        saveData();
         return PHONE_ADDED;
     }
 
