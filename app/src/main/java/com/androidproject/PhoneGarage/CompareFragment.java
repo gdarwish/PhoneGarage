@@ -1,6 +1,8 @@
 package com.androidproject.PhoneGarage;
 
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -19,7 +21,10 @@ import android.widget.Toast;
 
 import com.androidproject.PhoneGarage.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 
@@ -30,6 +35,8 @@ public class CompareFragment extends Fragment {
 
     public static final int MAX_PHONES = 4;
 
+    private final String PHONES = "phones";
+
     private CompareAdapter adapter;
     private ViewPager viewPager;
     private FloatingActionButton fab;
@@ -37,10 +44,23 @@ public class CompareFragment extends Fragment {
 
     private static int currentPosition = 0;
 
+
+    private SharedPreferences sharedPreferences;
+    private Gson gson;
+
     public static ArrayList<Phone> phones = new ArrayList<>();
 
     public CompareFragment() {
         // Required empty public constructor
+    }
+
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        gson = new Gson();
+
+        loadData();
     }
 
 
@@ -54,16 +74,8 @@ public class CompareFragment extends Fragment {
         compareText.setVisibility(View.GONE);
 
         // TEST
-        phones.clear();
 
-        phones.add(Data.getInstance(getContext()).getPhonesList().get(0));
-        phones.add(Data.getInstance(getContext()).getPhonesList().get(1));
-        phones.add(Data.getInstance(getContext()).getPhonesList().get(2));
-        phones.add(Data.getInstance(getContext()).getPhonesList().get(3));
-
-
-
-
+//        phones.clear();
 
 
         fab = view.findViewById(R.id.fabBtn);
@@ -73,15 +85,16 @@ public class CompareFragment extends Fragment {
                 Log.d("POSITION", currentPosition + "");
                 phones.remove(currentPosition);
                 adapter.notifyDataSetChanged();
-                if(phones.isEmpty()) {
+                if (phones.isEmpty()) {
                     fab.setVisibility(View.GONE);
                     compareText.setVisibility(View.VISIBLE);
                 }
+                saveData();
                 Toast.makeText(getContext(), "Phone is deleted", Toast.LENGTH_SHORT).show();
             }
         });
 
-        if(phones.isEmpty()) {
+        if (phones.isEmpty()) {
             fab.setVisibility(View.GONE);
             compareText.setVisibility(View.VISIBLE);
         }
@@ -112,6 +125,34 @@ public class CompareFragment extends Fragment {
         return view;
     }
 
+    private void loadData() {
+        if (sharedPreferences != null) {
+            String jsonArray = sharedPreferences.getString(PHONES, null);
+            Type phoneType = new TypeToken<ArrayList<Phone>>() {
+            }.getType();
+            phones = gson.fromJson(jsonArray, phoneType);
+            Log.e("PHONES", jsonArray + "load");
+
+            Log.e("PHONES", phones.toString() + "phones array");
+        }
+    }
+
+    private void saveData() {
+        sharedPreferences = getActivity().getSharedPreferences(PHONES, Context.MODE_PRIVATE);
+
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        String jsonArray = null;
+
+//        if (!phones.isEmpty())
+        jsonArray = gson.toJson(phones);
+
+        Log.e("PHONES", jsonArray + "save");
+
+        editor.putString(PHONES, jsonArray);
+        editor.commit();
+
+    }
+
     class CompareAdapter extends FragmentStatePagerAdapter {
 
         public CompareAdapter(FragmentManager fm) {
@@ -125,7 +166,7 @@ public class CompareFragment extends Fragment {
 
         @Override
         public int getItemPosition(Object phone) {
-            if(phones.contains(phone)) {
+            if (phones.contains(phone)) {
                 return phones.indexOf(phone);
             } else {
                 return POSITION_NONE;
