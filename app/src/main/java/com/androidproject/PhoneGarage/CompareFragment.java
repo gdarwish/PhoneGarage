@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,7 +50,7 @@ public class CompareFragment extends Fragment {
 
     private static int currentPosition = 0;
 
-    private static ArrayList<Phone> phones = new ArrayList<>();
+    private static ArrayList<Phone> phones;
 
 
     private CompareAdapter adapter;
@@ -57,16 +58,16 @@ public class CompareFragment extends Fragment {
     private FloatingActionButton fab;
     private TextView compareText;
 
-    public CompareFragment() {
-        // Required empty public constructor
-    }
 
+    public CompareFragment() {
+
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        gson = new Gson();
-        sharedPreferences = getActivity().getSharedPreferences(PHONES, Context.MODE_PRIVATE);
+//        sharedPreferences = getActivity().getSharedPreferences(PHONES, Context.MODE_PRIVATE);
+        initialize(getContext());
 
         loadData();
     }
@@ -80,10 +81,6 @@ public class CompareFragment extends Fragment {
 
         compareText = view.findViewById(R.id.compareText);
         compareText.setVisibility(View.GONE);
-
-        // TEST
-
-//        phones.clear();
 
 
         fab = view.findViewById(R.id.fabBtn);
@@ -133,7 +130,7 @@ public class CompareFragment extends Fragment {
         return view;
     }
 
-    private void loadData() {
+    private static void loadData() {
         if (sharedPreferences != null) {
             String jsonArray = sharedPreferences.getString(PHONES, gson.toJson(new ArrayList<>())); // Default is an empty ArrayList<>()
             Type phoneType = new TypeToken<ArrayList<Phone>>() {
@@ -147,9 +144,7 @@ public class CompareFragment extends Fragment {
 
     private static void saveData() {
         SharedPreferences.Editor editor = sharedPreferences.edit();
-//        String jsonArray = null;
 
-//        if (!phones.isEmpty())
         String jsonArray = gson.toJson(phones);
 
         Log.e("PHONES", jsonArray + "save");
@@ -159,17 +154,34 @@ public class CompareFragment extends Fragment {
 
     }
 
-    public static int addPhoneToCompare(Phone phone) {
-        if (phones.contains(phone)) return PHONE_EXIST;
+    public static int addPhoneToCompare(Context context, Phone phone) {
+        initialize(context);
+        loadData();
+
+        Log.e("CONTAIN", phones.contains(phone) + " contains");
+        Log.e("CONTAIN", MainActivity.comparePhones(phones, phone) + " compares");
+        Log.e("CONTAIN", phone + "");
+
+        if (MainActivity.comparePhones(phones, phone)) return PHONE_EXIST;
 
         if (phones.size() >= MAX_PHONES) return LIST_FULL;
 
         phones.add(phone);
         saveData();
+
         return PHONE_ADDED;
     }
 
-    class CompareAdapter extends FragmentStatePagerAdapter {
+    private static void initialize(Context context) {
+//        if (phones == null)
+//            phones = new ArrayList<>();
+        if (gson == null)
+            gson = new Gson();
+        if (sharedPreferences == null)
+            sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+    }
+
+    private class CompareAdapter extends FragmentStatePagerAdapter {
 
         public CompareAdapter(FragmentManager fm) {
             super(fm);

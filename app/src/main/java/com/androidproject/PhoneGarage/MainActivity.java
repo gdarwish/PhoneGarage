@@ -20,6 +20,8 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.View;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
 
@@ -60,5 +62,15 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+
+    public static boolean comparePhones(ArrayList<Phone> phones, Phone search) {
+        for (Phone phone:
+            phones ) {
+            if(phone.getDeviceName().equals(search.getDeviceName()))
+                return true;
+        }
+        return false;
     }
 }

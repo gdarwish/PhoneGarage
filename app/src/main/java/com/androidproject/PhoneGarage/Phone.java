@@ -211,4 +211,8 @@ public class Phone implements Serializable {
     public String getCharging() {
         return charging;
     }
+
+    public String toString() {
+        return deviceName;
+    }
 }
