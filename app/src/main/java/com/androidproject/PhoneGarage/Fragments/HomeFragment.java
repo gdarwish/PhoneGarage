@@ -1,4 +1,4 @@
-package com.androidproject.PhoneGarage;
+package com.androidproject.PhoneGarage.Fragments;
 
 
 import android.graphics.Color;
@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +19,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 //=======
 //>>>>>>> Staging
+
+import com.androidproject.PhoneGarage.HelperAdapter.RecyclerViewAdapter;
+import com.androidproject.PhoneGarage.JavaBeans.Data;
+import com.androidproject.PhoneGarage.JavaBeans.ButtonClickListener;
+import com.androidproject.PhoneGarage.JavaBeans.Phone;
+import com.androidproject.PhoneGarage.R;
+import com.androidproject.PhoneGarage.JavaBeans.SwipeHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +37,7 @@ import java.util.List;
 public class HomeFragment extends Fragment {
 
     RecyclerView mRecyclerView;
-    Adapter mAdapter;
+    RecyclerViewAdapter mAdapter;
 
 
     ArrayList<Phone> phones;
@@ -56,7 +62,7 @@ public class HomeFragment extends Fragment {
         mRecyclerView = view.findViewById(R.id.recyclerview2);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        mAdapter = new Adapter(getContext(), phones);
+        mAdapter = new RecyclerViewAdapter(getContext(), phones);
 
         mRecyclerView.setAdapter(mAdapter);
 
@@ -70,7 +76,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void insantiateMyButton(RecyclerView.ViewHolder viewHolder, List<SwipeHelper.MyButton> buffer) {
 
-                buffer.add(new MyButton(getContext(), "Favorites", 40, 0, Color.parseColor("#FFBE3233"), new MyButtonClickListener() {
+                buffer.add(new MyButton(getContext(), "Favorites", 40, 0, Color.parseColor("#FFBE3233"), new ButtonClickListener() {
 
                     @Override
                     public void onClick(int pos) {
@@ -80,7 +86,7 @@ public class HomeFragment extends Fragment {
                     }
                 }));
 
-                buffer.add(new MyButton(getContext(), "Compare", 40, 0, Color.parseColor("#FF4633F7"), new MyButtonClickListener() {
+                buffer.add(new MyButton(getContext(), "Compare", 40, 0, Color.parseColor("#FF4633F7"), new ButtonClickListener() {
 
                     @Override
                     public void onClick(int pos) {

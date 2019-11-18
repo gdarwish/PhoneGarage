@@ -1,8 +1,10 @@
-package com.androidproject.PhoneGarage;
+package com.androidproject.PhoneGarage.JavaBeans;
 
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.androidproject.PhoneGarage.R;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,7 +16,7 @@ public class MyHolder extends RecyclerView.ViewHolder implements View.OnClickLis
     public TextView mDescription;
     ItemClickListener itemClickListener;
 
-    MyHolder(@NonNull View itemView) {
+    public MyHolder(@NonNull View itemView) {
         super(itemView);
 
         this.mImageView = itemView.findViewById(R.id.image);

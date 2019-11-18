@@ -1,4 +1,4 @@
-package com.androidproject.PhoneGarage;
+package com.androidproject.PhoneGarage.JavaBeans;
 
 import android.view.View;
 

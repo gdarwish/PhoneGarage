@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context="com.androidproject.PhoneGarage.DetailsFragment">
+    tools:context="com.androidproject.PhoneGarage.Fragments.DetailsFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -15,6 +15,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/imageSlider"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
             <ImageView
                 android:id="@+id/image"
