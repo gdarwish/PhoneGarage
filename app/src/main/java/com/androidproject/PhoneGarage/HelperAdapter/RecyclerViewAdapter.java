@@ -12,6 +12,7 @@ import com.androidproject.PhoneGarage.JavaBeans.ItemClickListener;
 import com.androidproject.PhoneGarage.JavaBeans.MyHolder;
 import com.androidproject.PhoneGarage.JavaBeans.Phone;
 import com.androidproject.PhoneGarage.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -20,6 +21,7 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<MyHolder> {
+
 
     Context context;
     ArrayList<Phone> phones;
@@ -44,9 +46,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<MyHolder> {
     @Override
     public void onBindViewHolder(@NonNull final MyHolder holder, int position) {
 
-        holder.mImageView.setImageResource(R.drawable.iphone);
-        holder.mTitle.setText(phones.get(position).getBrand());
-        holder.mDescription.setText(phones.get(position).getDeviceName());
+        Phone phone = phones.get(position);
+
+
+        Picasso.get().load(phone.getImageUrl()).placeholder(R.drawable.iphone).into(holder.mImageView);
+
+//        holder.mImageView.setImageResource(R.drawable.iphone);
+        holder.mTitle.setText(phone.getBrand());
+        holder.mDescription.setText(phone.getDeviceName());
+
 
         holder.setItemClickListener(new ItemClickListener() {
             @Override

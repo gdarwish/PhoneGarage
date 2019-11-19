@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">php.scweb.ca</domain>
+        <domain includeSubdomains="true">https://gdarwish.scweb.ca/</domain>
+    </domain-config>
+</network-security-config>
+
+
+<!--    <?xml version="1.0" encoding="utf-8"?>-->
+<!--<network-security-config>-->
+<!--<base-config cleartextTrafficPermitted="true">-->
+<!--    <trust-anchors>-->
+<!--        <certificates src="system" />-->
+<!--    </trust-anchors>-->
+<!--</base-config>-->
+<!--</network-security-config>-->

@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,8 @@ import android.widget.TextView;
 
 import com.androidproject.PhoneGarage.JavaBeans.Phone;
 import com.androidproject.PhoneGarage.R;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.Picasso;
 
 
 /**
@@ -49,12 +52,24 @@ public class DetailsFragment extends Fragment {
         description = view.findViewById(R.id.description);
 
 
-        String mTitle = phone.getBrand();
-        String mDescription = phone.getDetailsFormatted();
+        Picasso.get().load(phone.getImageUrl()).into(image, new Callback() {
+            @Override
+            public void onSuccess() {
+                Log.e("PICASSO", "SUCCESS");
+            }
 
-        image.setImageResource(R.drawable.iphone);
-        title.setText(mTitle);
-        description.setText(mDescription);
+            @Override
+            public void onError(Exception e) {
+                Log.e("PICASSO", e.getMessage() + " FAILED");
+
+                e.getStackTrace();
+            }
+        });
+
+
+        title.setText(phone.getBrand());
+        description.setText(phone.getDetailsFormatted());
+
 
         return view;
     }
