@@ -1,6 +1,7 @@
 package com.androidproject.PhoneGarage.Fragments;
 
 
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -21,11 +22,15 @@ import android.widget.Toast;
 //>>>>>>> Staging
 
 import com.androidproject.PhoneGarage.HelperAdapter.RecyclerViewAdapter;
+import com.androidproject.PhoneGarage.HelperAdapter.SliderAdapterExample;
 import com.androidproject.PhoneGarage.JavaBeans.Data;
 import com.androidproject.PhoneGarage.JavaBeans.ButtonClickListener;
 import com.androidproject.PhoneGarage.JavaBeans.Phone;
 import com.androidproject.PhoneGarage.R;
 import com.androidproject.PhoneGarage.JavaBeans.SwipeHelper;
+import com.smarteist.autoimageslider.IndicatorAnimations;
+import com.smarteist.autoimageslider.SliderAnimations;
+import com.smarteist.autoimageslider.SliderView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,8 +47,6 @@ public class HomeFragment extends Fragment {
 
     ArrayList<Phone> phones;
     ArrayList<Phone> searchedPhones;
-    TextView textView;
-
     EditText searchText;
 
     public HomeFragment() {
@@ -67,11 +70,7 @@ public class HomeFragment extends Fragment {
         mRecyclerView.setAdapter(mAdapter);
 
         searchText = view.findViewById(R.id.searchText);
-//<<<<<<< HEAD
-//        textView = view.findViewById(R.id.textPhone);
 
-
-        // start new code here
         SwipeHelper swipeHelper = new SwipeHelper(getContext(), mRecyclerView, 200) {
             @Override
             public void insantiateMyButton(RecyclerView.ViewHolder viewHolder, List<SwipeHelper.MyButton> buffer) {
@@ -114,7 +113,6 @@ public class HomeFragment extends Fragment {
 
 
         // Initiate local ArrayList of phones
-
         // DO NOT DISPLAY PHONES WHEN APP LAUNCHED
 //        displayPhones(phones);
 
