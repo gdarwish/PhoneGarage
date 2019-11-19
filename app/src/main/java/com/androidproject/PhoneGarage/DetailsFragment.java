@@ -1,6 +1,7 @@
 package com.androidproject.PhoneGarage;
 
 
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,6 +12,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.Picasso;
+
+import java.security.Permission;
+import java.security.Permissions;
 
 
 /**
@@ -53,6 +60,20 @@ public class DetailsFragment extends Fragment {
         image.setImageResource(R.drawable.iphone);
         title.setText(mTitle);
         description.setText(mDescription);
+
+        Picasso.get().load("https://gdarwish.scweb.ca/PHP/phoneGarage/iphone7/apple-iPhone-7-blk-back.png").placeholder(R.drawable.iphone).into(image, new Callback() {
+            @Override
+            public void onSuccess() {
+                Log.e("PICASSO", "SUCCESS");
+            }
+
+            @Override
+            public void onError(Exception e) {
+                Log.e("PICASSO", e.getMessage() + " FAILED");
+
+                e.getStackTrace();
+            }
+        });
 
         return view;
     }
