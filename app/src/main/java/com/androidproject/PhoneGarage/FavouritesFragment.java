@@ -23,11 +23,8 @@ import java.util.ArrayList;
  */
 public class FavouritesFragment extends Fragment {
 
-    public static ArrayList<Phone> favouritPhoneList;
-
     RecyclerView mRecyclerView;
     Adapter mAdapter;
-    TextView favouriteText;
 
 
     public static ArrayList<Phone> phones = new ArrayList<>();
@@ -50,17 +47,6 @@ public class FavouritesFragment extends Fragment {
         phones.add(Data.getInstance(getContext()).getPhonesList().get(2));
         phones.add(Data.getInstance(getContext()).getPhonesList().get(3));
 
-//        CompareFragment.phones.add(Data.getInstance(getContext()).getPhonesList().get(0));
-//        CompareFragment.phones.add(Data.getInstance(getContext()).getPhonesList().get(1));
-//        CompareFragment.phones.add(Data.getInstance(getContext()).getPhonesList().get(2));
-//        CompareFragment.phones.add(Data.getInstance(getContext()).getPhonesList().get(3));
-
-//        CompareFragment.addPhoneToCompare(Data.getInstance(getContext()).getPhonesList().get(0));
-//        CompareFragment.addPhoneToCompare(Data.getInstance(getContext()).getPhonesList().get(1));
-//        CompareFragment.addPhoneToCompare(Data.getInstance(getContext()).getPhonesList().get(2));
-//        CompareFragment.addPhoneToCompare(Data.getInstance(getContext()).getPhonesList().get(3));
-
-
 
 
         
@@ -78,7 +64,6 @@ public class FavouritesFragment extends Fragment {
         mAdapter = new Adapter(getContext(), phones);
 
         mRecyclerView.setAdapter(mAdapter);
-//>>>>>>> Staging
 
         return view;
     }
