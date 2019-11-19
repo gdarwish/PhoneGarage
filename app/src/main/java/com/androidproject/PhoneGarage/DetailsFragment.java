@@ -54,14 +54,11 @@ public class DetailsFragment extends Fragment {
         description = view.findViewById(R.id.description);
 
 
-        String mTitle = phone.getBrand();
-        String mDescription = phone.getDetailsFormatted();
 
-        image.setImageResource(R.drawable.iphone);
-        title.setText(mTitle);
-        description.setText(mDescription);
 
-        Picasso.get().load("https://gdarwish.scweb.ca/PHP/phoneGarage/iphone7/apple-iPhone-7-blk-back.png").placeholder(R.drawable.iphone).into(image, new Callback() {
+
+
+        Picasso.get().load(phone.getImageUrl()).into(image, new Callback() {
             @Override
             public void onSuccess() {
                 Log.e("PICASSO", "SUCCESS");
@@ -74,6 +71,11 @@ public class DetailsFragment extends Fragment {
                 e.getStackTrace();
             }
         });
+
+
+        title.setText(phone.getBrand());
+        description.setText(phone.getDetailsFormatted());
+
 
         return view;
     }

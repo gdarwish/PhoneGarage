@@ -13,6 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 public class Adapter extends RecyclerView.Adapter<MyHolder> {
 
     Context context;
@@ -38,9 +40,15 @@ public class Adapter extends RecyclerView.Adapter<MyHolder> {
     @Override
     public void onBindViewHolder(@NonNull final MyHolder holder, int position) {
 
-        holder.mImageView.setImageResource(R.drawable.iphone);
-        holder.mTitle.setText(phones.get(position).getBrand());
-        holder.mDescription.setText(phones.get(position).getDeviceName());
+        Phone phone = phones.get(position);
+
+
+        Picasso.get().load(phone.getImageUrl()).placeholder(R.drawable.iphone).into(holder.mImageView);
+
+//        holder.mImageView.setImageResource(R.drawable.iphone);
+        holder.mTitle.setText(phone.getBrand());
+        holder.mDescription.setText(phone.getDeviceName());
+
 
         holder.setItemClickListener(new ItemClickListener() {
             @Override
