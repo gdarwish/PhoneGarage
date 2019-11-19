@@ -59,16 +59,37 @@ public class CompareFragment extends Fragment {
     private TextView compareText;
 
 
-    public CompareFragment() {
+    private static CompareFragment instance;
 
+    public static CompareFragment getInstance(Context context) {
+        if (instance == null)
+            instance = new CompareFragment(context);
+        return instance;
+    }
+
+    private CompareFragment(Context context) {
+        initialize(context);
+    }
+
+    // Need a public constructor
+    public CompareFragment() {
+//        initialize(getContext());
+    }
+
+    private void initialize(Context context) {
+        if (phones == null)
+            phones = new ArrayList<>();
+        if (gson == null)
+            gson = new Gson();
+        if (sharedPreferences == null)
+            sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        sharedPreferences = getActivity().getSharedPreferences(PHONES, Context.MODE_PRIVATE);
-        initialize(getContext());
 
+        initialize(getContext());
         loadData();
     }
 
@@ -109,7 +130,7 @@ public class CompareFragment extends Fragment {
         viewPager = view.findViewById(R.id.compareViewPager);
         viewPager.setAdapter(adapter);
 
-        // Get the current position of the viewpager
+        // Get the current position of the ViewPager
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -130,32 +151,8 @@ public class CompareFragment extends Fragment {
         return view;
     }
 
-    private static void loadData() {
-        if (sharedPreferences != null) {
-            String jsonArray = sharedPreferences.getString(PHONES, gson.toJson(new ArrayList<>())); // Default is an empty ArrayList<>()
-            Type phoneType = new TypeToken<ArrayList<Phone>>() {
-            }.getType();
-            phones = gson.fromJson(jsonArray, phoneType);
 
-            Log.e("PHONES", jsonArray + "load");
-            Log.e("PHONES", phones.toString() + "phones array");
-        }
-    }
-
-    private static void saveData() {
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-
-        String jsonArray = gson.toJson(phones);
-
-        Log.e("PHONES", jsonArray + "save");
-
-        editor.putString(PHONES, jsonArray);
-        editor.commit();
-
-    }
-
-    public static int addPhoneToCompare(Context context, Phone phone) {
-        initialize(context);
+    public int addPhoneToCompare(Phone phone) {
         loadData();
 
         Log.e("CONTAIN", phones.contains(phone) + " contains");
@@ -172,14 +169,30 @@ public class CompareFragment extends Fragment {
         return PHONE_ADDED;
     }
 
-    private static void initialize(Context context) {
-//        if (phones == null)
-//            phones = new ArrayList<>();
-        if (gson == null)
-            gson = new Gson();
-        if (sharedPreferences == null)
-            sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+    private void saveData() {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        String jsonArray = gson.toJson(phones);
+
+        Log.e("PHONES", jsonArray + "save");
+
+        editor.putString(PHONES, jsonArray);
+        editor.commit();
+
     }
+
+    private void loadData() {
+        if (sharedPreferences != null) {
+            String jsonArray = sharedPreferences.getString(PHONES, gson.toJson(new ArrayList<>())); // Default is an empty ArrayList<>()
+            Type phoneType = new TypeToken<ArrayList<Phone>>() {
+            }.getType();
+            phones = gson.fromJson(jsonArray, phoneType);
+
+            Log.e("PHONES", jsonArray + "load");
+            Log.e("PHONES", phones.toString() + "phones array");
+        }
+    }
+
 
     private class CompareAdapter extends FragmentStatePagerAdapter {
 

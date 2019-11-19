@@ -84,7 +84,7 @@ public class HomeFragment extends Fragment {
 
                     @Override
                     public void onClick(int pos) {
-                        int result = CompareFragment.addPhoneToCompare(getContext(), phones.get(pos));
+                        int result = CompareFragment.getInstance(getContext()).addPhoneToCompare(phones.get(pos));
                         String message = "";
                         switch (result) {
                             case CompareFragment.LIST_FULL:
