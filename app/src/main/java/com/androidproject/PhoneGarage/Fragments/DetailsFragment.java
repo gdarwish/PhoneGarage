@@ -36,12 +36,10 @@ public class DetailsFragment extends Fragment {
     TextView title;
     TextView description;
     ListView listView;
-    //  ImageView image;
 
     private Phone phone;
 
     public DetailsFragment() {
-        // Required empty public constructor
     }
 
     @Override
@@ -58,27 +56,11 @@ public class DetailsFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_details, container, false);
 
-        //   image = view.findViewById(R.id.image);
         title = view.findViewById(R.id.title);
         description = view.findViewById(R.id.description);
 
-//        Picasso.get().load(phone.getImageUrl()).into(image, new Callback() {
-//            @Override
-//            public void onSuccess() {
-//                Log.e("PICASSO", "SUCCESS");
-//            }
-//
-//            @Override
-//            public void onError(Exception e) {
-//                Log.e("PICASSO", e.getMessage() + " FAILED");
-//
-//                e.getStackTrace();
-//            }
-//        });
-
 
         title.setText(phone.getBrand());
-     //   description.setText(phone.getDetailsFormatted());
 
         // ImageSlider starts here
         SliderView sliderView = view.findViewById(R.id.imageSlider);
@@ -96,7 +78,7 @@ public class DetailsFragment extends Fragment {
         listView = view.findViewById(R.id.listView);
 
         final ArrayList<DetailsList> list = new ArrayList<>();
-        list.add(new DetailsList("Brand", phone.getBrand()));
+        list.add(new DetailsList(getString(R.string.brand), phone.getBrand()));
         list.add(new DetailsList("Size", phone.getSize()));
         list.add(new DetailsList("Resolution", phone.getResolution()));
         list.add(new DetailsList("Dimensions", phone.getDimensions()));
@@ -118,13 +100,10 @@ public class DetailsFragment extends Fragment {
         list.add(new DetailsList("Front Camera (Single)", phone.getFrontCamera()));
         list.add(new DetailsList("Primary Camera (Dual)", phone.getDualCamera()));
         list.add(new DetailsList("Primary Camera (Tripple)", phone.getTripleCamera()));
-        list.add(new DetailsList("Charging", phone.getCharging()));
-
+        list.add(new DetailsList("Charging", phone.getCharging() != null ? phone.getCharging() : "N/A"));
 
         CustomListViewAdapter adapterList = new CustomListViewAdapter(getContext(), list);
         listView.setAdapter(adapterList);
-
-
 
         //end
         return view;

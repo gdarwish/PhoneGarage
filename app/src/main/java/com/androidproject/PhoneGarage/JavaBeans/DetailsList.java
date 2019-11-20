@@ -2,20 +2,20 @@ package com.androidproject.PhoneGarage.JavaBeans;
 
 public class DetailsList {
 
-    private String name;
+    private String title;
     private String value;
 
-    public DetailsList(String name, String value) {
-        this.name = name;
+    public DetailsList(String title, String value) {
+        this.title = title;
         this.value = value;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String name) {
+        this.title = name;
     }
 
     public String getValue() {
