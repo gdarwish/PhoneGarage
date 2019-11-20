@@ -11,9 +11,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import com.androidproject.PhoneGarage.HelperAdapter.CustomListViewAdapter;
 import com.androidproject.PhoneGarage.HelperAdapter.SliderAdapterExample;
+import com.androidproject.PhoneGarage.JavaBeans.DetailsList;
 import com.androidproject.PhoneGarage.JavaBeans.Phone;
 import com.androidproject.PhoneGarage.R;
 import com.smarteist.autoimageslider.IndicatorAnimations;
@@ -21,6 +24,8 @@ import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 
 
 /**
@@ -30,6 +35,7 @@ public class DetailsFragment extends Fragment {
 
     TextView title;
     TextView description;
+    ListView listView;
     //  ImageView image;
 
     private Phone phone;
@@ -72,7 +78,7 @@ public class DetailsFragment extends Fragment {
 
 
         title.setText(phone.getBrand());
-        description.setText(phone.getDetailsFormatted());
+     //   description.setText(phone.getDetailsFormatted());
 
         // ImageSlider starts here
         SliderView sliderView = view.findViewById(R.id.imageSlider);
@@ -86,7 +92,41 @@ public class DetailsFragment extends Fragment {
         sliderView.setIndicatorUnselectedColor(Color.GRAY);
         // ends
 
+        // Details listView
+        listView = view.findViewById(R.id.listView);
 
+        final ArrayList<DetailsList> list = new ArrayList<>();
+        list.add(new DetailsList("Brand", phone.getBrand()));
+        list.add(new DetailsList("Size", phone.getSize()));
+        list.add(new DetailsList("Resolution", phone.getResolution()));
+        list.add(new DetailsList("Dimensions", phone.getDimensions()));
+        list.add(new DetailsList("Weight", phone.getWeight()));
+        list.add(new DetailsList("Screen Type", phone.getScreenType()));
+        list.add(new DetailsList("Card Slot", phone.getCardSlot()));
+        list.add(new DetailsList("Wlan", phone.getWlan()));
+        list.add(new DetailsList("Bluetooth", phone.getBluetooth()));
+        list.add(new DetailsList("GPS", phone.getGps()));
+        list.add(new DetailsList("Battery", phone.getBatteryCapacity()));
+        list.add(new DetailsList("Colors", phone.getColors()));
+        list.add(new DetailsList("Sensors", phone.getSensors()));
+        list.add(new DetailsList("CPU", phone.getCpu()));
+        list.add(new DetailsList("Internal Storge", phone.getInternal()));
+        list.add(new DetailsList("OS", phone.getOs()));
+        list.add(new DetailsList("Video", phone.getVideo()));
+        list.add(new DetailsList("GPU", phone.getGpu()));
+        list.add(new DetailsList("Camera (Features)", phone.getCameraFeature()));
+        list.add(new DetailsList("Front Camera (Single)", phone.getFrontCamera()));
+        list.add(new DetailsList("Primary Camera (Dual)", phone.getDualCamera()));
+        list.add(new DetailsList("Primary Camera (Tripple)", phone.getTripleCamera()));
+        list.add(new DetailsList("Charging", phone.getCharging()));
+
+
+        CustomListViewAdapter adapterList = new CustomListViewAdapter(getContext(), list);
+        listView.setAdapter(adapterList);
+
+
+
+        //end
         return view;
     }
 

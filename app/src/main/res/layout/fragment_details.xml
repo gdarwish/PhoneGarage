@@ -14,7 +14,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical" >
 
             <com.smarteist.autoimageslider.SliderView
                 android:id="@+id/imageSlider"
@@ -29,33 +29,41 @@
                 app:sliderIndicatorPadding="3dp"
                 app:sliderIndicatorRadius="2dp"
                 app:sliderIndicatorSelectedColor="#5A5A5A"
-                app:sliderIndicatorUnselectedColor="#FFF" />
+                app:sliderIndicatorUnselectedColor="#FFF">
+
+            </com.smarteist.autoimageslider.SliderView>
 
             <TextView
                 android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/image"
-                android:padding="10dp"
+                android:paddingTop="7dp"
+                android:paddingBottom="7dp"
                 android:text="Title"
-                android:textSize="22sp"
+                android:textAlignment="center"
+                android:textColor="@color/textColorDark"
+                android:textSize="@dimen/header"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/description"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/title"
-                android:padding="10dp"
-                android:text="Description"
-                android:textSize="18sp" />
+            <ListView
+                android:id="@+id/listView"
+                android:layout_width="match_parent"
+                android:layout_height="2000dp"
+                android:padding="5dp">
 
+            </ListView>
 
         </LinearLayout>
-
-
     </ScrollView>
 
+    <!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical">-->
+
+
+    <!--    </LinearLayout>-->
 
 
 </LinearLayout>
