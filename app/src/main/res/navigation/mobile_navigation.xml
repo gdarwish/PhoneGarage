@@ -6,7 +6,7 @@
     app:startDestination="@id/nav_home">
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.androidproject.PhoneGarage.HomeFragment"
+        android:name="com.androidproject.PhoneGarage.Fragments.HomeFragment"
         android:label="Home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -15,12 +15,12 @@
     </fragment>
     <fragment
         android:id="@+id/nav_categories"
-        android:name="com.androidproject.PhoneGarage.CategoriesFragment"
+        android:name="com.androidproject.PhoneGarage.Fragments.CategoriesFragment"
         android:label="Categories"
         tools:layout="@layout/fragment_categories" />
     <fragment
         android:id="@+id/nav_favourites"
-        android:name="com.androidproject.PhoneGarage.FavouritesFragment"
+        android:name="com.androidproject.PhoneGarage.Fragments.FavouritesFragment"
         android:label="Favourites"
         tools:layout="@layout/fragment_favourites" >
         <action
@@ -29,22 +29,22 @@
     </fragment>
     <fragment
         android:id="@+id/nav_compare"
-        android:name="com.androidproject.PhoneGarage.CompareFragment"
+        android:name="com.androidproject.PhoneGarage.Fragments.CompareFragment"
         android:label="Compare"
         tools:layout="@layout/fragment_compare" />
     <fragment
         android:id="@+id/nav_settings"
-        android:name="com.androidproject.PhoneGarage.SettingsFragment"
+        android:name="com.androidproject.PhoneGarage.Fragments.SettingsFragment"
         android:label="Settings"
         tools:layout="@layout/fragment_settings" />
     <fragment
         android:id="@+id/nav_about"
-        android:name="com.androidproject.PhoneGarage.AboutFragment"
+        android:name="com.androidproject.PhoneGarage.Fragments.AboutFragment"
         android:label="About"
         tools:layout="@layout/fragment_about" />
     <fragment
         android:id="@+id/detailsFragment6"
-        android:name="com.androidproject.PhoneGarage.DetailsFragment"
+        android:name="com.androidproject.PhoneGarage.Fragments.DetailsFragment"
         android:label="Details"
         tools:layout="@layout/fragment_details" />
 </navigation>

@@ -1,7 +1,6 @@
-package com.androidproject.PhoneGarage;
+package com.androidproject.PhoneGarage.Fragments;
 
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,7 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import com.androidproject.PhoneGarage.HelperAdapter.RecyclerViewAdapter;
+import com.androidproject.PhoneGarage.JavaBeans.Data;
+import com.androidproject.PhoneGarage.JavaBeans.Phone;
+import com.androidproject.PhoneGarage.R;
 
 import java.util.ArrayList;
 
@@ -26,7 +28,7 @@ public class FavouritesFragment extends Fragment {
     public static ArrayList<Phone> favouritPhoneList;
 
     RecyclerView mRecyclerView;
-    Adapter mAdapter;
+    RecyclerViewAdapter mAdapter;
     TextView favouriteText;
 
 
@@ -75,7 +77,7 @@ public class FavouritesFragment extends Fragment {
         mRecyclerView = view.findViewById(R.id.recyclerview2);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        mAdapter = new Adapter(getContext(), phones);
+        mAdapter = new RecyclerViewAdapter(getContext(), phones);
 
         mRecyclerView.setAdapter(mAdapter);
 //>>>>>>> Staging

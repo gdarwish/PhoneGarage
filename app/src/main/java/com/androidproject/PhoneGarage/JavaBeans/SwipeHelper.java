@@ -1,4 +1,4 @@
-package com.androidproject.PhoneGarage;
+package com.androidproject.PhoneGarage.JavaBeans;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -116,11 +116,11 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
         String text;
         private int imageResId, textSize, color, pos;
         private RectF clickRegion;
-        private MyButtonClickListener listener;
+        private ButtonClickListener listener;
         private Context context;
         private Resources resources;
 
-        public MyButton(Context context, String text, int textSize, int imageResId, int color, MyButtonClickListener listener) {
+        public MyButton(Context context, String text, int textSize, int imageResId, int color, ButtonClickListener listener) {
             this.text = text;
             this.imageResId = imageResId;
             this.textSize = textSize;

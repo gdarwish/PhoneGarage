@@ -1,4 +1,4 @@
-package com.androidproject.PhoneGarage;
+package com.androidproject.PhoneGarage.HelperAdapter;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -7,22 +7,28 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.androidproject.PhoneGarage.Fragments.FavouritesFragment;
+import com.androidproject.PhoneGarage.JavaBeans.ItemClickListener;
+import com.androidproject.PhoneGarage.JavaBeans.MyHolder;
+import com.androidproject.PhoneGarage.JavaBeans.Phone;
+import com.androidproject.PhoneGarage.R;
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.squareup.picasso.Picasso;
+public class RecyclerViewAdapter extends RecyclerView.Adapter<MyHolder> {
 
-public class Adapter extends RecyclerView.Adapter<MyHolder> {
 
     Context context;
     ArrayList<Phone> phones;
 
     ViewGroup parent;
 
-    public Adapter(Context context, ArrayList<Phone> phones) {
+    public RecyclerViewAdapter(Context context, ArrayList<Phone> phones) {
         this.context = context;
         this.phones = phones;
     }
