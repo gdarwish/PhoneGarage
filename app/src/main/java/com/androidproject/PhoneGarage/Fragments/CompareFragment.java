@@ -3,6 +3,8 @@ package com.androidproject.PhoneGarage.Fragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,6 +12,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.os.Debug;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -56,6 +59,8 @@ public class CompareFragment extends Fragment {
     private FloatingActionButton fab;
     private TextView compareText;
 
+    private boolean tablet;
+
 
     private static CompareFragment instance;
 
@@ -89,8 +94,30 @@ public class CompareFragment extends Fragment {
 
         initialize(getContext());
         loadData();
+
+        int currentOrientation = getResources().getConfiguration().orientation;
+        if (currentOrientation == Configuration.ORIENTATION_PORTRAIT) {
+            Log.e("orientation", "PORTRAIT");
+            tablet = false;
+        } else {
+            Log.e("orientation", "LANDSCAPE");
+            tablet = true;
+        }
     }
 
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+
+        super.onConfigurationChanged(newConfig);
+
+        if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            Log.e("orientation", "PORTRAIT");
+            tablet = false;
+        } else if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            Log.e("orientation", "LANDSCAPE");
+            tablet = true;
+        }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -145,6 +172,7 @@ public class CompareFragment extends Fragment {
 
             }
         });
+
 
         return view;
     }
