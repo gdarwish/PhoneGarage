@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
     tools:context="com.androidproject.PhoneGarage.Fragments.DetailsFragment">
 
     <ScrollView
@@ -14,12 +13,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <com.smarteist.autoimageslider.SliderView
                 android:id="@+id/imageSlider"
-                android:layout_width="match_parent"
-                android:layout_height="350dp"
+                android:layout_width="wrap_content"
+                android:layout_height="500dp"
+                android:layout_weight="1"
                 app:sliderAnimationDuration="600"
                 app:sliderCircularHandlerEnabled="true"
                 app:sliderIndicatorAnimationDuration="600"
@@ -49,7 +49,7 @@
             <ListView
                 android:id="@+id/listView"
                 android:layout_width="match_parent"
-                android:layout_height="2000dp"
+                android:layout_height="1600dp"
                 android:padding="5dp">
 
             </ListView>
@@ -58,9 +58,9 @@
     </ScrollView>
 
     <!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="vertical">-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:orientation="vertical">-->
 
 
     <!--    </LinearLayout>-->
