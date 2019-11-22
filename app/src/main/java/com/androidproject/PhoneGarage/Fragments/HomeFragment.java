@@ -75,7 +75,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void insantiateMyButton(RecyclerView.ViewHolder viewHolder, List<SwipeHelper.MyButton> buffer) {
 
-                buffer.add(new MyButton(getContext(), "Favorites", 40, 0, Color.parseColor("#FFBE3233"), new ButtonClickListener() {
+                buffer.add(new MyButton(getContext(), "heart", 60, 0, Color.parseColor("#FFBE3233"), new ButtonClickListener() {
 
                     @Override
                     public void onClick(int pos) {
@@ -85,7 +85,7 @@ public class HomeFragment extends Fragment {
                     }
                 }));
 
-                buffer.add(new MyButton(getContext(), "Compare", 40, 0, Color.parseColor("#FF4633F7"), new ButtonClickListener() {
+                buffer.add(new MyButton(getContext(), "arrows-alt-h", 70, 0, Color.parseColor("#FF4633F7"), new ButtonClickListener() {
 
                     @Override
                     public void onClick(int pos) {
