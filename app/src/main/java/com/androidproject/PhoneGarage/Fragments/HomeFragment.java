@@ -53,7 +53,6 @@ public class HomeFragment extends Fragment {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -79,7 +78,7 @@ public class HomeFragment extends Fragment {
 
                     @Override
                     public void onClick(int pos) {
-                        Toast.makeText(getContext(), "Successfully added to favorite!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Added to Favorite!", Toast.LENGTH_SHORT).show();
 
 
                     }
@@ -93,16 +92,15 @@ public class HomeFragment extends Fragment {
                         String message = "";
                         switch (result) {
                             case CompareFragment.LIST_FULL:
-                                message = "full";
+                                message = "Compare is full";
                                 break;
                             case CompareFragment.PHONE_EXIST:
-                                message = "exist";
+                                message = "Phone already exist";
                                 break;
                             case CompareFragment.PHONE_ADDED:
-                                message = "added";
+                                message = "Added to Compare";
                                 break;
                         }
-
 
                         Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
 
@@ -110,7 +108,6 @@ public class HomeFragment extends Fragment {
                 }));
             }
         };
-
 
         // Initiate local ArrayList of phones
         // DO NOT DISPLAY PHONES WHEN APP LAUNCHED
