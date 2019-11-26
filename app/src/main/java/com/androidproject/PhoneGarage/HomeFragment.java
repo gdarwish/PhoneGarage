@@ -74,8 +74,18 @@ public class HomeFragment extends Fragment {
 
                     @Override
                     public void onClick(int pos) {
-                        Toast.makeText(getContext(), "Successfully added to favorite!", Toast.LENGTH_SHORT).show();
+                        int result = FavouritesFragment.getInstance(getContext()).addPhoneToCompare(phones.get(pos));
+                        String message = "";
+                        switch (result) {
+                            case CompareFragment.PHONE_EXIST:
+                                message = "Phone already exist in favourites.";
+                                break;
+                            case CompareFragment.PHONE_ADDED:
+                                message = "Phone added to favourites.";
+                                break;
+                        }
 
+                        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
 
                     }
                 }));
@@ -88,16 +98,15 @@ public class HomeFragment extends Fragment {
                         String message = "";
                         switch (result) {
                             case CompareFragment.LIST_FULL:
-                                message = "full";
+                                message = "Comparing Phones List is full.";
                                 break;
                             case CompareFragment.PHONE_EXIST:
-                                message = "exist";
+                                message = "Phone already exist in Comparing List.";
                                 break;
                             case CompareFragment.PHONE_ADDED:
-                                message = "added";
+                                message = "Phone added to Comparing List.";
                                 break;
                         }
-
 
                         Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
 

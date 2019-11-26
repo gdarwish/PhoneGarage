@@ -36,8 +36,6 @@ import java.util.ArrayList;
  */
 public class CompareFragment extends Fragment {
 
-    public static ArrayList<Phone> comparePhoneList;
-
     public static final int PHONE_EXIST = -1;
     public static final int LIST_FULL = 0;
     public static final int PHONE_ADDED = 1;
