@@ -1,6 +1,6 @@
 [
   {
-    "image": 2131230833,
+    "imageUrl" : "https://gdarwish.scweb.ca/PHP/phoneGarage/lgg7/LG-G7-ThinQ-platinum-front.png",
     "DeviceName": "Xiaomi Mi 9X",
     "Brand": "Xiaomi",
     "technology": "GSM \/ CDMA \/ HSPA \/ LTE",
@@ -46,7 +46,7 @@
     "_4g_bands": " LTE"
   },
   {
-    "image": 2131230833,
+    "imageUrl": "https://gdarwish.scweb.ca/PHP/phoneGarage/huawip30pro/huawei-p30-pro-blk-front-EN.png",
     "DeviceName": "Xiaomi Mi 9X",
     "Brand": "Xiaomi",
     "technology": "GSM \/ CDMA \/ HSPA \/ LTE",
@@ -92,6 +92,7 @@
     "_4g_bands": " LTE"
   },
   {
+    "imageUrl" : "https://gdarwish.scweb.ca/PHP/phoneGarage/lgg7/LG-G7-ThinQ-platinum-front.png",
     "DeviceName": "vivo S1",
     "Brand": "vivo",
     "technology": "GSM \/ CDMA \/ HSPA \/ LTE",
@@ -134,6 +135,7 @@
     "_4g_bands": "LTE band 1(2100), 2(1900), 3(1800), 4(1700\/2100), 5(850), 8(900), 34(2000), 38(2600), 39(1900), 40(2300), 41(2500)"
   },
   {
+    "imageUrl" : "https://gdarwish.scweb.ca/PHP/phoneGarage/sams9/samsung-galaxy-s9-grey-front.png",
     "DeviceName": "Nokia 8.1 Plus",
     "Brand": "Nokia",
     "technology": "GSM \/ HSPA \/ LTE",
@@ -172,6 +174,7 @@
     "_4g_bands": " LTE"
   },
   {
+    "imageUrl" : "https://gdarwish.scweb.ca/PHP/phoneGarage/sams10+/samsung-galaxy-s10-blk-front.png",
     "DeviceName": "Motorola One Vision",
     "Brand": "Motorola",
     "technology": "GSM \/ HSPA \/ LTE",
@@ -215,6 +218,7 @@
     "_4g_bands": " LTE"
   },
   {
+    "imageUrl" : "https://gdarwish.scweb.ca/PHP/phoneGarage/iphone11pro/iPhone-11-front-Pro-gold-lang.png",
     "DeviceName": "Samsung Galaxy A70",
     "Brand": "Samsung",
     "technology": "GSM \/ HSPA \/ LTE",
@@ -255,6 +259,7 @@
     "_4g_bands": "LTE band 1(2100), 3(1800), 5(850), 7(2600), 8(900), 20(800), 38(2600), 40(2300), 41(2500)"
   },
   {
+    "imageUrl" : "https://gdarwish.scweb.ca/PHP/phoneGarage/iphone8/apple-iPhone-8-grey-front.png",
     "DeviceName": "Huawei Enjoy 9e",
     "Brand": "Huawei",
     "technology": "GSM \/ CDMA \/ HSPA \/ LTE",

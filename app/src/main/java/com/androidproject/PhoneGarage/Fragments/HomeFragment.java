@@ -1,4 +1,4 @@
-package com.androidproject.PhoneGarage;
+package com.androidproject.PhoneGarage.Fragments;
 
 
 import android.graphics.Color;
@@ -10,16 +10,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 //<<<<<<< HEAD
-import android.widget.TextView;
 import android.widget.Toast;
 //=======
 //>>>>>>> Staging
+
+import com.androidproject.PhoneGarage.HelperAdapter.RecyclerViewAdapter;
+import com.androidproject.PhoneGarage.JavaBeans.Data;
+import com.androidproject.PhoneGarage.JavaBeans.ButtonClickListener;
+import com.androidproject.PhoneGarage.JavaBeans.Phone;
+import com.androidproject.PhoneGarage.R;
+import com.androidproject.PhoneGarage.JavaBeans.SwipeHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,19 +36,16 @@ import java.util.List;
 public class HomeFragment extends Fragment {
 
     RecyclerView mRecyclerView;
-    Adapter mAdapter;
+    RecyclerViewAdapter mAdapter;
 
 
     ArrayList<Phone> phones;
     ArrayList<Phone> searchedPhones;
-    TextView textView;
-
     EditText searchText;
 
     public HomeFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -56,25 +58,21 @@ public class HomeFragment extends Fragment {
         mRecyclerView = view.findViewById(R.id.recyclerview2);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        mAdapter = new Adapter(getContext(), phones);
+        mAdapter = new RecyclerViewAdapter(getContext(), phones);
 
         mRecyclerView.setAdapter(mAdapter);
 
         searchText = view.findViewById(R.id.searchText);
-//<<<<<<< HEAD
-//        textView = view.findViewById(R.id.textPhone);
 
-
-        // start new code here
         SwipeHelper swipeHelper = new SwipeHelper(getContext(), mRecyclerView, 200) {
             @Override
             public void insantiateMyButton(RecyclerView.ViewHolder viewHolder, List<SwipeHelper.MyButton> buffer) {
 
-                buffer.add(new MyButton(getContext(), "Favorites", 40, 0, Color.parseColor("#FFBE3233"), new MyButtonClickListener() {
+                buffer.add(new MyButton(getContext(), "heart", 60, 0, Color.parseColor("#FFBE3233"), new ButtonClickListener() {
 
                     @Override
-                    public void onClick(int pos) {
-                        int result = FavouritesFragment.getInstance(getContext()).addPhoneToCompare(phones.get(pos));
+                    public void onClick(int position) {
+                        int result = FavouritesFragment.getInstance(getContext()).addPhoneToCompare(phones.get(position));
                         String message = "";
                         switch (result) {
                             case CompareFragment.PHONE_EXIST:
@@ -90,11 +88,11 @@ public class HomeFragment extends Fragment {
                     }
                 }));
 
-                buffer.add(new MyButton(getContext(), "Compare", 40, 0, Color.parseColor("#FF4633F7"), new MyButtonClickListener() {
+                buffer.add(new MyButton(getContext(), "arrows-alt-h", 70, 0, Color.parseColor("#FF4633F7"), new ButtonClickListener() {
 
                     @Override
-                    public void onClick(int pos) {
-                        int result = CompareFragment.getInstance(getContext()).addPhoneToCompare(phones.get(pos));
+                    public void onClick(int position) {
+                        int result = CompareFragment.getInstance(getContext()).addPhoneToCompare(phones.get(position));
                         String message = "";
                         switch (result) {
                             case CompareFragment.LIST_FULL:
@@ -105,7 +103,6 @@ public class HomeFragment extends Fragment {
                                 break;
                             case CompareFragment.PHONE_ADDED:
                                 message = "Phone added to Comparing List.";
-                                break;
                         }
 
                         Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
@@ -114,12 +111,6 @@ public class HomeFragment extends Fragment {
                 }));
             }
         };
-
-
-        // Initiate local ArrayList of phones
-
-        // DO NOT DISPLAY PHONES WHEN APP LAUNCHED
-//        displayPhones(phones);
 
 
         searchText.addTextChangedListener(new TextWatcher() {
@@ -132,8 +123,7 @@ public class HomeFragment extends Fragment {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (!s.toString().equals("")) {
                     // Update recycler view
-                    mAdapter.setPhones(searchPhones(s.toString()));
-                    mAdapter.notifyDataSetChanged();
+                    mAdapter.updatePhonesList(searchPhones(s.toString()));
                 }
             }
 

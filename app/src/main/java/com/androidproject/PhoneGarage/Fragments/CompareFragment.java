@@ -1,4 +1,4 @@
-package com.androidproject.PhoneGarage;
+package com.androidproject.PhoneGarage.Fragments;
 
 
 import android.content.Context;
@@ -7,7 +7,6 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
@@ -16,18 +15,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.androidproject.PhoneGarage.JavaBeans.MainActivity;
+import com.androidproject.PhoneGarage.JavaBeans.Phone;
 import com.androidproject.PhoneGarage.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-
 import java.util.ArrayList;
 
 
@@ -108,7 +106,7 @@ public class CompareFragment extends Fragment {
             public void onClick(View v) {
                 Log.d("POSITION", currentPosition + "");
                 phones.remove(currentPosition);
-                adapter.notifyDataSetChanged();
+
                 if (phones.isEmpty()) {
                     fab.setVisibility(View.GONE);
                     compareText.setVisibility(View.VISIBLE);

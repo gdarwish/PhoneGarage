@@ -1,4 +1,4 @@
-package com.androidproject.PhoneGarage;
+package com.androidproject.PhoneGarage.JavaBeans;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -9,6 +9,7 @@ import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.view.GestureDetector;
@@ -92,7 +93,6 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
         this.recyclerView.setOnTouchListener(onTouchListener);
         this.buttonBuffer = new HashMap<>();
         this.buttonWidth = buttonWidth;
-
         removeQueue = new LinkedList<Integer>() {
 
             @Override
@@ -116,11 +116,11 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
         String text;
         private int imageResId, textSize, color, pos;
         private RectF clickRegion;
-        private MyButtonClickListener listener;
+        private ButtonClickListener listener;
         private Context context;
         private Resources resources;
 
-        public MyButton(Context context, String text, int textSize, int imageResId, int color, MyButtonClickListener listener) {
+        public MyButton(Context context, String text, int textSize, int imageResId, int color, ButtonClickListener listener) {
             this.text = text;
             this.imageResId = imageResId;
             this.textSize = textSize;
@@ -140,6 +140,11 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
 
         public void onDraw(Canvas c, RectF rectF, int pos) {
             Paint p = new Paint();
+
+            Typeface font = Typeface.createFromAsset(context.getAssets(), "fonts/bold.otf");
+            Typeface typeface = Typeface.create(font, Typeface.NORMAL);
+            p.setTypeface(typeface);
+
             p.setColor(color);
             c.drawRect(rectF, p);
 
@@ -161,7 +166,9 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
             } else {
                 Drawable d = ContextCompat.getDrawable(context, imageResId);
                 Bitmap bitmap = drawableToBitmap(d);
-                c.drawBitmap(bitmap, (rectF.left + rectF.right) / 2, (rectF.top + rectF.bottom) / 2, p);
+//                c.drawBitmap(bitmap, (rectF.left + rectF.right) / 2, (rectF.top + rectF.bottom) / 2, p);
+                c.drawBitmap(bitmap, (rectF.centerX()), (rectF.centerY()), p);
+
             }
             clickRegion = rectF;
             this.pos = pos;

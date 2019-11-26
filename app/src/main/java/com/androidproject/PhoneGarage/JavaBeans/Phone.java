@@ -1,4 +1,4 @@
-package com.androidproject.PhoneGarage;
+package com.androidproject.PhoneGarage.JavaBeans;
 
 import com.google.gson.annotations.SerializedName;
 
