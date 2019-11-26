@@ -48,6 +48,7 @@ public class FavouritesFragment extends Fragment {
     RecyclerViewAdapter mAdapter;
     TextView favouriteText;
 
+
     private static SharedPreferences sharedPreferences;
     private static Gson gson;
 
@@ -118,7 +119,13 @@ public class FavouritesFragment extends Fragment {
 
                         phones.remove(phones.get(position));
 
+                        if (phones.isEmpty()) {
+                            favouriteText.setVisibility(View.VISIBLE);
+                        }
+
                         mAdapter.updatePhonesList(phones);
+
+                        saveData();
 
                         Toast.makeText(getContext(), "Deleted from favourite", Toast.LENGTH_SHORT).show();
                     }
