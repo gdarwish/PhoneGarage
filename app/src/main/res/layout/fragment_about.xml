@@ -8,67 +8,79 @@
     android:orientation="vertical"
     tools:context="com.androidproject.PhoneGarage.Fragments.AboutFragment">
 
-    <ImageView
-        android:id="@+id/imageView2"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        app:srcCompat="@drawable/header_backgrond" />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/devTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="5dp"
-        android:text="@string/devTitle"
-        android:textColor="@color/text_color"
-        android:textSize="@dimen/header"
-        android:textStyle="italic" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-    <Button
-        android:id="@+id/ghaithButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@drawable/custome_button"
-        android:padding="10dp"
-        android:text="@string/ghaithButton"
-        android:textAllCaps="false"
-        android:textColor="@color/text_color"
-        android:textSize="@dimen/details_list_textsize" />
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                app:srcCompat="@drawable/header_backgrond" />
 
-    <Button
-        android:id="@+id/aliButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@drawable/custome_button"
-        android:padding="10dp"
-        android:text="@string/aliButton"
-        android:textAllCaps="false"
-        android:textColor="@color/text_color"
-        android:textSize="@dimen/details_list_textsize" />
+            <TextView
+                android:id="@+id/devTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:text="@string/devTitle"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/header"
+                android:textStyle="italic" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="5dp"
-        android:text="@string/resButton"
-        android:textColor="@color/text_color"
-        android:textSize="@dimen/header"
-        android:textStyle="italic"
-        tools:text="@string/resButton" />
+            <Button
+                android:id="@+id/ghaithButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/custome_button"
+                android:padding="10dp"
+                android:text="@string/ghaithButton"
+                android:textAllCaps="false"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/details_list_textsize" />
 
-    <Button
-        android:id="@+id/resButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@drawable/custome_button"
-        android:padding="10dp"
-        android:text="@string/resButton"
-        android:textAllCaps="false"
-        android:textColor="@color/text_color"
-        android:textSize="@dimen/details_list_textsize" />
+            <Button
+                android:id="@+id/aliButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/custome_button"
+                android:padding="10dp"
+                android:text="@string/aliButton"
+                android:textAllCaps="false"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/details_list_textsize" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:text="@string/resButton"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/header"
+                android:textStyle="italic"
+                tools:text="@string/resButton" />
+
+            <Button
+                android:id="@+id/resButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/custome_button"
+                android:padding="10dp"
+                android:text="@string/resButton"
+                android:textAllCaps="false"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/details_list_textsize" />
+
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>
