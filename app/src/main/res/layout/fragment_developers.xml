@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,7 +5,8 @@
     android:layout_height="match_parent"
     android:background="@color/background_color"
     android:orientation="vertical"
-    tools:context="com.androidproject.PhoneGarage.Fragments.AboutFragment">
+    tools:context="com.androidproject.PhoneGarage.Fragments.DevelopersFragment">
+
 
     <ScrollView
         android:layout_width="match_parent"
@@ -18,67 +18,75 @@
             android:orientation="vertical" >
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/developer_img"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
-                app:srcCompat="@drawable/header_backgrond" />
+                android:layout_height="351dp"
+                android:src="@drawable/ic_ic_about" />
 
             <TextView
-                android:id="@+id/devTitle"
+                android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
-                android:text="@string/devTitle"
+                android:text="@string/contactTitle"
                 android:textColor="@color/text_color"
                 android:textSize="@dimen/header"
                 android:textStyle="italic" />
 
             <Button
-                android:id="@+id/ghaithButton"
+                android:id="@+id/webButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:background="@drawable/custome_button"
                 android:padding="10dp"
-                android:text="@string/ghaithButton"
+                android:text="Website"
                 android:textAllCaps="false"
-                android:textColor="@color/text_color"
-                android:textSize="@dimen/details_list_textsize" />
+                android:textColor="@color/button_color" />
 
             <Button
-                android:id="@+id/aliButton"
+                android:id="@+id/emailButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:background="@drawable/custome_button"
                 android:padding="10dp"
-                android:text="@string/aliButton"
+                android:text="Email"
                 android:textAllCaps="false"
-                android:textColor="@color/text_color"
-                android:textSize="@dimen/details_list_textsize" />
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="5dp"
-                android:text="@string/resButton"
-                android:textColor="@color/text_color"
-                android:textSize="@dimen/header"
-                android:textStyle="italic"
-                tools:text="@string/resButton" />
+                android:textColor="@color/button_color" />
 
             <Button
-                android:id="@+id/resButton"
+                android:id="@+id/facButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:background="@drawable/custome_button"
                 android:padding="10dp"
-                android:text="@string/resButton"
+                android:text="Facebook"
                 android:textAllCaps="false"
-                android:textColor="@color/text_color"
-                android:textSize="@dimen/details_list_textsize" />
+                android:textColor="@color/button_color" />
+
+            <Button
+                android:id="@+id/callButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/custome_button"
+                android:padding="10dp"
+                android:text="Call"
+                android:textAllCaps="false"
+                android:textColor="@color/button_color" />
+
+            <Button
+                android:id="@+id/locaButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/custome_button"
+                android:padding="10dp"
+                android:text="Location"
+                android:textAllCaps="false"
+                android:textColor="@color/button_color" />
 
         </LinearLayout>
     </ScrollView>

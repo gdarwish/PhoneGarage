@@ -8,4 +8,5 @@
     <color name="background_color">#FFFFFF</color>
     <color name="icon_tint_color">#7c7c7c</color>
     <color name="search_bar">#FFFFFF</color>
+    <color name="button_color">#FFFFFF</color>
 </resources>

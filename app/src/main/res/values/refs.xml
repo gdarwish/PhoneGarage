@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-<drawable name="pageBackgroundColorDark">#303030</drawable>
-<drawable name="PageBackgroundColorLight">#ffffff</drawable>
-    <!-- colors from  https://www.google.ca/search?biw=1445&bih=864&tbm=isch&sa=1&ei=512yXZ2oGcqAtgXT8KGgAw&q=Theme+Tabris+Light+DarkActionBar&oq=Theme+Tabris+Light+DarkActionBar&gs_l=img.3...1917.1917..2116...0.0..0.95.95.1......0....1..gws-wiz-img.zVSsCE49lps&ved=0ahUKEwjdt_HKrrblAhVKgK0KHVN4CDQQ4dUDCAc&uact=5#imgdii=ZRqM1_ht5zL3kM:&imgrc=2siJgZ21nM9TMM: -->
-</resources>

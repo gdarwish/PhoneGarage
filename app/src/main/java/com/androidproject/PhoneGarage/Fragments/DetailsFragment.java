@@ -59,7 +59,6 @@ public class DetailsFragment extends Fragment {
         title = view.findViewById(R.id.title);
         description = view.findViewById(R.id.description);
 
-
         title.setText(phone.getBrand());
 
         // ImageSlider starts here
@@ -109,7 +108,6 @@ public class DetailsFragment extends Fragment {
         return view;
     }
 
-
     public static DetailsFragment newInstance(Phone phone) {
         DetailsFragment fragment = new DetailsFragment();
         Bundle args = new Bundle();
@@ -117,5 +115,4 @@ public class DetailsFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-
 }

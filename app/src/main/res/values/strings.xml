@@ -19,5 +19,9 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
+    <string name="ghaithButton">Ghaith Darwish</string>
+    <string name="aliButton">Ali Dali</string>
+    <string name="resButton">Resorsus</string>
+    <string name="devTitle">Developers</string>
+    <string name="contactTitle">Contact</string>
 </resources>
