@@ -81,7 +81,7 @@ public class HomeFragment extends Fragment {
                         Toast.makeText(getContext(), "Added to Favorite!", Toast.LENGTH_SHORT).show();
                     }
                 }));
-                buffer.add(new MyButton(getContext(), "arrows-alt-h", 70, 0, Color.parseColor("#FF4633F7"), new ButtonClickListener() {
+                buffer.add(new MyButton(getContext(), "retweet", 70, 0, Color.parseColor("#FF4633F7"), new ButtonClickListener() {
                     @Override
                     public void onClick(int pos) {
                         int result = CompareFragment.getInstance(getContext()).addPhoneToCompare(phones.get(pos));
