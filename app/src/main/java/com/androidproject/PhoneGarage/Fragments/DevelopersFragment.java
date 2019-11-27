@@ -46,7 +46,6 @@ public class DevelopersFragment extends Fragment {
     public static String phone;
     String location;
 
-
     public DevelopersFragment() {
         // Required empty public constructor
     }
@@ -98,7 +97,6 @@ public class DevelopersFragment extends Fragment {
             }
         });
 
-
         facButton = view.findViewById(R.id.facButton);
         facButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,7 +106,6 @@ public class DevelopersFragment extends Fragment {
                 startActivity(i);
             }
         });
-
 
         callButton = view.findViewById(R.id.callButton);
         callButton.setOnClickListener(new View.OnClickListener() {
@@ -151,7 +148,6 @@ public class DevelopersFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
 
         return view;
     }
