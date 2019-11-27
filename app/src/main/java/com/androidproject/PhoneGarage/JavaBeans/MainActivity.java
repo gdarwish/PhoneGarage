@@ -1,6 +1,14 @@
 package com.androidproject.PhoneGarage.JavaBeans;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.widget.Toast;
+
+import com.androidproject.PhoneGarage.Fragments.DevelopersFragment;
 import com.androidproject.PhoneGarage.R;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -64,5 +72,23 @@ public class MainActivity extends AppCompatActivity {
                 return true;
         }
         return false;
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+
+        switch (requestCode){
+            case DevelopersFragment.PERMISSION_CALL:
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                    Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", DevelopersFragment.phone, null));
+                    if (intent.resolveActivity(getPackageManager()) != null) {
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(MainActivity.this, "No software installed to complete task", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                break;
+        }
     }
 }

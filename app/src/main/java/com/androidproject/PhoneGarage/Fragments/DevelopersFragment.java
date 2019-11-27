@@ -1,11 +1,17 @@
 package com.androidproject.PhoneGarage.Fragments;
 
 
+import android.Manifest;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -13,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.androidproject.PhoneGarage.JavaBeans.Consts;
 import com.androidproject.PhoneGarage.R;
@@ -21,6 +28,9 @@ import com.androidproject.PhoneGarage.R;
  * A simple {@link Fragment} subclass.
  */
 public class DevelopersFragment extends Fragment {
+
+    public static final int PERMISSION_CALL = 2;
+
 
     ImageView developerImage;
     Button webButton;
@@ -33,9 +43,8 @@ public class DevelopersFragment extends Fragment {
     String website;
     String[] email;
     String facebook;
-    String phone;
+    public static String phone;
     String location;
-
 
 
     public DevelopersFragment() {
@@ -46,7 +55,7 @@ public class DevelopersFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if(getArguments() != null) {
+        if (getArguments() != null) {
             image = getArguments().getInt(Consts.image, 0);
             website = getArguments().getString(Consts.website, "");
             email = getArguments().getStringArray(Consts.email);
@@ -105,8 +114,31 @@ public class DevelopersFragment extends Fragment {
         callButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phone, null));
-                startActivity(intent);
+                if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                    if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.CALL_PHONE)) {
+                        final AlertDialog alertDialogCall = new AlertDialog.Builder(getContext())
+                                .setTitle("Make a phone call")
+                                .setMessage("We need the access to make the phone call!")
+                                .create();
+                        alertDialogCall.setButton(AlertDialog.BUTTON_NEUTRAL, "OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                alertDialogCall.dismiss();
+                                ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CALL_PHONE}, PERMISSION_CALL);
+                            }
+                        });
+                        alertDialogCall.show();
+                    } else {
+                        ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CALL_PHONE}, PERMISSION_CALL);
+                    }
+                } else {
+                    Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phone, null));
+                    if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(getContext(), "No software installed to complete task", Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
         });
 
