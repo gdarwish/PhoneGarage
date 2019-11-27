@@ -2,8 +2,10 @@ package com.androidproject.PhoneGarage.JavaBeans;
 
 import android.os.Bundle;
 
+import com.androidproject.PhoneGarage.Fragments.SettingsFragment;
 import com.androidproject.PhoneGarage.R;
 
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -34,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_categories, R.id.nav_compare,
+                R.id.nav_home, R.id.nav_compare,
                 R.id.nav_favourites, R.id.nav_settings, R.id.nav_about)
                 .setDrawerLayout(drawer)
                 .build();
@@ -42,18 +44,25 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
+        ModeSharePref modeSharePref;
 
-//        FloatingActionButton fab = findViewById(R.id.fabBtn);
-//        fab.setVisibility(View.GONE);
+        modeSharePref = new ModeSharePref(this);
 
+
+        if (modeSharePref.loadNightMode()) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
+        }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.main, menu);
+//        return true;
+//    }
 
     @Override
     public boolean onSupportNavigateUp() {
@@ -64,9 +73,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     public static boolean comparePhones(ArrayList<Phone> phones, Phone search) {
-        for (Phone phone:
-            phones ) {
-            if(phone.getDeviceName().equals(search.getDeviceName()))
+        for (Phone phone :
+                phones) {
+            if (phone.getDeviceName().equals(search.getDeviceName()))
                 return true;
         }
         return false;

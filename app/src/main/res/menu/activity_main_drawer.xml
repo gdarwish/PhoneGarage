@@ -9,10 +9,6 @@
             android:icon="@drawable/ic_ic_home"
             android:title="@string/menu_home" />
         <item
-            android:id="@+id/nav_categories"
-            android:icon="@drawable/ic_ic_categories"
-            android:title="@string/menu_categories" />
-        <item
             android:id="@+id/nav_favourites"
             android:icon="@drawable/ic_ic_favorite"
             android:title="@string/menu_favourites" />
@@ -23,17 +19,16 @@
 
     </group>
 
-    <item android:title="More">
+    <item android:title="@string/more">
         <menu>
             <item
-                android:checkable="true"
                 android:id="@+id/nav_settings"
-                android:icon="@drawable/ic_ic_settings"
-                android:title="@string/menu_settings"
-                />
-            <item
                 android:checkable="true"
+                android:icon="@drawable/ic_ic_settings"
+                android:title="@string/menu_settings" />
+            <item
                 android:id="@+id/nav_about"
+                android:checkable="true"
                 android:icon="@drawable/ic_ic_about"
                 android:title="@string/menu_about" />
         </menu>

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background_color"
     android:orientation="vertical"
     tools:context="com.androidproject.PhoneGarage.Fragments.CompareFragment">
 
@@ -13,7 +14,8 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:text="There are no phones to compare."
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/text_color" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/compareViewPager"
