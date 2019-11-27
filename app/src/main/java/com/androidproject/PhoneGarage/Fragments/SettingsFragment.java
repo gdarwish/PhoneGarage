@@ -29,11 +29,9 @@ public class SettingsFragment extends Fragment {
     ModeSharePref modeSharePref;
     public static Switch theme;
 
-
     public SettingsFragment() {
         // Required empty public constructor
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -42,16 +40,13 @@ public class SettingsFragment extends Fragment {
 
         modeSharePref = new ModeSharePref(getContext());
 
-
         if (modeSharePref.loadNightMode()) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
-
         theme = view.findViewById(R.id.theme);
         theme.setChecked(modeSharePref.onOff());
-
         theme.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
