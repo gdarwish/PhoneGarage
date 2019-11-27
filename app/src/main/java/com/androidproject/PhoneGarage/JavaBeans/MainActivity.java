@@ -1,22 +1,15 @@
 package com.androidproject.PhoneGarage.JavaBeans;
-
 import android.os.Bundle;
-
 import com.androidproject.PhoneGarage.R;
-
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-
 import com.google.android.material.navigation.NavigationView;
-
 import androidx.drawerlayout.widget.DrawerLayout;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
-import android.view.Menu;
 
 import java.util.ArrayList;
 
@@ -31,10 +24,12 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
+
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_categories, R.id.nav_compare,
+                R.id.nav_home, R.id.nav_compare,
                 R.id.nav_favourites, R.id.nav_settings, R.id.nav_about)
                 .setDrawerLayout(drawer)
                 .build();
@@ -42,17 +37,17 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
+        ModeSharePref modeSharePref;
 
-//        FloatingActionButton fab = findViewById(R.id.fabBtn);
-//        fab.setVisibility(View.GONE);
+        modeSharePref = new ModeSharePref(this);
 
-    }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
+        if (modeSharePref.loadNightMode()) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
+        }
     }
 
     @Override
@@ -62,11 +57,10 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
-
     public static boolean comparePhones(ArrayList<Phone> phones, Phone search) {
-        for (Phone phone:
-            phones ) {
-            if(phone.getDeviceName().equals(search.getDeviceName()))
+        for (Phone phone :
+                phones) {
+            if (phone.getDeviceName().equals(search.getDeviceName()))
                 return true;
         }
         return false;

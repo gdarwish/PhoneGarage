@@ -79,13 +79,9 @@ public class HomeFragment extends Fragment {
                     @Override
                     public void onClick(int pos) {
                         Toast.makeText(getContext(), "Added to Favorite!", Toast.LENGTH_SHORT).show();
-
-
                     }
                 }));
-
                 buffer.add(new MyButton(getContext(), "arrows-alt-h", 70, 0, Color.parseColor("#FF4633F7"), new ButtonClickListener() {
-
                     @Override
                     public void onClick(int pos) {
                         int result = CompareFragment.getInstance(getContext()).addPhoneToCompare(phones.get(pos));
@@ -101,19 +97,11 @@ public class HomeFragment extends Fragment {
                                 message = "Added to Compare";
                                 break;
                         }
-
                         Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
-
                     }
                 }));
             }
         };
-
-        // Initiate local ArrayList of phones
-        // DO NOT DISPLAY PHONES WHEN APP LAUNCHED
-//        displayPhones(phones);
-
-
         searchText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -134,7 +122,6 @@ public class HomeFragment extends Fragment {
 
             }
         });
-
         return view;
     }
 
