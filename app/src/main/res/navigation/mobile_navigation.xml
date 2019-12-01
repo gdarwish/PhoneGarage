@@ -10,7 +10,7 @@
         android:label="Home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_nav_home_to_detailsFragment"
+            android:id="@+id/nav_details"
             app:destination="@id/detailsFragment6" />
     </fragment>
     <fragment
@@ -19,7 +19,7 @@
         android:label="Favourites"
         tools:layout="@layout/fragment_favourites" >
         <action
-            android:id="@+id/action_nav_favourites_to_detailsFragment"
+            android:id="@+id/nav_details"
             app:destination="@id/detailsFragment6" />
     </fragment>
     <fragment

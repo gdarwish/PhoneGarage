@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.androidproject.PhoneGarage.Fragments.FavouritesFragment;
 import com.androidproject.PhoneGarage.JavaBeans.ItemClickListener;
 import com.androidproject.PhoneGarage.JavaBeans.MyHolder;
 import com.androidproject.PhoneGarage.JavaBeans.Phone;
@@ -60,9 +59,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<MyHolder> {
             @Override
             public void onItemClickListner(View view, int position) {
 
-                Log.e("FAV", phones.equals(FavouritesFragment.phones) + "");
-
-                Log.e("PHONE", phones.get(position).getDetailsFormatted());
 
                 Bundle args = new Bundle();
 
@@ -72,10 +68,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<MyHolder> {
 
 
                 // Check if you are in Home or Favourite Fragment
-                if (phones.equals(FavouritesFragment.phones))
-                    Navigation.findNavController(view).navigate(R.id.action_nav_favourites_to_detailsFragment, args);
-                else
-                    Navigation.findNavController(view).navigate(R.id.action_nav_home_to_detailsFragment, args);
+                Navigation.findNavController(view).navigate(R.id.nav_details, args);
             }
         });
     }
@@ -87,5 +80,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<MyHolder> {
 
     public void setPhones(ArrayList<Phone> phones) {
         this.phones = phones;
+    }
+
+    public void updatePhonesList(ArrayList<Phone> phones) {
+        this.phones = phones;
+        this.notifyDataSetChanged();
     }
 }
