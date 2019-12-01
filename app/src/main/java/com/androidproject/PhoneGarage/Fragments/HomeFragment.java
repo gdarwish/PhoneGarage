@@ -139,14 +139,31 @@ public class HomeFragment extends Fragment {
 
         for (Phone phone : phones) {
             String deviceName = phone.getDeviceName().toUpperCase();
-            String[] fullName = deviceName.split(" ");
-            for (String name : fullName) {
-                if (name.contains(searchInput)) {
-                    searchedPhones.add(phone);
-                }
+            if (deviceName.contains(searchInput)) {
+                searchedPhones.add(phone);
             }
         }
         return searchedPhones;
     }
+
+//    private ArrayList<Phone> searchPhones(String searchInput) {
+//        searchedPhones = new ArrayList<>();
+//        searchInput = searchInput.toUpperCase();
+//        String[] searchInputArray = searchInput.split(" ");
+//
+//        for (Phone phone : phones) {
+//            String deviceName = phone.getDeviceName().toUpperCase();
+//            String[] deviceNameArray = deviceName.split(" ");
+//
+//            for (String device : deviceNameArray) {
+//                for(String search : searchInputArray) {
+//                    if (device.contains(search)) {
+//                        searchedPhones.add(phone);
+//                    }
+//                }
+//            }
+//        }
+//        return searchedPhones;
+//    }
 
 }

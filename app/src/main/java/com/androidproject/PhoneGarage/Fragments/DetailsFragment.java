@@ -99,7 +99,7 @@ public class DetailsFragment extends Fragment {
         list.add(new DetailsList("Front Camera (Single)", phone.getFrontCamera()));
         list.add(new DetailsList("Primary Camera (Dual)", phone.getDualCamera()));
         list.add(new DetailsList("Primary Camera (Tripple)", phone.getTripleCamera()));
-        list.add(new DetailsList("Charging", phone.getCharging() != null ? phone.getCharging() : "N/A"));
+        list.add(new DetailsList("Charging", phone.getCharging()));
 
         CustomListViewAdapter adapterList = new CustomListViewAdapter(getContext(), list);
         listView.setAdapter(adapterList);

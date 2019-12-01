@@ -107,19 +107,19 @@ public class Phone implements Serializable {
     }
 
     public String getBrand() {
-        return brand  != null ? brand : "N/A";;
+        return brand  != null ? brand : "N/A";
     }
 
     public String getCpu() {
-        return cpu  != null ? cpu : "N/A";;
+        return cpu  != null ? cpu : "N/A";
     }
 
     public String getInternal() {
-        return internal  != null ? internal : "N/A";;
+        return internal  != null ? internal : "N/A";
     }
 
     public String getOs() {
-        return os  != null ? os : "N/A";;
+        return os  != null ? os : "N/A";
     }
 
     public String getImageUrl() {
@@ -127,79 +127,79 @@ public class Phone implements Serializable {
     }
 
     public String getSize() {
-        return size  != null ? size : "N/A";;
+        return size  != null ? size : "N/A";
     }
 
     public String getResolution() {
-        return resolution  != null ? resolution : "N/A";;
+        return resolution  != null ? resolution : "N/A";
     }
 
     public String getDimensions() {
-        return dimensions  != null ? dimensions : "N/A";;
+        return dimensions  != null ? dimensions : "N/A";
     }
 
     public String getWeight() {
-        return weight  != null ? weight : "N/A";;
+        return weight  != null ? weight : "N/A";
     }
 
     public String getScreenType() {
-        return screenType != null ? screenType : "N/A";;
+        return screenType != null ? screenType : "N/A";
     }
 
     public String getCardSlot() {
-        return cardSlot != null ? cardSlot : "N/A";;
+        return cardSlot != null ? cardSlot : "N/A";
     }
 
     public String getWlan() {
-        return wlan  != null ? wlan : "N/A";;
+        return wlan  != null ? wlan : "N/A";
     }
 
     public String getBluetooth() {
-        return bluetooth  != null ? bluetooth : "N/A";;
+        return bluetooth  != null ? bluetooth : "N/A";
     }
 
     public String getGps() {
-        return gps != null ? gps : "N/A";;
+        return gps != null ? gps : "N/A";
     }
 
     public String getBatteryCapacity() {
-        return batteryCapacity != null ? batteryCapacity : "N/A";;
+        return batteryCapacity != null ? batteryCapacity : "N/A";
     }
 
     public String getColors() {
-        return colors != null ? colors : "N/A";;
+        return colors != null ? colors : "N/A";
     }
 
     public String getSensors() {
-        return sensors != null ? sensors : "N/A";;
+        return sensors != null ? sensors : "N/A";
     }
 
     public String getVideo() {
-        return video != null ? video : "N/A";;
+        return video != null ? video : "N/A";
     }
 
     public String getGpu() {
-        return gpu != null ? gpu : "N/A";;
+        return gpu != null ? gpu : "N/A";
     }
 
     public String getCameraFeature() {
-        return cameraFeature != null ? cameraFeature : "N/A";;
+        return cameraFeature != null ? cameraFeature : "N/A";
     }
 
     public String getFrontCamera() {
-        return frontCamera != null ? frontCamera : "N/A";;
+        return frontCamera != null ? frontCamera : "N/A";
     }
 
     public String getDualCamera() {
-        return dualCamera != null ? dualCamera : "N/A";;
+        return dualCamera != null ? dualCamera : "N/A";
     }
 
     public String getTripleCamera() {
-        return tripleCamera != null ? tripleCamera : "N/A";;
+        return tripleCamera != null ? tripleCamera : "N/A";
     }
 
     public String getCharging() {
-        return charging != null ? charging : "N/A";;
+        return charging != null ? charging : "N/A";
     }
 
     public String toString() {
