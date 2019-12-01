@@ -1,7 +1,6 @@
 package com.androidproject.PhoneGarage.Fragments;
 
 
-import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -15,22 +14,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-//<<<<<<< HEAD
-import android.widget.TextView;
 import android.widget.Toast;
-//=======
-//>>>>>>> Staging
 
 import com.androidproject.PhoneGarage.HelperAdapter.RecyclerViewAdapter;
-import com.androidproject.PhoneGarage.HelperAdapter.SliderAdapterExample;
 import com.androidproject.PhoneGarage.JavaBeans.Data;
 import com.androidproject.PhoneGarage.JavaBeans.ButtonClickListener;
 import com.androidproject.PhoneGarage.JavaBeans.Phone;
 import com.androidproject.PhoneGarage.R;
 import com.androidproject.PhoneGarage.JavaBeans.SwipeHelper;
-import com.smarteist.autoimageslider.IndicatorAnimations;
-import com.smarteist.autoimageslider.SliderAnimations;
-import com.smarteist.autoimageslider.SliderView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -77,31 +68,48 @@ public class HomeFragment extends Fragment {
                 buffer.add(new MyButton(getContext(), "heart", 60, 0, Color.parseColor("#FFBE3233"), new ButtonClickListener() {
 
                     @Override
-                    public void onClick(int pos) {
-                        Toast.makeText(getContext(), "Added to Favorite!", Toast.LENGTH_SHORT).show();
+                    public void onClick(int position) {
+                        int result = FavouritesFragment.getInstance(getContext()).addPhoneToCompare(phones.get(position));
+                        String message = "";
+                        switch (result) {
+                            case CompareFragment.PHONE_EXIST:
+                                message = "Phone already exist in favourites.";
+                                break;
+                            case CompareFragment.PHONE_ADDED:
+                                message = "Phone added to favourites.";
+                                break;
+                        }
+
+                        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+
                     }
                 }));
-                buffer.add(new MyButton(getContext(), "retweet", 70, 0, Color.parseColor("#FF4633F7"), new ButtonClickListener() {
+
+                buffer.add(new MyButton(getContext(), "arrows-alt-h", 70, 0, Color.parseColor("#FF4633F7"), new ButtonClickListener() {
+
                     @Override
-                    public void onClick(int pos) {
-                        int result = CompareFragment.getInstance(getContext()).addPhoneToCompare(phones.get(pos));
+                    public void onClick(int position) {
+                        int result = CompareFragment.getInstance(getContext()).addPhoneToCompare(phones.get(position));
                         String message = "";
                         switch (result) {
                             case CompareFragment.LIST_FULL:
-                                message = "Compare is full";
+                                message = "Comparing Phones List is full.";
                                 break;
                             case CompareFragment.PHONE_EXIST:
-                                message = "Phone already exist";
+                                message = "Phone already exist in Comparing List.";
                                 break;
                             case CompareFragment.PHONE_ADDED:
-                                message = "Added to Compare";
-                                break;
+                                message = "Phone added to Comparing List.";
                         }
+
                         Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+
                     }
                 }));
             }
         };
+
+
         searchText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -112,8 +120,7 @@ public class HomeFragment extends Fragment {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (!s.toString().equals("")) {
                     // Update recycler view
-                    mAdapter.setPhones(searchPhones(s.toString()));
-                    mAdapter.notifyDataSetChanged();
+                    mAdapter.updatePhonesList(searchPhones(s.toString()));
                 }
             }
 
@@ -122,6 +129,7 @@ public class HomeFragment extends Fragment {
 
             }
         });
+
         return view;
     }
 
