@@ -45,6 +45,7 @@ public class AboutFragment extends Fragment {
                 args.putString(Consts.facebook, "https://www.facebook.com/alexandar.alexandar.98");
                 args.putString(Consts.phone, "+34666777888");
                 args.putString(Consts.location, "geo:0,0?q=42.2465,-83.0191 St.Clair College");
+                args.putString(Consts.addToContact, "+34666777888");
 
                 Navigation.findNavController(view).navigate(R.id.action_nav_about_to_developersFragment, args);
             }
@@ -61,6 +62,7 @@ public class AboutFragment extends Fragment {
                 args.putString(Consts.facebook, "https://www.facebook.com/");
                 args.putString(Consts.phone, "+222");
                 args.putString(Consts.location, "geo:0,0?q=42.2465,-83.0191 St.Clair College");
+                args.putString(Consts.addToContact, "+222");
 
                 Navigation.findNavController(view).navigate(R.id.action_nav_about_to_developersFragment, args);
             }

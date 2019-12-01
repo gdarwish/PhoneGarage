@@ -78,6 +78,28 @@
                 android:textColor="@color/button_color" />
 
             <Button
+                android:id="@+id/textButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/custome_button"
+                android:padding="10dp"
+                android:text="@string/textButtonTitle"
+                android:textAllCaps="false"
+                android:textColor="@color/button_color" />
+
+            <Button
+                android:id="@+id/addToContactButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/custome_button"
+                android:padding="10dp"
+                android:text="@string/addToContactButton"
+                android:textAllCaps="false"
+                android:textColor="@color/button_color" />
+
+            <Button
                 android:id="@+id/locaButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

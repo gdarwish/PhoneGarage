@@ -90,6 +90,17 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
                 break;
+            case DevelopersFragment.PERMISSION_SEND_SMS:
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("sms", DevelopersFragment.phone, null));
+                    intent.putExtra("sms_body", "I am having troubles with the following: Java, swift, android, and OOAP");
+                    if (intent.resolveActivity(getPackageManager()) != null) {
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(MainActivity.this, "No software installed to complete task", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                break;
         }
     }
 }

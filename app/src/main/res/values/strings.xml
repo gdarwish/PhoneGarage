@@ -24,4 +24,6 @@
     <string name="resButton">Resorsus</string>
     <string name="devTitle">Developers</string>
     <string name="contactTitle">Contact</string>
+    <string name="textButtonTitle">Text</string>
+    <string name="addToContactButton">Add To Contact</string>
 </resources>

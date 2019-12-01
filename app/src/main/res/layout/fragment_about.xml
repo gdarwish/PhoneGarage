@@ -42,7 +42,7 @@
                 android:padding="10dp"
                 android:text="@string/ghaithButton"
                 android:textAllCaps="false"
-                android:textColor="@color/text_color"
+                android:textColor="@color/button_color"
                 android:textSize="@dimen/details_list_textsize" />
 
             <Button
@@ -54,7 +54,7 @@
                 android:padding="10dp"
                 android:text="@string/aliButton"
                 android:textAllCaps="false"
-                android:textColor="@color/text_color"
+                android:textColor="@color/button_color"
                 android:textSize="@dimen/details_list_textsize" />
 
             <TextView
@@ -77,7 +77,7 @@
                 android:padding="10dp"
                 android:text="@string/resButton"
                 android:textAllCaps="false"
-                android:textColor="@color/text_color"
+                android:textColor="@color/button_color"
                 android:textSize="@dimen/details_list_textsize" />
 
         </LinearLayout>

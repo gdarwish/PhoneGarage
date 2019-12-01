@@ -14,6 +14,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +31,7 @@ import com.androidproject.PhoneGarage.R;
 public class DevelopersFragment extends Fragment {
 
     public static final int PERMISSION_CALL = 2;
+    public static final int PERMISSION_SEND_SMS = 1;
 
 
     ImageView developerImage;
@@ -38,6 +40,8 @@ public class DevelopersFragment extends Fragment {
     Button facButton;
     Button callButton;
     Button locaButton;
+    Button textButton;
+    Button addToContactButton;
 
     int image;
     String website;
@@ -45,6 +49,7 @@ public class DevelopersFragment extends Fragment {
     String facebook;
     public static String phone;
     String location;
+    String addToContact;
 
     public DevelopersFragment() {
         // Required empty public constructor
@@ -61,6 +66,8 @@ public class DevelopersFragment extends Fragment {
             facebook = getArguments().getString(Consts.facebook, "");
             phone = getArguments().getString(Consts.phone, "");
             location = getArguments().getString(Consts.location, "");
+            addToContact = getArguments().getString(Consts.addToContact, "");
+
         }
     }
 
@@ -145,6 +152,55 @@ public class DevelopersFragment extends Fragment {
             public void onClick(View view) {
                 Uri locationUri = Uri.parse(location);
                 Intent intent = new Intent(Intent.ACTION_VIEW, locationUri);
+                startActivity(intent);
+            }
+        });
+
+        textButton = view.findViewById(R.id.textButton);
+        textButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
+
+                    if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.SEND_SMS)) {
+                        final AlertDialog alertDialog = new AlertDialog.Builder(getContext())
+                                .setTitle("Send sms")
+                                .setMessage("We need the access to send the sms!")
+                                .create();
+
+                        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                alertDialog.dismiss();
+                                ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.SEND_SMS}, PERMISSION_SEND_SMS);
+                            }
+                        });
+                        alertDialog.show();
+
+                    } else {
+                        ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.SEND_SMS}, PERMISSION_SEND_SMS);
+                    }
+
+                } else {
+                    Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("sms", phone, null));
+                    intent.putExtra("sms_body", "I would like to get some information about....");
+                    if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(getContext(), "No software installed to complete task", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        });
+
+        addToContactButton = view.findViewById(R.id.addToContactButton);
+        addToContactButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ContactsContract.Intents.Insert.ACTION);
+                intent.setType(ContactsContract.RawContacts.CONTENT_TYPE);
+                intent.putExtra(ContactsContract.Intents.Insert.PHONE, phone).putExtra(ContactsContract.Intents.Insert.PHONE_TYPE,
+                        ContactsContract.CommonDataKinds.Phone.TYPE_WORK);
                 startActivity(intent);
             }
         });

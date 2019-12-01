@@ -11,6 +11,7 @@
         android:id="@+id/favouriteText"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:textColor="@color/text_color"
         android:gravity="center"
         android:text="There are no favourite phones."
         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />

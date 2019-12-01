@@ -9,5 +9,7 @@ public class Consts {
     public static final String facebook = "facebook";
     public static final String phone = "phone";
     public static final String location = "location";
+    public static final String addToContact = "addToContact";
+
 
 }
