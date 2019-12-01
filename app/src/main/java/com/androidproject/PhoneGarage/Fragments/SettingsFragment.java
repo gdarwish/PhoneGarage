@@ -27,11 +27,20 @@ import com.androidproject.PhoneGarage.R;
 public class SettingsFragment extends Fragment {
 
     ModeSharePref modeSharePref;
-    public static Switch theme;
+    public Switch theme;
+
+    public Switch getTheme() {
+        return theme;
+    }
+
+    public void setTheme(Switch theme) {
+        this.theme = theme;
+    }
 
     public SettingsFragment() {
         // Required empty public constructor
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -52,12 +61,14 @@ public class SettingsFragment extends Fragment {
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
                     modeSharePref.setNightMode(true);
+//                    theme.setText("Light Mode");
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
                     getActivity().startActivity(new Intent(getActivity().getApplicationContext(), MainActivity.class));
                     getActivity().finish();
 
                 } else {
                     modeSharePref.setNightMode(false);
+//                    theme.setText("Dark Mode");
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
                     getActivity().startActivity(new Intent(getActivity().getApplicationContext(), MainActivity.class));
                     getActivity().finish();
@@ -67,5 +78,4 @@ public class SettingsFragment extends Fragment {
 
         return view;
     }
-
 }

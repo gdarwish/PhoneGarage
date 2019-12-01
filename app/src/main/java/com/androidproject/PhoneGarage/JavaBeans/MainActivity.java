@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.androidproject.PhoneGarage.Fragments.DevelopersFragment;
+import com.androidproject.PhoneGarage.Fragments.SettingsFragment;
 import com.androidproject.PhoneGarage.R;
 
 import androidx.annotation.NonNull;
@@ -51,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
         ModeSharePref modeSharePref;
 
         modeSharePref = new ModeSharePref(this);
-
 
         if (modeSharePref.loadNightMode()) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
