@@ -67,6 +67,15 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
+
+    /**
+     * This will check if two phones are equals
+     *
+     * @param phones list to be searched in
+     * @param search phone to be searched for
+     * @return boolean if exist in the list or not
+     * @author Ali Dali
+     */
     public static boolean comparePhones(ArrayList<Phone> phones, Phone search) {
         for (Phone phone :
                 phones) {

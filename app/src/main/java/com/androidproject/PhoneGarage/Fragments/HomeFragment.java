@@ -31,7 +31,7 @@ import java.util.List;
 
 
 /**
- * @author Gaith Darwish
+ * @author Gaith Darwish, Ali Dali
  */
 public class HomeFragment extends Fragment {
 
@@ -108,7 +108,7 @@ public class HomeFragment extends Fragment {
                             case CompareFragment.LIST_FULL:
                                 message = getString(R.string.comp_full);
                                 break;
-                            // if the phone is already exist
+                            // if the phone already exists
                             case CompareFragment.PHONE_EXIST:
                                 message = getString(R.string.comp_exist);
                                 break;
@@ -145,6 +145,13 @@ public class HomeFragment extends Fragment {
         return view;
     }
 
+    /**
+     *
+     * This will search for phone devices depending on user input
+     * @param searchInput user input
+     * @return list of matched phones
+     * @author Ali Dali
+     */
     private ArrayList<Phone> searchPhones(String searchInput) {
         searchedPhones = new ArrayList<>();
         searchInput = searchInput.toUpperCase();
