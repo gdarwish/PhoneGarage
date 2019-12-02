@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,6 +63,9 @@ public class HomeFragment extends Fragment {
         mAdapter = new RecyclerViewAdapter(getContext(), phones);
         mRecyclerView.setAdapter(mAdapter);
         searchText = view.findViewById(R.id.searchText);
+        Log.e("PHONE", "phone " + phones.get(0).getDetailsFormatted());
+        Log.v("PHONE", "phone " + phones.get(0).getDetailsFormatted());
+        Log.v("PHONE", "phone ");
 
         /**
          * @author Ghaith Darwish
@@ -89,7 +93,6 @@ public class HomeFragment extends Fragment {
                         }
                         //  show the toast
                         Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
-
                     }
                 }));
                 // Create the Compare button and set its color text and size when swiped and put event listener on its
