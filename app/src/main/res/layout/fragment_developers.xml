@@ -28,7 +28,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
-                android:text="@string/contactTitle"
+                android:text="@string/contact"
                 android:textColor="@color/text_color"
                 android:textSize="@dimen/header"
                 android:textStyle="italic" />
@@ -84,7 +84,7 @@
                 android:layout_margin="10dp"
                 android:background="@drawable/custome_button"
                 android:padding="10dp"
-                android:text="@string/textButtonTitle"
+                android:text="@string/text"
                 android:textAllCaps="false"
                 android:textColor="@color/button_color" />
 

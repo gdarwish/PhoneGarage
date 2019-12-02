@@ -28,7 +28,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
-                android:text="@string/devTitle"
+                android:text="@string/developers"
                 android:textColor="@color/text_color"
                 android:textSize="@dimen/header"
                 android:textStyle="italic" />
@@ -62,11 +62,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
-                android:text="@string/resButton"
+                android:text="@string/resources"
                 android:textColor="@color/text_color"
                 android:textSize="@dimen/header"
                 android:textStyle="italic"
-                tools:text="@string/resButton" />
+                tools:text="@string/resources" />
 
             <Button
                 android:id="@+id/resButton"
@@ -75,7 +75,7 @@
                 android:layout_margin="10dp"
                 android:background="@drawable/custome_button"
                 android:padding="10dp"
-                android:text="@string/resButton"
+                android:text="@string/resources"
                 android:textAllCaps="false"
                 android:textColor="@color/button_color"
                 android:textSize="@dimen/details_list_textsize" />

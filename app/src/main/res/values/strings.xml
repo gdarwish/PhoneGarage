@@ -15,12 +15,14 @@
     <string name="menu_settings">Settings</string>
     <string name="menu_about">About</string>
 
+    <string name="label_details">Phone Details</string>
+
     <string name="ghaithButton">Ghaith Darwish</string>
     <string name="aliButton">Ali Dali</string>
-    <string name="resButton">Resources</string>
-    <string name="devTitle">Developers</string>
-    <string name="contactTitle">Contact</string>
-    <string name="textButtonTitle" translatable="false">Text</string>
+    <string name="resources">Resources</string>
+    <string name="developers">Developers</string>
+    <string name="contact">Contact</string>
+    <string name="text">Text</string>
     <string name="addToContactButton">Add Contact</string>
     <string name="phonesSummary">Change Layout</string>
 
