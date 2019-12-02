@@ -85,7 +85,7 @@ public class HomeFragment extends Fragment {
                     }
                 }));
 
-                buffer.add(new MyButton(getContext(), "arrows-alt-h", 70, 0, Color.parseColor("#FF4633F7"), new ButtonClickListener() {
+                buffer.add(new MyButton(getContext(), "retweet", 70, 0, Color.parseColor("#FF4633F7"), new ButtonClickListener() {
 
                     @Override
                     public void onClick(int position) {
