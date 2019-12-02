@@ -9,6 +9,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import android.preference.PreferenceManager;
@@ -174,26 +175,90 @@ public class CompareFragment extends Fragment {
         } else {
 
 
-
-            if(phones.get(0) != null) {
-                getChildFragmentManager().beginTransaction().replace(R.id.fragment_phone_first, DetailsFragment.newInstance(phones.get(0))).commit();
+            if (phones.size() >= 1) {
+                getChildFragmentManager().beginTransaction().replace(R.id.fragment_phone_first, DetailsFragment.newInstance(phones.get(0)), "0").commit();
+                final FloatingActionButton fab1 = view.findViewById(R.id.fabBtn);
+                fab1.setVisibility(View.VISIBLE);
+                fab1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        phones.remove(0);
+                        saveData();
+                        getChildFragmentManager().beginTransaction().remove(getChildFragmentManager().findFragmentByTag("0")).commit();
+                        Toast.makeText(getContext(), getString(R.string.comp_removed), Toast.LENGTH_SHORT).show();
+                        fab1.setVisibility(View.GONE);
+                    }
+                });
             }
 
-            if(phones.get(1) != null) {
-
-                getChildFragmentManager().beginTransaction().replace(R.id.fragment_phone_second, DetailsFragment.newInstance(phones.get(1))).commit();
-
+            if (phones.size() >= 2) {
+                getChildFragmentManager().beginTransaction().replace(R.id.fragment_phone_second, DetailsFragment.newInstance(phones.get(1)), "1").commit();
+                final FloatingActionButton fabBtn = view.findViewById(R.id.fabBtn2);
+                fabBtn.setVisibility(View.VISIBLE);
+                fabBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        phones.remove(phones.size() - 2 < 0 ? 0 : phones.size() - 2);
+                        saveData();
+                        getChildFragmentManager().beginTransaction().remove(getChildFragmentManager().findFragmentByTag("1")).commit();
+                        Toast.makeText(getContext(), getString(R.string.comp_removed), Toast.LENGTH_SHORT).show();
+                        fabBtn.setVisibility(View.GONE);
+                    }
+                });
             }
 
-            if(phones.get(2) != null) {
+            if (phones.size() >= 3) {
+                getChildFragmentManager().beginTransaction().replace(R.id.fragment_phone_third, DetailsFragment.newInstance(phones.get(2)), "2").commit();
 
-                getChildFragmentManager().beginTransaction().replace(R.id.fragment_phone_third, DetailsFragment.newInstance(phones.get(2))).commit();
-
+                final FloatingActionButton fabBtn = view.findViewById(R.id.fabBtn3);
+                fabBtn.setVisibility(View.VISIBLE);
+                fabBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        phones.remove(phones.size() - 1 < 0 ? 0 : phones.size() - 1);
+                        saveData();
+                        getChildFragmentManager().beginTransaction().remove(getChildFragmentManager().findFragmentByTag("2")).commit();
+                        Toast.makeText(getContext(), getString(R.string.comp_removed), Toast.LENGTH_SHORT).show();
+                        fabBtn.setVisibility(View.GONE);
+                    }
+                });
             }
+
+
+
+//            final FloatingActionButton[] floatingActionButtons = {view.findViewById(R.id.fabBtn), view.findViewById(R.id.fabBtn2), view.findViewById(R.id.fabBtn3)};
+
+//            for(int i = 0; i < phones.size(); i++) {
+//                floatingActionButtons[i].setVisibility(View.VISIBLE);
+//                floatingActionButtons[i].setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+////                        phones.remove(currentPosition);
+//                        saveData();
+//                        getFragmentManager().beginTransaction().remove(getChildFragmentManager().findFragmentByTag("phone")).commit();
+//                        Toast.makeText(getContext(), getString(R.string.comp_removed), Toast.LENGTH_SHORT).show();
+//                        floatingActionButtons[i].setVisibility(View.GONE);
+//                    }
+//                });
+//            }
+
+//            for(final FloatingActionButton fab : floatingActionButtons) {
+//                fab.setVisibility(View.VISIBLE);
+//                fab.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        saveData();
+//                        getFragmentManager().beginTransaction().repla(getChildFragmentManager().findFragmentByTag("phone")).commit();
+//                        Toast.makeText(getContext(), getString(R.string.comp_removed), Toast.LENGTH_SHORT).show();
+//                        fab.setVisibility(View.GONE);
+//                    }
+//                });
+//
+//            }
+
+
 
         }
-
-
 
         return view;
     }
@@ -214,6 +279,10 @@ public class CompareFragment extends Fragment {
         saveData();
 
         return PHONE_ADDED;
+    }
+
+    public void removePhoneFromCompare() {
+
     }
 
     private void saveData() {

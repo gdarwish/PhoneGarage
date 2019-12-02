@@ -36,7 +36,8 @@
             android:layout_gravity="end|bottom"
             android:layout_margin="15dp"
             android:backgroundTint="@color/colorPrimary"
-            android:src="@drawable/ic_delete_black_24dp" />
+            android:src="@drawable/ic_delete_black_24dp"
+            android:visibility="gone" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
@@ -67,7 +68,8 @@
             android:layout_gravity="end|bottom"
             android:layout_margin="15dp"
             android:backgroundTint="@color/colorPrimary"
-            android:src="@drawable/ic_delete_black_24dp" />
+            android:src="@drawable/ic_delete_black_24dp"
+            android:visibility="gone" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
@@ -100,7 +102,8 @@
             android:layout_gravity="end|bottom"
             android:layout_margin="15dp"
             android:backgroundTint="@color/colorPrimary"
-            android:src="@drawable/ic_delete_black_24dp" />
+            android:src="@drawable/ic_delete_black_24dp"
+            android:visibility="gone" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
