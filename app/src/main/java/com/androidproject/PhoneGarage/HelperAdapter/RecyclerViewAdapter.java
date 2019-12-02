@@ -43,9 +43,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<MyHolder> {
         boolean selectLayout = sharedPreferences.getBoolean("layout", false);
         // if selectLayout is true set the layout to recycler_view_row, else set it to recycler_view_row2
         if (selectLayout)
-            layout = R.layout.recycler_view_row;
-        else
             layout = R.layout.recycler_view_row2;
+        else
+            layout = R.layout.recycler_view_row;
 
     }
 
@@ -74,7 +74,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<MyHolder> {
         final Phone phone = phones.get(position);
 
         if (holder.mImageView != null)
-            Picasso.get().load(phone.getImageUrl()).placeholder(R.drawable.iphone).into(holder.mImageView);
+            Picasso.get().load(phone.getImageUrl()[0]).placeholder(R.drawable.iphone).into(holder.mImageView);
 
         holder.mTitle.setText(phone.getBrand());
         holder.mDescription.setText(phone.getDeviceName());

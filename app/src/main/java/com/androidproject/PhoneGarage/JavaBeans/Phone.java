@@ -33,7 +33,7 @@ public class Phone implements Serializable {
     Charging
      */
 
-    private String imageUrl;
+    private String[] imageUrl;
 
     @SerializedName("DeviceName")
     private String deviceName;
@@ -72,7 +72,7 @@ public class Phone implements Serializable {
     private String primaryCamera;
 
 
-    public Phone(String imageUrl, String deviceName, String brand, String size, String resolution, String dimensions, String weight, String screenType, String cardSlot, String wlan, String bluetooth, String gps, String batteryCapacity, String colors, String sensors, String cpu, String internal, String os, String video, String gpu, String cameraFeature, String frontCamera, String dualCamera, String tripleCamera, String charging) {
+    public Phone(String[] imageUrl, String deviceName, String brand, String size, String resolution, String dimensions, String weight, String screenType, String cardSlot, String wlan, String bluetooth, String gps, String batteryCapacity, String colors, String sensors, String cpu, String internal, String os, String video, String gpu, String cameraFeature, String frontCamera, String dualCamera, String tripleCamera, String charging) {
         this.imageUrl = imageUrl;
         this.deviceName = deviceName;
         this.brand = brand;
@@ -101,7 +101,7 @@ public class Phone implements Serializable {
     }
 
     public String getDetailsFormatted() {
-        return String.format("Device: %s\nBrand: %s\nCPU: %s\nInternal: %s\nOS: %s\nSize: %s\nResolution: %s\nDimensions: %s\nWeight: %s\nScreen Type: %s\nCard Slot: %s\nWlan: %s\nBluetooth: %s\nGPS: %s\nBattery: %s\nColors: %s\nSensors: %s\nCPU: %s\nInternal: %s\nOS: %s\nVideo: %s\nGPU: %s\nCamera Feature: %s\nFront Camera: %s\nDual Camera: %s\nTriple Camera: %s\nCharging: %s", deviceName, brand, cpu, internal, os, size, resolution, dimensions, weight, screenType, cardSlot, wlan, bluetooth, gps, batteryCapacity, colors, sensors, cpu, internal, os, video, gpu, cameraFeature, frontCamera, dualCamera, tripleCamera, charging);
+        return String.format("Images: %s\nDevice: %s\nBrand: %s\nCPU: %s\nInternal: %s\nOS: %s\nSize: %s\nResolution: %s\nDimensions: %s\nWeight: %s\nScreen Type: %s\nCard Slot: %s\nWlan: %s\nBluetooth: %s\nGPS: %s\nBattery: %s\nColors: %s\nSensors: %s\nCPU: %s\nInternal: %s\nOS: %s\nVideo: %s\nGPU: %s\nCamera Feature: %s\nFront Camera: %s\nDual Camera: %s\nTriple Camera: %s\nCharging: %s",  imageUrl, deviceName, brand, cpu, internal, os, size, resolution, dimensions, weight, screenType, cardSlot, wlan, bluetooth, gps, batteryCapacity, colors, sensors, cpu, internal, os, video, gpu, cameraFeature, frontCamera, dualCamera, tripleCamera, charging);
     }
 
     public String getDeviceName() {
@@ -124,8 +124,8 @@ public class Phone implements Serializable {
         return os  != null ? os : "N/A";
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public String[] getImageUrl() {
+        return imageUrl != null ? imageUrl : new String[]{"https://gdarwish.scweb.ca/PHP/phoneGarage/phoneImage.png"};
     }
 
     public String getSize() {

@@ -14,8 +14,9 @@
         android:layout_marginBottom="7dp"
         android:adjustViewBounds="true"
         android:cropToPadding="true"
+        android:paddingTop="20dp"
         android:paddingBottom="20dp"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/img" />
+        app:srcCompat="@drawable/ic_phone_iphone_black_24dp" />
 
 </LinearLayout>
