@@ -3,6 +3,7 @@ package com.androidproject.PhoneGarage.Fragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -40,7 +41,7 @@ public class CompareFragment extends Fragment {
     public static final int LIST_FULL = 0;
     public static final int PHONE_ADDED = 1;
 
-    private static final int MAX_PHONES = 4;
+    private static final int MAX_PHONES = 3;
     private static final String PHONES = "phones";
 
     private static SharedPreferences sharedPreferences;
@@ -56,6 +57,7 @@ public class CompareFragment extends Fragment {
     private FloatingActionButton fab;
     private TextView compareText;
 
+    private boolean tablet;
 
     private static CompareFragment instance;
 
@@ -89,6 +91,29 @@ public class CompareFragment extends Fragment {
 
         initialize(getContext());
         loadData();
+
+        int currentOrientation = getResources().getConfiguration().orientation;
+        if (currentOrientation == Configuration.ORIENTATION_PORTRAIT) {
+            Log.e("orientation", "PORTRAIT");
+            tablet = false;
+        } else {
+            Log.e("orientation", "LANDSCAPE");
+            tablet = true;
+        }
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+
+        super.onConfigurationChanged(newConfig);
+
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            Log.e("orientation", "LANDSCAPE");
+            tablet = true;
+        } else {
+            Log.e("orientation", "PORTRAIT");
+            tablet = false;
+        }
     }
 
 
@@ -98,53 +123,77 @@ public class CompareFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_compare, container, false);
 
-        compareText = view.findViewById(R.id.compareText);
-        compareText.setVisibility(View.GONE);
+        if (!tablet || view.findViewById(R.id.fragment_phone_first) == null) {
+            compareText = view.findViewById(R.id.compareText);
+            compareText.setVisibility(View.GONE);
 
 
-        fab = view.findViewById(R.id.fabBtn);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("POSITION", currentPosition + "");
-                phones.remove(currentPosition);
-                adapter.notifyDataSetChanged();
-                if (phones.isEmpty()) {
-                    fab.setVisibility(View.GONE);
-                    compareText.setVisibility(View.VISIBLE);
+            fab = view.findViewById(R.id.fabBtn);
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.d("POSITION", currentPosition + "");
+                    phones.remove(currentPosition);
+                    adapter.notifyDataSetChanged();
+                    if (phones.isEmpty()) {
+                        fab.setVisibility(View.GONE);
+                        compareText.setVisibility(View.VISIBLE);
+                    }
+                    saveData();
+                    Toast.makeText(getContext(), getString(R.string.comp_removed), Toast.LENGTH_SHORT).show();
                 }
-                saveData();
-                Toast.makeText(getContext(), getString(R.string.comp_removed), Toast.LENGTH_SHORT).show();
-            }
-        });
+            });
 
-        if (phones.isEmpty()) {
-            fab.setVisibility(View.GONE);
-            compareText.setVisibility(View.VISIBLE);
+            if (phones.isEmpty()) {
+                fab.setVisibility(View.GONE);
+                compareText.setVisibility(View.VISIBLE);
+            }
+
+
+            adapter = new CompareAdapter(getChildFragmentManager());
+            viewPager = view.findViewById(R.id.compareViewPager);
+            viewPager.setAdapter(adapter);
+
+            // Get the current position of the ViewPager
+            viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                @Override
+                public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+                }
+
+                @Override
+                public void onPageSelected(int position) {
+                    currentPosition = position;
+                }
+
+                @Override
+                public void onPageScrollStateChanged(int state) {
+
+                }
+            });
+        } else {
+
+
+
+            if(phones.get(0) != null) {
+                getChildFragmentManager().beginTransaction().replace(R.id.fragment_phone_first, DetailsFragment.newInstance(phones.get(0))).commit();
+            }
+
+            if(phones.get(1) != null) {
+
+                getChildFragmentManager().beginTransaction().replace(R.id.fragment_phone_second, DetailsFragment.newInstance(phones.get(1))).commit();
+
+            }
+
+            if(phones.get(2) != null) {
+
+                getChildFragmentManager().beginTransaction().replace(R.id.fragment_phone_third, DetailsFragment.newInstance(phones.get(2))).commit();
+
+            }
+
         }
 
 
-        adapter = new CompareAdapter(getChildFragmentManager());
-        viewPager = view.findViewById(R.id.compareViewPager);
-        viewPager.setAdapter(adapter);
-
-        // Get the current position of the ViewPager
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                currentPosition = position;
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
 
         return view;
     }
