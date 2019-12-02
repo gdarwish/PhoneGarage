@@ -43,9 +43,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<MyHolder> {
         boolean selectLayout = sharedPreferences.getBoolean("layout", false);
         // if selectLayout is true set the layout to recycler_view_row, else set it to recycler_view_row2
         if (selectLayout)
-            layout = R.layout.recycler_view_row;
-        else
             layout = R.layout.recycler_view_row2;
+        else
+            layout = R.layout.recycler_view_row;
 
     }
 

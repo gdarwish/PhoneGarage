@@ -58,7 +58,7 @@ public class DetailsFragment extends Fragment {
 
         title = view.findViewById(R.id.title);
         description = view.findViewById(R.id.description);
-        title.setText(phone.getBrand());
+        title.setText(phone.getDeviceName());
 
         // ImageSlider on the Details Page
         SliderView sliderView = view.findViewById(R.id.imageSlider);
