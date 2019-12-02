@@ -69,6 +69,8 @@ public class Phone implements Serializable {
     private String tripleCamera;
     private String charging;
 
+    private String primaryCamera;
+
 
     public Phone(String imageUrl, String deviceName, String brand, String size, String resolution, String dimensions, String weight, String screenType, String cardSlot, String wlan, String bluetooth, String gps, String batteryCapacity, String colors, String sensors, String cpu, String internal, String os, String video, String gpu, String cameraFeature, String frontCamera, String dualCamera, String tripleCamera, String charging) {
         this.imageUrl = imageUrl;
@@ -201,6 +203,8 @@ public class Phone implements Serializable {
     public String getCharging() {
         return charging != null ? charging : "N/A";
     }
+
+    public String getPrimaryCamera() { return dualCamera != null ? getDualCamera() : getTripleCamera(); }
 
     public String toString() {
         return deviceName;
