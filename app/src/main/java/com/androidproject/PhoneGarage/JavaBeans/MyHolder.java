@@ -9,7 +9,7 @@ import com.androidproject.PhoneGarage.R;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class MyHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+public class MyHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     public ImageView mImageView;
     public TextView mTitle;
@@ -33,7 +33,7 @@ public class MyHolder extends RecyclerView.ViewHolder implements View.OnClickLis
 
     }
 
-    public void setItemClickListener(ItemClickListener ic){
+    public void setItemClickListener(ItemClickListener ic) {
         this.itemClickListener = ic;
     }
 }

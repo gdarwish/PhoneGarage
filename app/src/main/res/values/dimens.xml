@@ -7,4 +7,6 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="details_list_textsize">17dp</dimen>
     <dimen name="header">26dp</dimen>
+    <dimen name="crecycler_title">20dp</dimen>
+    <dimen name="recycler_desc">16dp</dimen>
 </resources>

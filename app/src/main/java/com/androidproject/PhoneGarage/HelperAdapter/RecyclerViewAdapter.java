@@ -40,6 +40,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<MyHolder> {
             layout = R.layout.recycler_view_row;
         else
             layout = R.layout.recycler_view_row2;
+
     }
 
     @NonNull
@@ -55,9 +56,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<MyHolder> {
     @Override
     public void onBindViewHolder(@NonNull final MyHolder holder, int position) {
 
-        Phone phone = phones.get(position);
+        final Phone phone = phones.get(position);
 
-        Picasso.get().load(phone.getImageUrl()).placeholder(R.drawable.iphone).into(holder.mImageView);
+        if (holder.mImageView != null)
+            Picasso.get().load(phone.getImageUrl()).placeholder(R.drawable.iphone).into(holder.mImageView);
 
         holder.mTitle.setText(phone.getBrand());
         holder.mDescription.setText(phone.getDeviceName());
@@ -65,12 +67,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<MyHolder> {
         holder.setItemClickListener(new ItemClickListener() {
             @Override
             public void onItemClickListner(View view, int position) {
-
-
                 Bundle args = new Bundle();
                 args.putSerializable("phone", phones.get(position));
-//                Log.e("PHONE", phones.get(position).getDetailsFormatted());
-                // Check if you are in Home or Favourite Fragment
                 Navigation.findNavController(view).navigate(R.id.nav_details, args);
             }
         });

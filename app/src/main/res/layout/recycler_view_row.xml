@@ -30,7 +30,7 @@
             android:layout_toRightOf="@id/image"
             android:text="Title"
             android:textColor="@color/text_color"
-            android:textSize="22sp"
+            android:textSize="@dimen/crecycler_title"
             android:textStyle="bold" />
 
         <TextView
@@ -45,7 +45,7 @@
             android:layout_toRightOf="@id/image"
             android:text="Description"
             android:textColor="@color/text_color"
-            android:textSize="18sp" />
+            android:textSize="@dimen/recycler_desc" />
 
 
     </RelativeLayout>
