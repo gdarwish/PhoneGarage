@@ -30,9 +30,34 @@
     <!-- Favourite -->
     <string name="fav_exist">Phone already exist in favourites.</string>
     <string name="fav_added">Phone added to favourites.</string>
+    <string name="fav_no_phones">There are no favourite phones.</string>
 
     <!-- Compare -->
     <string name="comp_full">Comparing List is full.</string>
     <string name="comp_exist">Phone already exist in Comparing List.</string>
     <string name="comp_added">Phone added to Comparing List.</string>
+    <string name="comp_no_phones">There are no phones to compare.</string>
+
+    <string name="phone_brand">Brand</string>
+    <string name="phone_size">Size</string>
+    <string name="phone_resolution">Resolution</string>
+    <string name="phone_dimensions">Dimensions</string>
+    <string name="phone_weight">Weight</string>
+    <string name="phone_screen_type">Screen Type</string>
+    <string name="phone_card_slot">Card Slot</string>
+    <string name="phone_wlan">WLAN</string>
+    <string name="phone_bluetooth">Bluetooth</string>
+    <string name="phone_gps">GPS</string>
+    <string name="phone_battery">Battery</string>
+    <string name="phone_colors">Colors</string>
+    <string name="phone_sensors">Sensors</string>
+    <string name="phone_cpu">CPU</string>
+    <string name="phone_internal_storage">Internal Storage</string>
+    <string name="phone_os">OS</string>
+    <string name="phone_video">Video</string>
+    <string name="phone_gpu">GPU</string>
+    <string name="phone_camera_features">Camera Features</string>
+    <string name="phone_front_camera">Front Camera</string>
+    <string name="phone_dual_camera">Primary Camera</string>
+    <string name="phone_charging">Charging</string>
 </resources>

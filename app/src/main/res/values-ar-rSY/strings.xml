@@ -22,4 +22,28 @@
     <string name="text">"ارسل رسالة "</string>
     <string name="app_name" translatable="false">كراج الهواتف</string>
     <string name="more" translatable="false"><font fgcolor="#e63c3c">المزيد</font></string>
+    <string name="comp_no_phones">لا توجد هواتف للمقارنة.</string>
+    <string name="fav_no_phones">لا توجد هواتف مفضلة.</string>
+    <string name="phone_battery">البطارية</string>
+    <string name="phone_bluetooth">البلوتوث</string>
+    <string name="phone_brand">علامة تجارية</string>
+    <string name="phone_camera_features">ميزات الكاميرا</string>
+    <string name="phone_card_slot">فتحة البطاقة</string>
+    <string name="phone_charging">الشحن</string>
+    <string name="phone_colors">الألوان</string>
+    <string name="phone_cpu">المعالج</string>
+    <string name="phone_dimensions">الأبعاد</string>
+    <string name="phone_dual_camera">الكاميرا الأساسية</string>
+    <string name="phone_front_camera">الكاميرا الأمامية</string>
+    <string name="phone_gps">"نظام تحديد المواقع "</string>
+    <string name="phone_gpu">الجرافيك</string>
+    <string name="phone_internal_storage">التخزين الداخلي</string>
+    <string name="phone_os">نظام التشغيل</string>
+    <string name="phone_resolution">دقة الشاشة</string>
+    <string name="phone_screen_type">نوع الشاشة</string>
+    <string name="phone_sensors">أجهزة الاستشعار</string>
+    <string name="phone_size">الحجم</string>
+    <string name="phone_video">الفيديو</string>
+    <string name="phone_weight">الوزن</string>
+    <string name="phone_wlan">الشبكات اللاسلكية</string>
 </resources>
