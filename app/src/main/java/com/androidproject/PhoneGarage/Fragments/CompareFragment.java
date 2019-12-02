@@ -91,7 +91,6 @@ public class CompareFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         initialize(getContext());
-        loadData();
 
         int currentOrientation = getResources().getConfiguration().orientation;
         if (currentOrientation == Configuration.ORIENTATION_PORTRAIT) {
@@ -123,6 +122,7 @@ public class CompareFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_compare, container, false);
+        loadData();
 
         if (!tablet || view.findViewById(R.id.fragment_phone_first) == null) {
             compareText = view.findViewById(R.id.compareText);
@@ -174,93 +174,36 @@ public class CompareFragment extends Fragment {
             });
         } else {
 
+            int[] layouts = {R.id.fragment_phone_first, R.id.fragment_phone_second, R.id.fragment_phone_third};
+            final FloatingActionButton[] floatingActionButtons = {view.findViewById(R.id.fabBtn), view.findViewById(R.id.fabBtn2), view.findViewById(R.id.fabBtn3)};
 
-            if (phones.size() >= 1) {
-                getChildFragmentManager().beginTransaction().replace(R.id.fragment_phone_first, DetailsFragment.newInstance(phones.get(0)), "0").commit();
-                final FloatingActionButton fab1 = view.findViewById(R.id.fabBtn);
-                fab1.setVisibility(View.VISIBLE);
-                fab1.setOnClickListener(new View.OnClickListener() {
+            for (int i = 0; i < phones.size(); i++) {
+                final int index = i;
+                getChildFragmentManager().beginTransaction().replace(layouts[i], DetailsFragment.newInstance(phones.get(i)), "Phone" + i).commit();
+                floatingActionButtons[i].setVisibility(View.VISIBLE);
+                floatingActionButtons[i].setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        phones.remove(0);
-                        saveData();
-                        getChildFragmentManager().beginTransaction().remove(getChildFragmentManager().findFragmentByTag("0")).commit();
+                        removePhone(index);
+                        getChildFragmentManager().beginTransaction().remove(getChildFragmentManager().findFragmentByTag("Phone" + index)).commit();
+                        floatingActionButtons[index].setVisibility(View.GONE);
                         Toast.makeText(getContext(), getString(R.string.comp_removed), Toast.LENGTH_SHORT).show();
-                        fab1.setVisibility(View.GONE);
                     }
                 });
             }
-
-            if (phones.size() >= 2) {
-                getChildFragmentManager().beginTransaction().replace(R.id.fragment_phone_second, DetailsFragment.newInstance(phones.get(1)), "1").commit();
-                final FloatingActionButton fabBtn = view.findViewById(R.id.fabBtn2);
-                fabBtn.setVisibility(View.VISIBLE);
-                fabBtn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        phones.remove(phones.size() - 2 < 0 ? 0 : phones.size() - 2);
-                        saveData();
-                        getChildFragmentManager().beginTransaction().remove(getChildFragmentManager().findFragmentByTag("1")).commit();
-                        Toast.makeText(getContext(), getString(R.string.comp_removed), Toast.LENGTH_SHORT).show();
-                        fabBtn.setVisibility(View.GONE);
-                    }
-                });
-            }
-
-            if (phones.size() >= 3) {
-                getChildFragmentManager().beginTransaction().replace(R.id.fragment_phone_third, DetailsFragment.newInstance(phones.get(2)), "2").commit();
-
-                final FloatingActionButton fabBtn = view.findViewById(R.id.fabBtn3);
-                fabBtn.setVisibility(View.VISIBLE);
-                fabBtn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        phones.remove(phones.size() - 1 < 0 ? 0 : phones.size() - 1);
-                        saveData();
-                        getChildFragmentManager().beginTransaction().remove(getChildFragmentManager().findFragmentByTag("2")).commit();
-                        Toast.makeText(getContext(), getString(R.string.comp_removed), Toast.LENGTH_SHORT).show();
-                        fabBtn.setVisibility(View.GONE);
-                    }
-                });
-            }
-
-
-
-//            final FloatingActionButton[] floatingActionButtons = {view.findViewById(R.id.fabBtn), view.findViewById(R.id.fabBtn2), view.findViewById(R.id.fabBtn3)};
-
-//            for(int i = 0; i < phones.size(); i++) {
-//                floatingActionButtons[i].setVisibility(View.VISIBLE);
-//                floatingActionButtons[i].setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-////                        phones.remove(currentPosition);
-//                        saveData();
-//                        getFragmentManager().beginTransaction().remove(getChildFragmentManager().findFragmentByTag("phone")).commit();
-//                        Toast.makeText(getContext(), getString(R.string.comp_removed), Toast.LENGTH_SHORT).show();
-//                        floatingActionButtons[i].setVisibility(View.GONE);
-//                    }
-//                });
-//            }
-
-//            for(final FloatingActionButton fab : floatingActionButtons) {
-//                fab.setVisibility(View.VISIBLE);
-//                fab.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        saveData();
-//                        getFragmentManager().beginTransaction().repla(getChildFragmentManager().findFragmentByTag("phone")).commit();
-//                        Toast.makeText(getContext(), getString(R.string.comp_removed), Toast.LENGTH_SHORT).show();
-//                        fab.setVisibility(View.GONE);
-//                    }
-//                });
-//
-//            }
-
-
-
         }
 
         return view;
+    }
+
+    private void removePhone(int index) {
+        if (index > phones.size() - 1) {
+            removePhone(--index);
+        } else {
+            phones.remove(index);
+            saveData();
+            getChildFragmentManager().beginTransaction().remove(getChildFragmentManager().findFragmentByTag("Phone" + index)).commit();
+        }
     }
 
 
@@ -281,9 +224,6 @@ public class CompareFragment extends Fragment {
         return PHONE_ADDED;
     }
 
-    public void removePhoneFromCompare() {
-
-    }
 
     private void saveData() {
         SharedPreferences.Editor editor = sharedPreferences.edit();

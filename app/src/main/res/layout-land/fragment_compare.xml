@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_margin="15dp"
-        android:backgroundTint="@color/design_default_color_primary_dark"
+        android:backgroundTint="@color/colorPrimary"
         android:src="@drawable/ic_delete_black_24dp" />
 
 
