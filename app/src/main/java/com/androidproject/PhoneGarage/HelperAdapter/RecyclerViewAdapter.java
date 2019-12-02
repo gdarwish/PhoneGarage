@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.text.Layout;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,20 +20,28 @@ import androidx.annotation.NonNull;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+/**
+ * @author gaithdarwish
+ */
 public class RecyclerViewAdapter extends RecyclerView.Adapter<MyHolder> {
 
     Context context;
     ArrayList<Phone> phones;
     ViewGroup parent;
-
     int layout;
 
+    /**
+     * @param context
+     * @param phones
+     * @author Ghaith
+     */
     public RecyclerViewAdapter(Context context, ArrayList<Phone> phones) {
         this.context = context;
         this.phones = phones;
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         boolean selectLayout = sharedPreferences.getBoolean("layout", false);
+        // if selectLayout is true set the layout to recycler_view_row, else set it to recycler_view_row2
         if (selectLayout)
             layout = R.layout.recycler_view_row;
         else
@@ -43,6 +49,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<MyHolder> {
 
     }
 
+    /**
+     * @param parent
+     * @param viewType
+     * @return
+     */
     @NonNull
     @Override
     public MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -53,6 +64,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<MyHolder> {
         return new MyHolder(view);
     }
 
+    /**
+     * @param holder
+     * @param position
+     */
     @Override
     public void onBindViewHolder(@NonNull final MyHolder holder, int position) {
 
@@ -74,15 +89,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<MyHolder> {
         });
     }
 
+    /**
+     * @return
+     */
     @Override
     public int getItemCount() {
         return phones.size();
     }
 
-    public void setPhones(ArrayList<Phone> phones) {
-        this.phones = phones;
-    }
-
+    /**
+     * @param phones
+     */
     public void updatePhonesList(ArrayList<Phone> phones) {
         this.phones = phones;
         this.notifyDataSetChanged();

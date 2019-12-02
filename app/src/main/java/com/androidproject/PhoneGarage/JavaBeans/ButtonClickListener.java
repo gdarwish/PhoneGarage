@@ -1,7 +1,13 @@
 package com.androidproject.PhoneGarage.JavaBeans;
 
- public interface ButtonClickListener {
+/**
+ * @author gaithdarwish
+ */
+public interface ButtonClickListener {
 
+    /**
+     * @param pos
+     */
     void onClick(int pos);
 
 }

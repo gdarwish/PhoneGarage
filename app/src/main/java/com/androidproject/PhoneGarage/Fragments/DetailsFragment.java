@@ -29,15 +29,15 @@ import java.util.ArrayList;
 
 
 /**
- * A simple {@link Fragment} subclass.
+ * @author Ghaith Darwish
  */
 public class DetailsFragment extends Fragment {
 
     TextView title;
     TextView description;
     ListView listView;
-
     private Phone phone;
+
 
     public DetailsFragment() {
     }
@@ -58,10 +58,9 @@ public class DetailsFragment extends Fragment {
 
         title = view.findViewById(R.id.title);
         description = view.findViewById(R.id.description);
-
         title.setText(phone.getBrand());
 
-        // ImageSlider starts here
+        // ImageSlider on the Details Page
         SliderView sliderView = view.findViewById(R.id.imageSlider);
         SliderAdapterExample adapter = new SliderAdapterExample(getContext(), phone.getImageUrl());
         sliderView.setSliderAdapter(adapter);
@@ -71,11 +70,10 @@ public class DetailsFragment extends Fragment {
         sliderView.setAutoCycleDirection(SliderView.AUTO_CYCLE_DIRECTION_BACK_AND_FORTH);
         sliderView.setIndicatorSelectedColor(Color.WHITE);
         sliderView.setIndicatorUnselectedColor(Color.GRAY);
-        // ends
+        // ImageSlider ends here
 
-        // Details listView
+        // ListView in the Details Page
         listView = view.findViewById(R.id.listView);
-
         final ArrayList<DetailsList> list = new ArrayList<>();
         list.add(new DetailsList(getString(R.string.phone_brand), phone.getBrand()));
         list.add(new DetailsList(getString(R.string.phone_size), phone.getSize()));
@@ -102,11 +100,10 @@ public class DetailsFragment extends Fragment {
 
         CustomListViewAdapter adapterList = new CustomListViewAdapter(getContext(), list);
         listView.setAdapter(adapterList);
-
-        //end
+        //ListView ends here
         return view;
     }
-
+    
     public static DetailsFragment newInstance(Phone phone) {
         DetailsFragment fragment = new DetailsFragment();
         Bundle args = new Bundle();

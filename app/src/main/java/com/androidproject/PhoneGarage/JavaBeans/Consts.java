@@ -2,7 +2,6 @@ package com.androidproject.PhoneGarage.JavaBeans;
 
 public class Consts {
 
-
     public static final String image = "image";
     public static final String website = "website";
     public static final String email = "email";

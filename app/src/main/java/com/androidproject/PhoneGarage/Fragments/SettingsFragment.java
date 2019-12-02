@@ -20,7 +20,7 @@ import com.androidproject.PhoneGarage.R;
 
 
 /**
- * A simple {@link Fragment} subclass.
+ * @author gaithdarwish
  */
 public class SettingsFragment extends Fragment {
 
@@ -39,28 +39,37 @@ public class SettingsFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_settings, container, false);
 
-         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-         editor = sharedPreferences.edit();
+        // Save the status to sharedPreferences
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        editor = sharedPreferences.edit();
+
         theme = view.findViewById(R.id.theme);
+        // Set NightMode to false
         theme.setChecked(sharedPreferences.getBoolean("NightMode", false));
         theme.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                // Save the status when the switch is checked
                 editor.putBoolean("NightMode", b);
                 editor.commit();
-                AppCompatDelegate.setDefaultNightMode( b ? AppCompatDelegate.MODE_NIGHT_YES : AppCompatDelegate.MODE_NIGHT_NO);
+                // if NightMode is true change the app to NightMode, else set it to light mode
+                AppCompatDelegate.setDefaultNightMode(b ? AppCompatDelegate.MODE_NIGHT_YES : AppCompatDelegate.MODE_NIGHT_NO);
+                // Restart the app
                 getActivity().startActivity(new Intent(getActivity().getApplicationContext(), MainActivity.class));
                 getActivity().finish();
             }
         });
-
+        // Change app layout
         layout = view.findViewById(R.id.layout_customize);
+        // set change app layout to false
         layout.setChecked(sharedPreferences.getBoolean("layout", false));
         layout.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                // save the stats when the switch is checked
                 editor.putBoolean("layout", b);
                 editor.commit();
+                // Restart the app
                 getActivity().startActivity(new Intent(getActivity().getApplicationContext(), MainActivity.class));
                 getActivity().finish();
             }
