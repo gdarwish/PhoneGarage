@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ghaithButton">غيث درويش</string>
+    <string name="aliButton">علي دالي</string>
+    <string name="action_settings">الإعدادات</string>
+    <string name="menu_settings">الإعدادات</string>
+    <string name="menu_home">الصفحة الرئيسية</string>
+    <string name="menu_favourites">المفضلة</string>
+    <string name="menu_compare">مقارنة</string>
+    <string name="menu_about">حول</string>
+    <string name="devTitle">المبرمجين</string>
+    <string name="comp_added">تمت إضافة الهاتف إلى قائمة المقارنة.</string>
+    <string name="comp_exist">الهاتف موجود بالفعل في قائمة المقارنة.</string>
+    <string name="comp_full">قائمة المقارنة ممتلئة.</string>
+    <string name="contactTitle">تو اصل</string>
+    <string name="fav_added">تمت إضافة الهاتف إلى المفضلة.</string>
+    <string name="fav_exist">الهاتف موجود بالفعل في المفضلة.</string>
+    <string name="phonesSummary">غير الواجهة</string>
+    <string name="resButton">المصادر</string>
+    <string name="addToContactButton">إضافة جهة اتصال</string>
+</resources>

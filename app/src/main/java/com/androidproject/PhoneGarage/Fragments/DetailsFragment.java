@@ -77,7 +77,7 @@ public class DetailsFragment extends Fragment {
         listView = view.findViewById(R.id.listView);
 
         final ArrayList<DetailsList> list = new ArrayList<>();
-        list.add(new DetailsList(getString(R.string.brand), phone.getBrand()));
+        list.add(new DetailsList("Brand", phone.getBrand()));
         list.add(new DetailsList("Size", phone.getSize()));
         list.add(new DetailsList("Resolution", phone.getResolution()));
         list.add(new DetailsList("Dimensions", phone.getDimensions()));
