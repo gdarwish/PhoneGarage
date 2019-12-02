@@ -13,7 +13,9 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.androidproject.PhoneGarage.HelperAdapter.RecyclerViewAdapter;
@@ -35,7 +37,6 @@ public class HomeFragment extends Fragment {
     RecyclerView mRecyclerView;
     RecyclerViewAdapter mAdapter;
 
-
     ArrayList<Phone> phones;
     ArrayList<Phone> searchedPhones;
     EditText searchText;
@@ -45,20 +46,24 @@ public class HomeFragment extends Fragment {
     }
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+//        if (getArguments() != null) {
+//            phone = (Phone) getArguments().getSerializable("phone");
+//        }
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         phones = Data.getInstance(getContext()).getPhonesList();
-
         mRecyclerView = view.findViewById(R.id.recyclerview2);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
         mAdapter = new RecyclerViewAdapter(getContext(), phones);
-
         mRecyclerView.setAdapter(mAdapter);
-
         searchText = view.findViewById(R.id.searchText);
 
         SwipeHelper swipeHelper = new SwipeHelper(getContext(), mRecyclerView, 200) {

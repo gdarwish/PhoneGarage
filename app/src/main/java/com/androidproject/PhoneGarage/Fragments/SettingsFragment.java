@@ -8,16 +8,14 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 
 import com.androidproject.PhoneGarage.JavaBeans.MainActivity;
-import com.androidproject.PhoneGarage.JavaBeans.ModeSharePref;
 import com.androidproject.PhoneGarage.R;
 
 
@@ -26,16 +24,11 @@ import com.androidproject.PhoneGarage.R;
  */
 public class SettingsFragment extends Fragment {
 
-    ModeSharePref modeSharePref;
-    public Switch theme;
+    Switch theme;
+    Switch layout;
 
-    public Switch getTheme() {
-        return theme;
-    }
-
-    public void setTheme(Switch theme) {
-        this.theme = theme;
-    }
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
 
     public SettingsFragment() {
         // Required empty public constructor
@@ -44,35 +37,32 @@ public class SettingsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_settings, container, false);
 
-        modeSharePref = new ModeSharePref(getContext());
-
-        if (modeSharePref.loadNightMode()) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-        } else {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        }
+         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+         editor = sharedPreferences.edit();
         theme = view.findViewById(R.id.theme);
-        theme.setChecked(modeSharePref.onOff());
+        theme.setChecked(sharedPreferences.getBoolean("NightMode", false));
         theme.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (b) {
-                    modeSharePref.setNightMode(true);
-//                    theme.setText("Light Mode");
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                    getActivity().startActivity(new Intent(getActivity().getApplicationContext(), MainActivity.class));
-                    getActivity().finish();
+                editor.putBoolean("NightMode", b);
+                editor.commit();
+                AppCompatDelegate.setDefaultNightMode( b ? AppCompatDelegate.MODE_NIGHT_YES : AppCompatDelegate.MODE_NIGHT_NO);
+                getActivity().startActivity(new Intent(getActivity().getApplicationContext(), MainActivity.class));
+                getActivity().finish();
+            }
+        });
 
-                } else {
-                    modeSharePref.setNightMode(false);
-//                    theme.setText("Dark Mode");
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                    getActivity().startActivity(new Intent(getActivity().getApplicationContext(), MainActivity.class));
-                    getActivity().finish();
-                }
+        layout = view.findViewById(R.id.layout_customize);
+        layout.setChecked(sharedPreferences.getBoolean("layout", false));
+        layout.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                editor.putBoolean("layout", b);
+                editor.commit();
+                getActivity().startActivity(new Intent(getActivity().getApplicationContext(), MainActivity.class));
+                getActivity().finish();
             }
         });
 
