@@ -14,9 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.androidproject.PhoneGarage.HelperAdapter.RecyclerViewAdapter;
@@ -24,7 +22,7 @@ import com.androidproject.PhoneGarage.JavaBeans.Data;
 import com.androidproject.PhoneGarage.JavaBeans.ButtonClickListener;
 import com.androidproject.PhoneGarage.JavaBeans.Phone;
 import com.androidproject.PhoneGarage.R;
-import com.androidproject.PhoneGarage.JavaBeans.SwipeHelper;
+import com.androidproject.PhoneGarage.HelperAdapter.SwipeHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,9 +61,6 @@ public class HomeFragment extends Fragment {
         mAdapter = new RecyclerViewAdapter(getContext(), phones);
         mRecyclerView.setAdapter(mAdapter);
         searchText = view.findViewById(R.id.searchText);
-        Log.e("PHONE", "phone " + phones.get(0).getDetailsFormatted());
-        Log.v("PHONE", "phone " + phones.get(0).getDetailsFormatted());
-        Log.v("PHONE", "phone ");
 
         /**
          * @author Ghaith Darwish

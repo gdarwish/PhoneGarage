@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import com.androidproject.PhoneGarage.HelperAdapter.RecyclerViewAdapter;
 import com.androidproject.PhoneGarage.JavaBeans.ButtonClickListener;
 import com.androidproject.PhoneGarage.JavaBeans.Phone;
-import com.androidproject.PhoneGarage.JavaBeans.SwipeHelper;
+import com.androidproject.PhoneGarage.HelperAdapter.SwipeHelper;
 import com.androidproject.PhoneGarage.R;
 
 import java.util.List;

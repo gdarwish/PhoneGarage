@@ -36,10 +36,6 @@ public class Data {
 
             phones = gson.fromJson(jsonPhones, phoneType);
 
-
-//            for (Phone phone: phones) {
-//                Log.d("PHONES", phone.getDetailsFormatted());
-//            }
         }
 
     }

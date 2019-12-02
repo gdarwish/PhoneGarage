@@ -1,4 +1,4 @@
-package com.androidproject.PhoneGarage.JavaBeans;
+package com.androidproject.PhoneGarage.HelperAdapter;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -15,6 +15,8 @@ import android.graphics.drawable.Drawable;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
+
+import com.androidproject.PhoneGarage.JavaBeans.ButtonClickListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
