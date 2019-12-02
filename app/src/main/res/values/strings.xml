@@ -17,27 +17,26 @@
 
     <string name="label_details">Phone Details</string>
 
-    <string name="ghaithButton">Ghaith Darwish</string>
-    <string name="aliButton">Ali Dali</string>
-    <string name="resources">Resources</string>
-    <string name="developers">Developers</string>
-    <string name="contact">Contact</string>
-    <string name="text">Text</string>
-    <string name="addToContactButton">Add Contact</string>
-    <string name="phonesSummary">Change Layout</string>
 
+
+    <!-- Home -->
+    <string name="search">Enter a device name</string>
 
     <!-- Favourite -->
     <string name="fav_exist">Phone already exist in favourites.</string>
     <string name="fav_added">Phone added to favourites.</string>
     <string name="fav_no_phones">There are no favourite phones.</string>
+    <string name="fav_removed">Phone is removed from favourites.</string>
 
     <!-- Compare -->
     <string name="comp_full">Comparing List is full.</string>
     <string name="comp_exist">Phone already exist in Comparing List.</string>
     <string name="comp_added">Phone added to Comparing List.</string>
     <string name="comp_no_phones">There are no phones to compare.</string>
+    <string name="comp_removed">Phone is removed from the list.</string>
 
+
+    <!-- Phone Details -->
     <string name="phone_brand">Brand</string>
     <string name="phone_size">Size</string>
     <string name="phone_resolution">Resolution</string>
@@ -60,4 +59,36 @@
     <string name="phone_front_camera">Front Camera</string>
     <string name="phone_primary_camera">Primary Camera</string>
     <string name="phone_charging">Charging</string>
+
+
+
+
+    <!-- Settings -->
+    <string name="dark_light_mode">Dark/Light Mode</string>
+    <string name="change_layout">Change Layout</string>
+
+    <!-- About -->
+    <string name="about_developers">Developers</string>
+    <string name="about_ghaith">Ghaith Darwish</string>
+    <string name="about_ali">Ali Dali</string>
+    <string name="about_resources">Resources</string>
+
+    <!-- Developers -->
+    <string name="developers_website">Website</string>
+    <string name="developers_email">Email</string>
+    <string name="developers_facebook">Facebook</string>
+    <string name="developers_call">Call</string>
+    <string name="developers_contact">Contact</string>
+    <string name="developers_text">Text</string>
+    <string name="developers_add_contact">Add Contact</string>
+    <string name="developers_location">Location</string>
+
+    <!-- Resources -->
+    <string name="resources_icons">Icons</string>
+    <string name="resources_logo">Logo</string>
+    <string name="resources_images">Images</string>
+    <string name="resources_others">Others</string>
+    <string name="resources_color_design">Color &amp; Design</string>
+
+
 </resources>

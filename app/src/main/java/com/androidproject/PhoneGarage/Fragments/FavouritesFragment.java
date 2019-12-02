@@ -127,7 +127,7 @@ public class FavouritesFragment extends Fragment {
 
                         saveData();
 
-                        Toast.makeText(getContext(), "Deleted from favourite", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), getString(R.string.fav_removed), Toast.LENGTH_SHORT).show();
                     }
                 }));
             }

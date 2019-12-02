@@ -97,7 +97,7 @@ public class DetailsFragment extends Fragment {
         list.add(new DetailsList(getString(R.string.phone_gpu), phone.getGpu()));
         list.add(new DetailsList(getString(R.string.phone_camera_features), phone.getCameraFeature()));
         list.add(new DetailsList(getString(R.string.phone_front_camera), phone.getFrontCamera()));
-        list.add(new DetailsList(getString(R.string.phone_primary_camera), phone.getDualCamera()));
+        list.add(new DetailsList(getString(R.string.phone_primary_camera), phone.getPrimaryCamera()));
         list.add(new DetailsList(getString(R.string.phone_charging), phone.getCharging()));
 
         CustomListViewAdapter adapterList = new CustomListViewAdapter(getContext(), list);

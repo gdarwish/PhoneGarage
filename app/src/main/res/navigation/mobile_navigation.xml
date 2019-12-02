@@ -52,11 +52,11 @@
     <fragment
         android:id="@+id/developersFragment"
         android:name="com.androidproject.PhoneGarage.Fragments.DevelopersFragment"
-        android:label="@string/developers"
+        android:label="@string/about_developers"
         tools:layout="@layout/fragment_developers" />
     <fragment
         android:id="@+id/resFragment"
-        android:name="com.androidproject.PhoneGarage.Fragments.ResFragment"
-        android:label="@string/resources"
-        tools:layout="@layout/fragment_res" />
+        android:name="com.androidproject.PhoneGarage.Fragments.ResourcesFragment"
+        android:label="@string/about_resources"
+        tools:layout="@layout/fragment_resources" />
 </navigation>

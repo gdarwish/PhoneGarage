@@ -28,7 +28,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
-                android:text="@string/developers"
+                android:text="@string/about_developers"
                 android:textColor="@color/text_color"
                 android:textSize="@dimen/header"
                 android:textStyle="italic" />
@@ -40,7 +40,7 @@
                 android:layout_margin="10dp"
                 android:background="@drawable/custome_button"
                 android:padding="10dp"
-                android:text="@string/ghaithButton"
+                android:text="@string/about_ghaith"
                 android:textAllCaps="false"
                 android:textColor="@color/button_color"
                 android:textSize="@dimen/details_list_textsize" />
@@ -52,7 +52,7 @@
                 android:layout_margin="10dp"
                 android:background="@drawable/custome_button"
                 android:padding="10dp"
-                android:text="@string/aliButton"
+                android:text="@string/about_ali"
                 android:textAllCaps="false"
                 android:textColor="@color/button_color"
                 android:textSize="@dimen/details_list_textsize" />
@@ -62,11 +62,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
-                android:text="@string/resources"
+                android:text="@string/about_resources"
                 android:textColor="@color/text_color"
                 android:textSize="@dimen/header"
                 android:textStyle="italic"
-                tools:text="@string/resources" />
+                tools:text="@string/about_resources" />
 
             <Button
                 android:id="@+id/resButton"
@@ -75,7 +75,7 @@
                 android:layout_margin="10dp"
                 android:background="@drawable/custome_button"
                 android:padding="10dp"
-                android:text="@string/resources"
+                android:text="@string/about_resources"
                 android:textAllCaps="false"
                 android:textColor="@color/button_color"
                 android:textSize="@dimen/details_list_textsize" />
