@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragmentA"
     android:layout_width="match_parent"
-    android:background="@color/background_color"
     android:layout_height="match_parent"
+    android:background="@color/background_color"
     android:orientation="vertical"
     android:tag="home"
     tools:context="com.androidproject.PhoneGarage.Fragments.HomeFragment">
@@ -14,10 +15,10 @@
         style="@style/Widget.MaterialComponents.TextInputEditText.FilledBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/search_bar"
         android:ems="10"
         android:focusable="auto"
         android:focusableInTouchMode="true"
-        android:background="@color/search_bar"
         android:focusedByDefault="false"
         android:hint="Enter a device name"
         android:inputType="textPersonName"
@@ -36,7 +37,7 @@
                 android:id="@+id/recyclerview2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:listitem="@layout/row_item" />
+                tools:listitem="@layout/recycler_view_row" />
 
         </LinearLayout>
     </ScrollView>

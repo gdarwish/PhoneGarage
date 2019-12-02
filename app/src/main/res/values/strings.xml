@@ -26,4 +26,5 @@
     <string name="contactTitle">Contact</string>
     <string name="textButtonTitle">Text</string>
     <string name="addToContactButton">Add To Contact</string>
+    <string name="phonesSummary">Phones summary</string>
 </resources>
