@@ -16,13 +16,13 @@ import com.smarteist.autoimageslider.SliderViewAdapter;
 public class SliderAdapterExample extends SliderViewAdapter<SliderAdapterExample.SliderAdapterVH> {
 
     private Context context;
-    private String url;
+    private String[] url;
 
     /**
      * @param context
      * @param url
      */
-    public SliderAdapterExample(Context context, String url) {
+    public SliderAdapterExample(Context context, String[] url) {
         this.context = context;
         this.url = url;
     }
@@ -43,25 +43,10 @@ public class SliderAdapterExample extends SliderViewAdapter<SliderAdapterExample
      */
     @Override
     public void onBindViewHolder(SliderAdapterVH viewHolder, int position) {
-
-        switch (position) {
-            case 0:
-                Glide.with(viewHolder.itemView)
-                        .load(url)
-                        .into(viewHolder.imageViewBackground);
-                break;
-            case 1:
-                Glide.with(viewHolder.itemView)
-                        .load(url)
-                        .into(viewHolder.imageViewBackground);
-                break;
-            case 2:
-                Glide.with(viewHolder.itemView)
-                        .load(url)
-                        .into(viewHolder.imageViewBackground);
-                break;
-            default:
-                break;
+        for (int i = 0; i <= position; i++) {
+            Glide.with(viewHolder.itemView)
+                    .load(url[i])
+                    .into(viewHolder.imageViewBackground);
         }
     }
 
@@ -71,7 +56,7 @@ public class SliderAdapterExample extends SliderViewAdapter<SliderAdapterExample
     @Override
     public int getCount() {
         //slider view count could be dynamic size
-        return 3;
+        return url.length;
     }
 
     /**

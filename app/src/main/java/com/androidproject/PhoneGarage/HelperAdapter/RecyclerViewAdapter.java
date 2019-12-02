@@ -74,7 +74,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<MyHolder> {
         final Phone phone = phones.get(position);
 
         if (holder.mImageView != null)
-            Picasso.get().load(phone.getImageUrl()).placeholder(R.drawable.iphone).into(holder.mImageView);
+            Picasso.get().load(phone.getImageUrl()[0]).placeholder(R.drawable.iphone).into(holder.mImageView);
 
         holder.mTitle.setText(phone.getBrand());
         holder.mDescription.setText(phone.getDeviceName());
