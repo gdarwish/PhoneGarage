@@ -33,7 +33,7 @@
     <string name="phone_colors">الألوان</string>
     <string name="phone_cpu">المعالج</string>
     <string name="phone_dimensions">الأبعاد</string>
-    <string name="phone_dual_camera">الكاميرا الأساسية</string>
+    <string name="phone_primary_camera">الكاميرا الأساسية</string>
     <string name="phone_front_camera">الكاميرا الأمامية</string>
     <string name="phone_gps">"نظام تحديد المواقع "</string>
     <string name="phone_gpu">الجرافيك</string>

@@ -58,6 +58,6 @@
     <string name="phone_gpu">GPU</string>
     <string name="phone_camera_features">Camera Features</string>
     <string name="phone_front_camera">Front Camera</string>
-    <string name="phone_dual_camera">Primary Camera</string>
+    <string name="phone_primary_camera">Primary Camera</string>
     <string name="phone_charging">Charging</string>
 </resources>
