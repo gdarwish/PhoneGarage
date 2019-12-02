@@ -78,10 +78,10 @@ public class HomeFragment extends Fragment {
                         String message = "";
                         switch (result) {
                             case CompareFragment.PHONE_EXIST:
-                                message = "Phone already exist in favourites.";
+                                message = getString(R.string.fav_exist);
                                 break;
                             case CompareFragment.PHONE_ADDED:
-                                message = "Phone added to favourites.";
+                                message = getString(R.string.fav_added);
                                 break;
                         }
 
@@ -98,13 +98,13 @@ public class HomeFragment extends Fragment {
                         String message = "";
                         switch (result) {
                             case CompareFragment.LIST_FULL:
-                                message = "Comparing Phones List is full.";
+                                message = getString(R.string.comp_full);
                                 break;
                             case CompareFragment.PHONE_EXIST:
-                                message = "Phone already exist in Comparing List.";
+                                message = getString(R.string.comp_exist);
                                 break;
                             case CompareFragment.PHONE_ADDED:
-                                message = "Phone added to Comparing List.";
+                                message = getString(R.string.comp_added);
                         }
 
                         Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();

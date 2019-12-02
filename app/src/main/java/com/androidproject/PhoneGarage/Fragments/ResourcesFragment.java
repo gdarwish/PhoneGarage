@@ -11,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.androidproject.PhoneGarage.HelperAdapter.CustomListViewAdapter;
@@ -24,13 +23,13 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ResFragment extends Fragment {
+public class ResourcesFragment extends Fragment {
 
     ListView res_list;
     String url = "";
 
 
-    public ResFragment() {
+    public ResourcesFragment() {
         // Required empty public constructor
     }
 
@@ -38,15 +37,15 @@ public class ResFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_res, container, false);
+        View view = inflater.inflate(R.layout.fragment_resources, container, false);
 
         res_list = view.findViewById(R.id.res_list);
         final ArrayList<DetailsList> list = new ArrayList<>();
-        list.add(new DetailsList("Icons made by", "Dave Gandy", "https://www.flaticon.com/authors/dave-gandy"));
-        list.add(new DetailsList("Logo made by ", "Free Online Logo Maker", "https://www.designevo.com/logo-maker/"));
-        list.add(new DetailsList("Other icons made by ", "Font Awesome", "https://fontawesome.com/"));
-        list.add(new DetailsList("Images made by", "Rogers", "https://www.rogers.com/consumer/ho"));
-        list.add(new DetailsList("Color & Design", "Ghaith Darwish", "https://gdarwish.scweb.ca/GDWeb/"));
+        list.add(new DetailsList(getString(R.string.resources_icons), "Dave Gandy", "https://www.flaticon.com/authors/dave-gandy"));
+        list.add(new DetailsList(getString(R.string.resources_logo), "Free Online Logo Maker", "https://www.designevo.com/logo-maker/"));
+        list.add(new DetailsList(getString(R.string.resources_images), "Rogers", "https://www.rogers.com/consumer/ho"));
+        list.add(new DetailsList(getString(R.string.resources_others), "Font Awesome", "https://fontawesome.com/"));
+        list.add(new DetailsList(getString(R.string.resources_color_design), "Ghaith Darwish", "https://gdarwish.scweb.ca/GDWeb/"));
 
          CustomListViewAdapter adapte = new CustomListViewAdapter(getContext(), list);
         res_list.setAdapter(adapte);

@@ -28,7 +28,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
-                android:text="@string/contactTitle"
+                android:text="@string/developers_contact"
                 android:textColor="@color/text_color"
                 android:textSize="@dimen/header"
                 android:textStyle="italic" />
@@ -40,7 +40,7 @@
                 android:layout_margin="10dp"
                 android:background="@drawable/custome_button"
                 android:padding="10dp"
-                android:text="Website"
+                android:text="@string/developers_website"
                 android:textAllCaps="false"
                 android:textColor="@color/button_color" />
 
@@ -51,7 +51,7 @@
                 android:layout_margin="10dp"
                 android:background="@drawable/custome_button"
                 android:padding="10dp"
-                android:text="Email"
+                android:text="@string/developers_email"
                 android:textAllCaps="false"
                 android:textColor="@color/button_color" />
 
@@ -62,7 +62,7 @@
                 android:layout_margin="10dp"
                 android:background="@drawable/custome_button"
                 android:padding="10dp"
-                android:text="Facebook"
+                android:text="@string/developers_facebook"
                 android:textAllCaps="false"
                 android:textColor="@color/button_color" />
 
@@ -73,7 +73,7 @@
                 android:layout_margin="10dp"
                 android:background="@drawable/custome_button"
                 android:padding="10dp"
-                android:text="Call"
+                android:text="@string/developers_call"
                 android:textAllCaps="false"
                 android:textColor="@color/button_color" />
 
@@ -84,7 +84,7 @@
                 android:layout_margin="10dp"
                 android:background="@drawable/custome_button"
                 android:padding="10dp"
-                android:text="@string/textButtonTitle"
+                android:text="@string/developers_text"
                 android:textAllCaps="false"
                 android:textColor="@color/button_color" />
 
@@ -95,7 +95,7 @@
                 android:layout_margin="10dp"
                 android:background="@drawable/custome_button"
                 android:padding="10dp"
-                android:text="@string/addToContactButton"
+                android:text="@string/developers_add_contact"
                 android:textAllCaps="false"
                 android:textColor="@color/button_color" />
 
@@ -106,7 +106,7 @@
                 android:layout_margin="10dp"
                 android:background="@drawable/custome_button"
                 android:padding="10dp"
-                android:text="Location"
+                android:text="@string/developers_location"
                 android:textAllCaps="false"
                 android:textColor="@color/button_color" />
 

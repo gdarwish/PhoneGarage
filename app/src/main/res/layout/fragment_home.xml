@@ -20,7 +20,7 @@
         android:focusable="auto"
         android:focusableInTouchMode="true"
         android:focusedByDefault="false"
-        android:hint="Enter a device name"
+        android:hint="@string/search"
         android:inputType="textPersonName"
         android:padding="10dp" />
 

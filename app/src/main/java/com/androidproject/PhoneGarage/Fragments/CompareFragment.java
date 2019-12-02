@@ -114,7 +114,7 @@ public class CompareFragment extends Fragment {
                     compareText.setVisibility(View.VISIBLE);
                 }
                 saveData();
-                Toast.makeText(getContext(), "Phone is deleted", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.comp_removed), Toast.LENGTH_SHORT).show();
             }
         });
 
