@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.androidproject.PhoneGarage.Fragments.DevelopersFragment;
+import com.androidproject.PhoneGarage.Fragments.SettingsFragment;
 import com.androidproject.PhoneGarage.R;
 
 import androidx.annotation.NonNull;
@@ -52,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
 
         modeSharePref = new ModeSharePref(this);
 
-
         if (modeSharePref.loadNightMode()) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         } else {
@@ -83,6 +83,17 @@ public class MainActivity extends AppCompatActivity {
             case DevelopersFragment.PERMISSION_CALL:
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", DevelopersFragment.phone, null));
+                    if (intent.resolveActivity(getPackageManager()) != null) {
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(MainActivity.this, "No software installed to complete task", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                break;
+            case DevelopersFragment.PERMISSION_SEND_SMS:
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("sms", DevelopersFragment.phone, null));
+                    intent.putExtra("sms_body", "I am having troubles with the following: Java, swift, android, and OOAP");
                     if (intent.resolveActivity(getPackageManager()) != null) {
                         startActivity(intent);
                     } else {
