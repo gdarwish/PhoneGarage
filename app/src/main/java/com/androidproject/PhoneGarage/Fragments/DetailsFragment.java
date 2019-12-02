@@ -103,7 +103,13 @@ public class DetailsFragment extends Fragment {
         //ListView ends here
         return view;
     }
-    
+
+    /**
+     *  Create new instance of DetailsFragment for ViewPager
+     * @param phone object
+     * @return new instance of DetailsFragment
+     * @author Ali Dali
+     */
     public static DetailsFragment newInstance(Phone phone) {
         DetailsFragment fragment = new DetailsFragment();
         Bundle args = new Bundle();

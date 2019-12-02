@@ -10,6 +10,11 @@ import java.io.InputStream;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
+/**
+ * This class will read JSON file and store it inside a list
+ *
+ * @author Ali Dali
+ */
 public class Data {
 
     private ArrayList<Phone> phones;
@@ -18,9 +23,9 @@ public class Data {
     private static Data data;
 
     public static Data getInstance(Context context) {
-        if (data != null)
-            return data;
-        return new Data(context);
+        if (data == null)
+            data = new Data(context);
+        return data;
     }
 
     private Data(Context context) {
@@ -44,7 +49,13 @@ public class Data {
         return phones;
     }
 
-
+    /**
+     *
+     * This will read data from json file and store in string
+     * @param context
+     * @return String json data
+     * @author Ali Dali
+     */
     private String generateJSON(Context context) {
 
         try {

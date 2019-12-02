@@ -32,15 +32,19 @@ import com.androidproject.PhoneGarage.R;
 
 import java.util.List;
 
-
 /**
+ * This class will show favourite phones
+ * It displays favourite phones in RecyclerView
+ * @author Ali Dali
  * A simple {@link Fragment} subclass.
  */
 public class FavouritesFragment extends Fragment {
 
+    // Response if phone already exist or added
     public static final int PHONE_EXIST = -1;
     public static final int PHONE_ADDED = 1;
 
+    // Key for shared preferences
     private static final String PHONES = "fav_phones";
 
     RecyclerView mRecyclerView;
@@ -52,6 +56,8 @@ public class FavouritesFragment extends Fragment {
     private static SharedPreferences sharedPreferences;
     private static Gson gson;
 
+
+    // List of favourite phones
     private static ArrayList<Phone> phones;
 
     private static FavouritesFragment instance;
@@ -66,6 +72,13 @@ public class FavouritesFragment extends Fragment {
         initialize(context);
     }
 
+
+    /**
+     * It will initialize all variables in order to add to favourites
+     * This is needed to add phones from external classes
+     * @param context
+     * @author Ali Dali
+     */
     private void initialize(Context context) {
         if (phones == null)
             phones = new ArrayList<>();
@@ -136,6 +149,11 @@ public class FavouritesFragment extends Fragment {
         return view;
     }
 
+    /**
+     * Check if phone already exist , otherwise add the phone to list and save it in preference
+     * @param phone object
+     * @return int that determines if phone (exist or added)
+     */
     public int addPhoneToCompare(Phone phone) {
         loadData();
 
@@ -147,6 +165,10 @@ public class FavouritesFragment extends Fragment {
         return PHONE_ADDED;
     }
 
+    /**
+     * Save list in shared preference
+     * @author Ali Dali
+     */
     private void saveData() {
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
@@ -156,6 +178,10 @@ public class FavouritesFragment extends Fragment {
         editor.commit();
     }
 
+    /**
+     * Load phones from shared preference
+     * @author Ali Dali
+     */
     private void loadData() {
         if (sharedPreferences != null) {
             String jsonArray = sharedPreferences.getString(PHONES, gson.toJson(new ArrayList<>())); // Default is an empty ArrayList<>()

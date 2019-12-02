@@ -58,10 +58,10 @@ public class AboutFragment extends Fragment {
                 args.putInt(Consts.image, R.drawable.aliimg);
                 args.putString(Consts.website, "https://adali.scweb.ca/");
                 args.putStringArray(Consts.email, new String[]{"ali.dali01@stclairconnect.ca"});
-                args.putString(Consts.facebook, "https://www.facebook.com/");
-                args.putString(Consts.phone, "+222");
+                args.putString(Consts.facebook, "https://www.facebook.com/profile.php");
+                args.putString(Consts.phone, "2262609999");
                 args.putString(Consts.location, "geo:0,0?q=42.2465,-83.0191 St.Clair College");
-                args.putString(Consts.addToContact, "+222");
+                args.putString(Consts.addToContact, "2262609999");
 
                 Navigation.findNavController(view).navigate(R.id.action_nav_about_to_developersFragment, args);
             }

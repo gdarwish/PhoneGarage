@@ -4,6 +4,10 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
+/**
+ * JSON objects will be stored as Phone object
+ * @author Ali Dali
+ */
 public class Phone implements Serializable {
     /*
     imageUrl
