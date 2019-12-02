@@ -27,4 +27,14 @@
     <string name="textButtonTitle">Text</string>
     <string name="addToContactButton">Add To Contact</string>
     <string name="phonesSummary">Change Layout</string>
+
+
+    <!-- Favourite -->
+    <string name="fav_exist">Phone already exist in favourites.</string>
+    <string name="fav_added">Phone added to favourites.</string>
+
+    <!-- Compare -->
+    <string name="comp_full">Comparing Phones List is full.</string>
+    <string name="comp_exist">Phone already exist in Comparing List.</string>
+    <string name="comp_added">Phone added to Comparing List.</string>
 </resources>
