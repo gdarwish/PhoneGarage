@@ -63,6 +63,7 @@
     <!-- Settings -->
     <string name="dark_light_mode">Dark/Light Mode</string>
     <string name="change_layout">Change Layout</string>
+    <string name="change_language">English/Arabic</string>
 
     <!-- About -->
     <string name="about_developers">Developers</string>

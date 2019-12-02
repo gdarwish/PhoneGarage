@@ -60,4 +60,5 @@
     <string name="resources_color_design">الألوان والتصميم</string>
     <string name="comp_removed">تمت إزالة الهاتف من القائمة.</string>
     <string name="fav_removed">تمت إزالة الهاتف من المفضلة.</string>
+    <string name="change_language">الإنجليزية/العربية</string>
 </resources>

@@ -29,4 +29,15 @@
         android:thumbTint="@color/colorPrimary"
         android:trackTint="#0c7a0e" />
 
+    <Switch
+        android:id="@+id/language_setting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="18dp"
+        android:text="@string/change_language"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/details_list_textsize"
+        android:thumbTint="@color/colorPrimary"
+        android:trackTint="#0c7a0e" />
+
 </LinearLayout>

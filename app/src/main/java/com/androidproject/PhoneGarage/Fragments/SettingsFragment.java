@@ -3,6 +3,7 @@ package com.androidproject.PhoneGarage.Fragments;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatDelegate;
@@ -18,6 +19,8 @@ import android.widget.Switch;
 import com.androidproject.PhoneGarage.JavaBeans.MainActivity;
 import com.androidproject.PhoneGarage.R;
 
+import java.util.Locale;
+
 
 /**
  * @author gaithdarwish
@@ -26,6 +29,7 @@ public class SettingsFragment extends Fragment {
 
     Switch theme;
     Switch layout;
+    Switch language;
 
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
@@ -74,6 +78,38 @@ public class SettingsFragment extends Fragment {
                 getActivity().finish();
             }
         });
+
+        // Change language
+        language = view.findViewById(R.id.language_setting);
+        // set language to english as default
+        language.setChecked(sharedPreferences.getBoolean("language", false));
+        language.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                Locale locale;
+                if(b) {
+                    locale = new Locale("ar");
+                } else {
+                    locale = new Locale("en");
+                }
+                Locale.setDefault(locale);
+                Configuration config = new Configuration();
+                config.locale = locale;
+                getActivity().getBaseContext().getResources().updateConfiguration(config, getActivity().getBaseContext().getResources().getDisplayMetrics());
+
+
+                // save the stats when the switch is checked
+                editor.putBoolean("language", b);
+                editor.commit();
+
+                // Restart the app
+                getActivity().startActivity(new Intent(getActivity().getApplicationContext(), MainActivity.class));
+                getActivity().finish();
+            }
+        });
+
+
+
 
         return view;
     }
