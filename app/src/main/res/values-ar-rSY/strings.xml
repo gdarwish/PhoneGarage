@@ -19,6 +19,7 @@
     <string name="resources">المصادر</string>
     <string name="addToContactButton">إضافة جهة اتصال</string>
     <string name="label_details">تفاصيل الجهاز</string>
-    <string name="resources">المصادر</string>
     <string name="text">"ارسل رسالة "</string>
+    <string name="app_name" translatable="false">كراج الهواتف</string>
+    <string name="more" translatable="false"><font fgcolor="#e63c3c">المزيد</font></string>
 </resources>
