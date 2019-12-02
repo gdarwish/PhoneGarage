@@ -3,11 +3,13 @@ package com.androidproject.PhoneGarage.Fragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import android.preference.PreferenceManager;
@@ -40,7 +42,7 @@ public class CompareFragment extends Fragment {
     public static final int LIST_FULL = 0;
     public static final int PHONE_ADDED = 1;
 
-    private static final int MAX_PHONES = 4;
+    private static final int MAX_PHONES = 3;
     private static final String PHONES = "phones";
 
     private static SharedPreferences sharedPreferences;
@@ -56,6 +58,7 @@ public class CompareFragment extends Fragment {
     private FloatingActionButton fab;
     private TextView compareText;
 
+    private boolean tablet;
 
     private static CompareFragment instance;
 
@@ -88,7 +91,29 @@ public class CompareFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         initialize(getContext());
-        loadData();
+
+        int currentOrientation = getResources().getConfiguration().orientation;
+        if (currentOrientation == Configuration.ORIENTATION_PORTRAIT) {
+            Log.e("orientation", "PORTRAIT");
+            tablet = false;
+        } else {
+            Log.e("orientation", "LANDSCAPE");
+            tablet = true;
+        }
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+
+        super.onConfigurationChanged(newConfig);
+
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            Log.e("orientation", "LANDSCAPE");
+            tablet = true;
+        } else {
+            Log.e("orientation", "PORTRAIT");
+            tablet = false;
+        }
     }
 
 
@@ -97,56 +122,88 @@ public class CompareFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_compare, container, false);
+        loadData();
 
-        compareText = view.findViewById(R.id.compareText);
-        compareText.setVisibility(View.GONE);
+        if (!tablet || view.findViewById(R.id.fragment_phone_first) == null) {
+            compareText = view.findViewById(R.id.compareText);
+            compareText.setVisibility(View.GONE);
 
 
-        fab = view.findViewById(R.id.fabBtn);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("POSITION", currentPosition + "");
-                phones.remove(currentPosition);
-                adapter.notifyDataSetChanged();
-                if (phones.isEmpty()) {
-                    fab.setVisibility(View.GONE);
-                    compareText.setVisibility(View.VISIBLE);
+            fab = view.findViewById(R.id.fabBtn);
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.d("POSITION", currentPosition + "");
+                    phones.remove(currentPosition);
+                    adapter.notifyDataSetChanged();
+                    if (phones.isEmpty()) {
+                        fab.setVisibility(View.GONE);
+                        compareText.setVisibility(View.VISIBLE);
+                    }
+                    saveData();
+                    Toast.makeText(getContext(), getString(R.string.comp_removed), Toast.LENGTH_SHORT).show();
                 }
-                saveData();
-                Toast.makeText(getContext(), getString(R.string.comp_removed), Toast.LENGTH_SHORT).show();
-            }
-        });
+            });
 
-        if (phones.isEmpty()) {
-            fab.setVisibility(View.GONE);
-            compareText.setVisibility(View.VISIBLE);
+            if (phones.isEmpty()) {
+                fab.setVisibility(View.GONE);
+                compareText.setVisibility(View.VISIBLE);
+            }
+
+
+            adapter = new CompareAdapter(getChildFragmentManager());
+            viewPager = view.findViewById(R.id.compareViewPager);
+            viewPager.setAdapter(adapter);
+
+            // Get the current position of the ViewPager
+            viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                @Override
+                public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+                }
+
+                @Override
+                public void onPageSelected(int position) {
+                    currentPosition = position;
+                }
+
+                @Override
+                public void onPageScrollStateChanged(int state) {
+
+                }
+            });
+        } else {
+
+            int[] layouts = {R.id.fragment_phone_first, R.id.fragment_phone_second, R.id.fragment_phone_third};
+            final FloatingActionButton[] floatingActionButtons = {view.findViewById(R.id.fabBtn), view.findViewById(R.id.fabBtn2), view.findViewById(R.id.fabBtn3)};
+
+            for (int i = 0; i < phones.size(); i++) {
+                final int index = i;
+                getChildFragmentManager().beginTransaction().replace(layouts[i], DetailsFragment.newInstance(phones.get(i)), "Phone" + i).commit();
+                floatingActionButtons[i].setVisibility(View.VISIBLE);
+                floatingActionButtons[i].setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        removePhone(index);
+                        getChildFragmentManager().beginTransaction().remove(getChildFragmentManager().findFragmentByTag("Phone" + index)).commit();
+                        floatingActionButtons[index].setVisibility(View.GONE);
+                        Toast.makeText(getContext(), getString(R.string.comp_removed), Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
         }
 
-
-        adapter = new CompareAdapter(getChildFragmentManager());
-        viewPager = view.findViewById(R.id.compareViewPager);
-        viewPager.setAdapter(adapter);
-
-        // Get the current position of the ViewPager
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                currentPosition = position;
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
-
         return view;
+    }
+
+    private void removePhone(int index) {
+        if (index > phones.size() - 1) {
+            removePhone(--index);
+        } else {
+            phones.remove(index);
+            saveData();
+            getChildFragmentManager().beginTransaction().remove(getChildFragmentManager().findFragmentByTag("Phone" + index)).commit();
+        }
     }
 
 
@@ -166,6 +223,7 @@ public class CompareFragment extends Fragment {
 
         return PHONE_ADDED;
     }
+
 
     private void saveData() {
         SharedPreferences.Editor editor = sharedPreferences.edit();

@@ -27,11 +27,11 @@
                 android:id="@+id/devTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
                 android:text="@string/about_developers"
                 android:textColor="@color/text_color"
-                android:textSize="@dimen/header"
-                android:textStyle="italic" />
+                android:textSize="@dimen/header" />
 
             <Button
                 android:id="@+id/ghaithButton"
@@ -61,11 +61,11 @@
                 android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
                 android:text="@string/about_resources"
                 android:textColor="@color/text_color"
                 android:textSize="@dimen/header"
-                android:textStyle="italic"
                 tools:text="@string/about_resources" />
 
             <Button

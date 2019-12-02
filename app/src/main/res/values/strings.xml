@@ -18,7 +18,6 @@
     <string name="label_details">Phone Details</string>
 
 
-
     <!-- Home -->
     <string name="search">Enter a device name</string>
 
@@ -61,8 +60,6 @@
     <string name="phone_charging">Charging</string>
 
 
-
-
     <!-- Settings -->
     <string name="dark_light_mode">Dark/Light Mode</string>
     <string name="change_layout">Change Layout</string>
@@ -89,6 +86,9 @@
     <string name="resources_images">Images</string>
     <string name="resources_others">Others</string>
     <string name="resources_color_design">Color &amp; Design</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

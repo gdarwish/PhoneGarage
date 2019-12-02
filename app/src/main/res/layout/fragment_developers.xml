@@ -27,11 +27,11 @@
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
                 android:text="@string/developers_contact"
                 android:textColor="@color/text_color"
-                android:textSize="@dimen/header"
-                android:textStyle="italic" />
+                android:textSize="@dimen/header" />
 
             <Button
                 android:id="@+id/webButton"
