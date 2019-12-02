@@ -28,6 +28,9 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
+/**
+ * @author gaithdarwish
+ */
 public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
 
     int buttonWidth;
@@ -40,10 +43,13 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
     private Queue<Integer> removeQueue;
 
     private GestureDetector.SimpleOnGestureListener gestureListener = new GestureDetector.SimpleOnGestureListener() {
+        /**
+         * @param e
+         * @return
+         */
         @Override
         public boolean onSingleTapUp(MotionEvent e) {
             for (MyButton button : buttonList) {
-
                 if (button.onClick(e.getX(), e.getY()))
                     break;
             }
@@ -51,14 +57,20 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
         }
     };
 
+    // Set the SwipeView on a RecyclerView
     private View.OnTouchListener onTouchListener = new View.OnTouchListener() {
+        /**
+         * @param view
+         * @param motionEvent
+         * @return
+         */
         @Override
         public boolean onTouch(View view, MotionEvent motionEvent) {
             if (swipePosition < 0) return false;
             Point point = new Point((int) motionEvent.getRawX(), (int) motionEvent.getRawY());
 
             RecyclerView.ViewHolder swipeViewHolder = recyclerView.findViewHolderForAdapterPosition(swipePosition);
-            if(swipeViewHolder != null) {
+            if (swipeViewHolder != null) {
                 View swipedItem = swipeViewHolder.itemView;
                 Rect rect = new Rect();
                 swipedItem.getGlobalVisibleRect(rect);
@@ -86,7 +98,11 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
         }
     }
 
-
+    /**
+     * @param context
+     * @param recyclerView
+     * @param buttonWidth
+     */
     public SwipeHelper(Context context, RecyclerView recyclerView, int buttonWidth) {
         super(0, ItemTouchHelper.LEFT);
         this.recyclerView = recyclerView;
@@ -109,11 +125,13 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
         attachSwipe();
     }
 
+    // Attach the SwipeView on the RecyclerView
     public void attachSwipe() {
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(this);
         itemTouchHelper.attachToRecyclerView(recyclerView);
     }
 
+    // Creating MyButton button which is going to have a button properties
     public class MyButton {
         String text;
         private int imageResId, textSize, color, pos;
@@ -122,6 +140,14 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
         private Context context;
         private Resources resources;
 
+        /**
+         * @param context
+         * @param text
+         * @param textSize
+         * @param imageResId
+         * @param color
+         * @param listener
+         */
         public MyButton(Context context, String text, int textSize, int imageResId, int color, ButtonClickListener listener) {
             this.text = text;
             this.imageResId = imageResId;
@@ -132,6 +158,11 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
             resources = context.getResources();
         }
 
+        /**
+         * @param x
+         * @param y
+         * @return Setting onClick listener on the button
+         */
         public boolean onClick(float x, float y) {
             if (clickRegion != null && clickRegion.contains(x, y)) {
                 listener.onClick(pos);
@@ -140,6 +171,11 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
             return false;
         }
 
+        /**
+         * @param c
+         * @param rectF
+         * @param pos
+         */
         public void onDraw(Canvas c, RectF rectF, int pos) {
             Paint p = new Paint();
 
@@ -168,7 +204,6 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
             } else {
                 Drawable d = ContextCompat.getDrawable(context, imageResId);
                 Bitmap bitmap = drawableToBitmap(d);
-//                c.drawBitmap(bitmap, (rectF.left + rectF.right) / 2, (rectF.top + rectF.bottom) / 2, p);
                 c.drawBitmap(bitmap, (rectF.centerX()), (rectF.centerY()), p);
 
             }
@@ -177,6 +212,10 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
         }
     }
 
+    /**
+     * @param d
+     * @return
+     */
     private Bitmap drawableToBitmap(Drawable d) {
         if (d instanceof BitmapDrawable)
             return ((BitmapDrawable) d).getBitmap();
@@ -187,11 +226,21 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
         return bitmap;
     }
 
+    /**
+     * @param recyclerView
+     * @param viewHolder
+     * @param target
+     * @return
+     */
     @Override
     public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
         return false;
     }
 
+    /**
+     * @param viewHolder
+     * @param direction
+     */
     @Override
     public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
 
@@ -208,20 +257,41 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
         recoverSwipedItem();
     }
 
+    /**
+     * @param viewHolder
+     * @return
+     */
     public float getSwipeThreshold(RecyclerView.ViewHolder viewHolder) {
         return swipeThreshold;
     }
 
+    /**
+     * @param defaultValue
+     * @return
+     */
     @Override
     public float getSwipeEscapeVelocity(float defaultValue) {
         return 0.1f * defaultValue;
     }
 
+    /**
+     * @param defaultValue
+     * @return
+     */
     @Override
     public float getSwipeVelocityThreshold(float defaultValue) {
         return 5.0f * defaultValue;
     }
 
+    /**
+     * @param c
+     * @param recyclerView
+     * @param viewHolder
+     * @param dX
+     * @param dY
+     * @param actionState
+     * @param isCurrentlyActive
+     */
     @Override
     public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
         int pos = viewHolder.getAdapterPosition();
@@ -248,6 +318,13 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
         super.onChildDraw(c, recyclerView, viewHolder, translationX, dY, actionState, isCurrentlyActive);
     }
 
+    /**
+     * @param c
+     * @param itemView
+     * @param buffer
+     * @param pos
+     * @param translationX
+     */
     private void drawButton(Canvas c, View itemView, List<MyButton> buffer, int pos, float translationX) {
         float right = itemView.getRight();
         float dButtonWidth = -1 * translationX / buffer.size();
@@ -258,6 +335,10 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
         }
     }
 
+    /**
+     * @param viewHolder
+     * @param buffer
+     */
     public abstract void insantiateMyButton(RecyclerView.ViewHolder viewHolder, List<MyButton> buffer);
 
 

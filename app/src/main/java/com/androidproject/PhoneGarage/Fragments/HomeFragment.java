@@ -30,7 +30,7 @@ import java.util.List;
 
 
 /**
- * A simple {@link Fragment} subclass.
+ * @author Gaith Darwish
  */
 public class HomeFragment extends Fragment {
 
@@ -48,9 +48,6 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        if (getArguments() != null) {
-//            phone = (Phone) getArguments().getSerializable("phone");
-//        }
     }
 
     @Override
@@ -66,43 +63,53 @@ public class HomeFragment extends Fragment {
         mRecyclerView.setAdapter(mAdapter);
         searchText = view.findViewById(R.id.searchText);
 
+        /**
+         * @author Ghaith Darwish
+         * Createing an instance of the SwipeHelper and set it on the RecyclerView
+         */
         SwipeHelper swipeHelper = new SwipeHelper(getContext(), mRecyclerView, 200) {
             @Override
             public void insantiateMyButton(RecyclerView.ViewHolder viewHolder, List<SwipeHelper.MyButton> buffer) {
-
+                // Create the Favorite button and set its color text and size when swiped and put event listener on its
                 buffer.add(new MyButton(getContext(), "heart", 60, 0, Color.parseColor("#FFBE3233"), new ButtonClickListener() {
-
                     @Override
+                    // Adding the functionality on the button and display the result on a Toast according to the condition
                     public void onClick(int position) {
                         int result = FavouritesFragment.getInstance(getContext()).addPhoneToCompare(phones.get(position));
                         String message = "";
                         switch (result) {
+                            // if the phone is already exist
                             case CompareFragment.PHONE_EXIST:
                                 message = getString(R.string.fav_exist);
                                 break;
+                            // if the phone got added
                             case CompareFragment.PHONE_ADDED:
                                 message = getString(R.string.fav_added);
                                 break;
                         }
-
+                        //  show the toast
                         Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
 
                     }
                 }));
-
+                // Create the Compare button and set its color text and size when swiped and put event listener on its
                 buffer.add(new MyButton(getContext(), "retweet", 70, 0, Color.parseColor("#FF4633F7"), new ButtonClickListener() {
 
                     @Override
+                    // Adding the functionality on the button and display the result on a Toast according to the condition
                     public void onClick(int position) {
                         int result = CompareFragment.getInstance(getContext()).addPhoneToCompare(phones.get(position));
                         String message = "";
                         switch (result) {
+                            // if the Compare list is full
                             case CompareFragment.LIST_FULL:
                                 message = getString(R.string.comp_full);
                                 break;
+                            // if the phone is already exist
                             case CompareFragment.PHONE_EXIST:
                                 message = getString(R.string.comp_exist);
                                 break;
+                            // if the phone got added
                             case CompareFragment.PHONE_ADDED:
                                 message = getString(R.string.comp_added);
                         }
@@ -113,14 +120,13 @@ public class HomeFragment extends Fragment {
                 }));
             }
         };
-
+        // SwipeHelper ends here
 
         searchText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
             }
-
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (!s.toString().equals("")) {
@@ -128,13 +134,11 @@ public class HomeFragment extends Fragment {
                     mAdapter.updatePhonesList(searchPhones(s.toString()));
                 }
             }
-
             @Override
             public void afterTextChanged(Editable s) {
 
             }
         });
-
         return view;
     }
 
@@ -150,25 +154,4 @@ public class HomeFragment extends Fragment {
         }
         return searchedPhones;
     }
-
-//    private ArrayList<Phone> searchPhones(String searchInput) {
-//        searchedPhones = new ArrayList<>();
-//        searchInput = searchInput.toUpperCase();
-//        String[] searchInputArray = searchInput.split(" ");
-//
-//        for (Phone phone : phones) {
-//            String deviceName = phone.getDeviceName().toUpperCase();
-//            String[] deviceNameArray = deviceName.split(" ");
-//
-//            for (String device : deviceNameArray) {
-//                for(String search : searchInputArray) {
-//                    if (device.contains(search)) {
-//                        searchedPhones.add(phone);
-//                    }
-//                }
-//            }
-//        }
-//        return searchedPhones;
-//    }
-
 }

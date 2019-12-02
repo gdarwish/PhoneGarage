@@ -16,13 +16,25 @@ import java.util.ArrayList;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-
+/**
+ * @author gaithdarwish
+ */
 public class CustomListViewAdapter extends ArrayAdapter {
 
+    /**
+     * @param context
+     * @param item
+     */
     public CustomListViewAdapter(@NonNull Context context, ArrayList<DetailsList> item) {
         super(context, 0, item);
     }
 
+    /**
+     * @param position
+     * @param convertView
+     * @param parent
+     * @return
+     */
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {

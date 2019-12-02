@@ -13,8 +13,9 @@ import android.widget.Button;
 import com.androidproject.PhoneGarage.JavaBeans.Consts;
 import com.androidproject.PhoneGarage.R;
 
+
 /**
- * A simple {@link Fragment} subclass.
+ * @author Ghauth Darwish
  */
 public class AboutFragment extends Fragment {
 
@@ -29,8 +30,6 @@ public class AboutFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-
         View view = inflater.inflate(R.layout.fragment_about, container, false);
         final Bundle args = new Bundle();
 
