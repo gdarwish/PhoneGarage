@@ -1,25 +1,94 @@
 <resources>
-    <string name="app_name">Mr.Robot</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Mr.Robot</string>
-<!--    <string name="nav_header_subtitle">android.studio@android.com</string>-->
-    <string name="nav_header_desc">Navigation header</string>
+
+    <string name="app_name">Phone Garage</string>
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
+    <string name="nav_header_title" translatable="false">Phone Garage</string>
+    <string name="nav_header_desc" translatable="false">Navigation header</string>
     <string name="action_settings">Settings</string>
+    <string name="more"><font fgcolor="#e63c3c">More</font></string>
+
 
     <string name="menu_home">Home</string>
-    <string name="menu_categories">Categories</string>
     <string name="menu_favourites">Favourites</string>
     <string name="menu_compare">Compare</string>
     <string name="menu_settings">Settings</string>
     <string name="menu_about">About</string>
 
+    <string name="label_details">Phone Details</string>
+
+
+    <!-- Home -->
+    <string name="search">Enter a device name</string>
+
+    <!-- Favourite -->
+    <string name="fav_exist">Phone already exist in favourites.</string>
+    <string name="fav_added">Phone added to favourites.</string>
+    <string name="fav_no_phones">There are no favourite phones.</string>
+    <string name="fav_removed">Phone is removed from favourites.</string>
+
+    <!-- Compare -->
+    <string name="comp_full">Comparing List is full.</string>
+    <string name="comp_exist">Phone already exist in Comparing List.</string>
+    <string name="comp_added">Phone added to Comparing List.</string>
+    <string name="comp_no_phones">There are no phones to compare.</string>
+    <string name="comp_removed">Phone is removed from the list.</string>
+
+
+    <!-- Phone Details -->
+    <string name="phone_brand">Brand</string>
+    <string name="phone_size">Size</string>
+    <string name="phone_resolution">Resolution</string>
+    <string name="phone_dimensions">Dimensions</string>
+    <string name="phone_weight">Weight</string>
+    <string name="phone_screen_type">Screen Type</string>
+    <string name="phone_card_slot">Card Slot</string>
+    <string name="phone_wlan">WLAN</string>
+    <string name="phone_bluetooth">Bluetooth</string>
+    <string name="phone_gps">GPS</string>
+    <string name="phone_battery">Battery</string>
+    <string name="phone_colors">Colors</string>
+    <string name="phone_sensors">Sensors</string>
+    <string name="phone_cpu">CPU</string>
+    <string name="phone_internal_storage">Internal Storage</string>
+    <string name="phone_os">OS</string>
+    <string name="phone_video">Video</string>
+    <string name="phone_gpu">GPU</string>
+    <string name="phone_camera_features">Camera Features</string>
+    <string name="phone_front_camera">Front Camera</string>
+    <string name="phone_primary_camera">Primary Camera</string>
+    <string name="phone_charging">Charging</string>
+
+
+    <!-- Settings -->
+    <string name="dark_light_mode">Dark/Light Mode</string>
+    <string name="change_layout">Change Layout</string>
+
+    <!-- About -->
+    <string name="about_developers">Developers</string>
+    <string name="about_ghaith">Ghaith Darwish</string>
+    <string name="about_ali">Ali Dali</string>
+    <string name="about_resources">Resources</string>
+
+    <!-- Developers -->
+    <string name="developers_website">Website</string>
+    <string name="developers_email">Email</string>
+    <string name="developers_facebook">Facebook</string>
+    <string name="developers_call">Call</string>
+    <string name="developers_contact">Contact</string>
+    <string name="developers_text">Text</string>
+    <string name="developers_add_contact">Add Contact</string>
+    <string name="developers_location">Location</string>
+
+    <!-- Resources -->
+    <string name="resources_icons">Icons</string>
+    <string name="resources_logo">Logo</string>
+    <string name="resources_images">Images</string>
+    <string name="resources_others">Others</string>
+    <string name="resources_color_design">Color &amp; Design</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string name="phone">
-        <brand>Samsung</brand>
-        <model>S10</model>
-    </string>
 
 </resources>

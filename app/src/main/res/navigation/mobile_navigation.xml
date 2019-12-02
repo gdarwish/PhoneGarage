@@ -6,32 +6,57 @@
     app:startDestination="@id/nav_home">
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.androidproject.mrrobot.HomeFragment"
-        android:label="Home"
-        tools:layout="@layout/fragment_home" />
-    <fragment
-        android:id="@+id/nav_categories"
-        android:name="com.androidproject.mrrobot.CategoriesFragment"
-        android:label="Categories"
-        tools:layout="@layout/fragment_categories" />
+        android:name="com.androidproject.PhoneGarage.Fragments.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/nav_details"
+            app:destination="@id/detailsFragment6" />
+    </fragment>
     <fragment
         android:id="@+id/nav_favourites"
-        android:name="com.androidproject.mrrobot.FavouritesFragment"
-        android:label="Favourites"
-        tools:layout="@layout/fragment_favourites" />
+        android:name="com.androidproject.PhoneGarage.Fragments.FavouritesFragment"
+        android:label="@string/menu_favourites"
+        tools:layout="@layout/fragment_favourites" >
+        <action
+            android:id="@+id/nav_details"
+            app:destination="@id/detailsFragment6" />
+    </fragment>
     <fragment
         android:id="@+id/nav_compare"
-        android:name="com.androidproject.mrrobot.CompareFragment"
-        android:label="Compare"
+        android:name="com.androidproject.PhoneGarage.Fragments.CompareFragment"
+        android:label="@string/menu_compare"
         tools:layout="@layout/fragment_compare" />
     <fragment
         android:id="@+id/nav_settings"
-        android:name="com.androidproject.mrrobot.SettingsFragment"
-        android:label="Settings"
+        android:name="com.androidproject.PhoneGarage.Fragments.SettingsFragment"
+        android:label="@string/menu_settings"
         tools:layout="@layout/fragment_settings" />
     <fragment
         android:id="@+id/nav_about"
-        android:name="com.androidproject.mrrobot.AboutFragment"
-        android:label="About"
-        tools:layout="@layout/fragment_about" />
+        android:name="com.androidproject.PhoneGarage.Fragments.AboutFragment"
+        android:label="@string/menu_about"
+        tools:layout="@layout/fragment_about" >
+        <action
+            android:id="@+id/action_nav_about_to_resFragment"
+            app:destination="@id/resFragment" />
+        <action
+            android:id="@+id/action_nav_about_to_developersFragment"
+            app:destination="@id/developersFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment6"
+        android:name="com.androidproject.PhoneGarage.Fragments.DetailsFragment"
+        android:label="@string/label_details"
+        tools:layout="@layout/fragment_details" />
+    <fragment
+        android:id="@+id/developersFragment"
+        android:name="com.androidproject.PhoneGarage.Fragments.DevelopersFragment"
+        android:label="@string/about_developers"
+        tools:layout="@layout/fragment_developers" />
+    <fragment
+        android:id="@+id/resFragment"
+        android:name="com.androidproject.PhoneGarage.Fragments.ResourcesFragment"
+        android:label="@string/about_resources"
+        tools:layout="@layout/fragment_resources" />
 </navigation>
