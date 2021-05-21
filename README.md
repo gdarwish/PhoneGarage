@@ -8,19 +8,11 @@
 - Change Theme (Dark/Light)
 - Change Layout (Images/No Images)
 
+### UI
 
-> Home
-![](https://gdarwish.scweb.ca/PHP/PhoneGarageReadMe/PhoneGarage1.png)
-
-> Navigation Drawer 
-![](https://gdarwish.scweb.ca/PHP/PhoneGarageReadMe/PhoneGarage4.png)
-
-> Search 
-![](https://gdarwish.scweb.ca/PHP/PhoneGarageReadMe/PhoneGarage3.png)
-
-> RecyclerView Swipe
-![](https://gdarwish.scweb.ca/PHP/PhoneGarageReadMe/PhoneGarage5.png)
-
-> Compare Phones Tablet
-![](https://gdarwish.scweb.ca/PHP/PhoneGarageReadMe/PhoneGarage7.png)
+<img src="https://gdarwish.scweb.ca/PHP/PhoneGarageReadMe/PhoneGarage1.png" width="30%"></img> 
+<img src="https://gdarwish.scweb.ca/PHP/PhoneGarageReadMe/PhoneGarage4.png" width="30%"></img> 
+<img src="https://gdarwish.scweb.ca/PHP/PhoneGarageReadMe/PhoneGarage3.png" width="30%"></img> 
+<img src="https://gdarwish.scweb.ca/PHP/PhoneGarageReadMe/PhoneGarage5.png" width="30%"></img> 
+<img src="https://gdarwish.scweb.ca/PHP/PhoneGarageReadMe/PhoneGarage7.png"></img> 
 
